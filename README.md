@@ -140,13 +140,26 @@ drwxr-xr-x  games/            — BeamNG map gen, SLRR macOS fixes
 
 ---
 
+## `$ ./snake --eat-commits`
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/output/github-contribution-grid-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/output/github-contribution-grid-snake.svg" />
+    <img alt="Snake eating commits" src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/output/github-contribution-grid-snake-dark.svg" />
+  </picture>
+</div>
+
+---
+
 ## `$ ping ./contact`
 
 <div align="center">
 
-[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/bobberdolle1)
+[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/norevived)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/bobberdolle1)
 [![Email](https://img.shields.io/badge/Yandex_Mail-FF0000?style=for-the-badge&logo=mail.ru&logoColor=white)](mailto:kirillkrovyakov@yandex.com)
+[![Spotify](https://img.shields.io/badge/Spotify-1DB954?style=for-the-badge&logo=spotify&logoColor=white)](https://open.spotify.com/user/31fb3zd5qy5gkz6wmhhbmguk7hja)
 
 </div>
 
