@@ -35,7 +35,7 @@ struct Dev {
 
 fn main() {
     let me = Dev {
-        name:      "Kirill",
+        name:      "Bob",
         alias:     "vibecoder37 / bobberdolle1",
         location:  "Ivanovo, Russia 🇷🇺",
         stack:     vec!["Rust", "Python", "C++", "Lua", "TypeScript", "HolyC"],
