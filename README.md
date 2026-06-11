@@ -143,11 +143,8 @@ drwxr-xr-x  games/            — BeamNG map gen, SLRR macOS fixes
 ## `$ ./snake --eat-commits`
 
 <div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/output/github-contribution-grid-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/output/github-contribution-grid-snake.svg" />
-    <img alt="Snake eating commits" src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/output/github-contribution-grid-snake-dark.svg" />
-  </picture>
+  <img src="https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg" alt="Snake eating commits" style="display:none"/>
+  <img src="https://github-readme-snake.vercel.app/api?username=bobberdolle1&theme=dark" alt="Snake animation" width="100%"/>
 </div>
 
 ---
