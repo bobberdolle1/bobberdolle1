@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&pause=1000&color=00D4FF&center=true&vCenter=true&random=false&width=600&lines=vibe+coder.+full+stack+of+chaos.;rust+enjoyer+%F0%9F%A6%80;embedded+%2B+ai+%2B+drones+%2B+whatever;ships+at+2am%2C+no+tests%2C+no+regrets;maybe+bobber." alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&pause=800&color=00D4FF&center=true&vCenter=true&random=false&width=700&lines=vibe+coder.+full+stack+of+chaos.;rust+enjoyer+%F0%9F%A6%80;embedded+%2B+ai+%2B+drones+%2B+whatever;ships+at+2am%2C+no+tests%2C+no+regrets;claude+one+love+%E2%9D%A4%EF%B8%8F;gemini+is+goated+%F0%9F%92%8E;qwen+gang+%F0%9F%AB%A1;chatgpt%3F+never+heard+of+her.;yolov8+in+the+streets%2C+rust+in+the+sheets;no+docs%2C+just+vibes.;rag+%3E+fine-tuning+(don%27t+argue);maybe+bobber.;esp32+whisperer+%F0%9F%93%A1;packet+surgeon+%F0%9F%94%AA;shipping+features+while+u+yap;2am+commit+energy%2C+always.;llm+enjoyer%2C+ml+appreciator;vibe+%3E+plan%2C+always.;git+push+--force+%F0%9F%92%80" alt="Typing SVG" />
 </div>
 
 <br/>
@@ -127,7 +127,7 @@ drwxr-xr-x  games/            — BeamNG map gen, SLRR macOS fixes
 <br/>
 
 <div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=bobberdolle1&theme=darkhub&no-frame=true&no-bg=true&margin-w=8&column=7" alt="Trophies"/>
+  <img src="https://github-profile-trophy.vercel.app/?username=bobberdolle1&theme=darkhub&no-frame=true&no-bg=true&margin-w=8&column=7" />
 </div>
 
 ---
@@ -140,22 +140,14 @@ drwxr-xr-x  games/            — BeamNG map gen, SLRR macOS fixes
 
 ---
 
-## `$ ./snake --eat-commits`
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg" alt="Snake eating commits" style="display:none"/>
-  <img src="https://github-readme-snake.vercel.app/api?username=bobberdolle1&theme=dark" alt="Snake animation" width="100%"/>
-</div>
-
----
-
 ## `$ ping ./contact`
 
 <div align="center">
 
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/norevived)
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/bobberdolle1)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/bobberdolle1)
-[![Email](https://img.shields.io/badge/Yandex_Mail-FF0000?style=for-the-badge&logo=mail.ru&logoColor=white)](mailto:kirillkrovyakov@yandex.com)
+[![Email](https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:bobberdolle@gmail.com)
 [![Spotify](https://img.shields.io/badge/Spotify-1DB954?style=for-the-badge&logo=spotify&logoColor=white)](https://open.spotify.com/user/31fb3zd5qy5gkz6wmhhbmguk7hja)
 
 </div>
