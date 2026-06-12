@@ -148,7 +148,6 @@ drwxr-xr-x  games/            — BeamNG map gen, SLRR macOS fixes
 [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/bobberdolle1)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/bobberdolle1)
 [![Email](https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:bobberdolle@gmail.com)
-[![Spotify](https://img.shields.io/badge/Spotify-1DB954?style=for-the-badge&logo=spotify&logoColor=white)](https://open.spotify.com/user/31fb3zd5qy5gkz6wmhhbmguk7hja)
 
 </div>
 
