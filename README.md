@@ -1,48 +1,92 @@
-# bobberdolle1
+<div align="center">
 
-Hardware hacker and systems tinkerer. Focused on embedded hardware, RF scanning, autonomous computer vision, and network bypassing.
+# 🛰️ bobberdolle1
+**Hardware Hacker & Systems Developer**  
+*Embedded Systems | RF Monitoring | Computer Vision | Network Bypassing*
+
+</div>
 
 ---
 
-### 🛰️ Featured Projects
+### 📦 Featured Projects
 
-| Project | Stack | Description |
-| :--- | :--- | :--- |
-| [**SkySweep32**](https://github.com/bobberdolle1/SkySweep32) | C++ / ESP32 / KiCad | Multi-band passive drone detector (900MHz / 2.4GHz / 5.8GHz RF) with custom carrier boards and 3D printable enclosures. |
-| [**openflash**](https://github.com/bobberdolle1/openflash) | Rust | NAND/eMMC/NOR flash programmer running on budget microcontrollers. |
-| [**unbound**](https://github.com/bobberdolle1/unbound) | Lua | Packet-level DPI bypass utility without VPN overhead. |
-| [**BeamNG.WorldForge**](https://github.com/bobberdolle1/BeamNG.WorldForge) | Python / OpenCV / GIS | Real-world map generator from satellite data for BeamNG.drive. |
-| [**maixcam-servo-control**](https://github.com/bobberdolle1/maixcam-servo-control) | Python / YOLO | Ballistic servo drop controller using optical flow and object detection. |
-| [**Puppeteer**](https://github.com/bobberdolle1/Puppeteer) | Rust / Telegram | Multi-account Telegram userbot wrapper with LLM integration. |
+<table width="100%">
+  <tr>
+    <td width="50%" valign="top">
+      <h4>📡 <a href="https://github.com/bobberdolle1/SkySweep32">SkySweep32</a></h4>
+      <p>Multi-band passive drone detector (900MHz / 2.4GHz / 5.8GHz RF) with custom carrier PCBs & 3D printed enclosures.</p>
+      <code>C++</code> <code>ESP32</code> <code>KiCad</code> <code>FreeCAD</code>
+    </td>
+    <td width="50%" valign="top">
+      <h4>🔌 <a href="https://github.com/bobberdolle1/openflash">openflash</a></h4>
+      <p>NAND/eMMC/NOR flash programmer running on budget microcontrollers.</p>
+      <code>Rust</code> <code>Embedded</code> <code>Hardware</code>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h4>⚡ <a href="https://github.com/bobberdolle1/unbound">unbound</a></h4>
+      <p>Packet-level DPI bypass utility without VPN overhead.</p>
+      <code>Lua</code> <code>Networking</code> <code>DPI Bypass</code>
+    </td>
+    <td width="50%" valign="top">
+      <h4>🚗 <a href="https://github.com/bobberdolle1/BeamNG.WorldForge">BeamNG.WorldForge</a></h4>
+      <p>Real-world map generator from satellite data for BeamNG.drive.</p>
+      <code>Python</code> <code>OpenCV</code> <code>GIS</code>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h4>🎯 <a href="https://github.com/bobberdolle1/maixcam-servo-control">maixcam-servo-control</a></h4>
+      <p>Ballistic servo drop controller using optical flow and YOLO object detection.</p>
+      <code>Python</code> <code>YOLO</code> <code>Robotics</code>
+    </td>
+    <td width="50%" valign="top">
+      <h4>🎭 <a href="https://github.com/bobberdolle1/Puppeteer">Puppeteer</a></h4>
+      <p>Multi-account Telegram userbot wrapper with LLM integration.</p>
+      <code>Rust</code> <code>Telegram API</code> <code>LLM</code>
+    </td>
+  </tr>
+</table>
 
 ---
 
 ### 🛠️ Fields of Work
 
-- **Embedded Systems & RF**: ESP32, RP2040, CC1101, NRF24, SX1276 (LoRa), KiCad schematic & board design.
-- **Systems & Automation**: Rust, Python, C++, Lua, network packet analysis, DPI bypass strategies.
-- **Computer Vision**: YOLOv8, OpenCV, autonomous camera trapping, and target tracking.
+- **Embedded Hardware**: PCB layout & schematic design (KiCad), prototyping, firmware development (ESP32, RP2040).
+- **RF & Wireless**: ISM band monitoring (CC1101, NRF24), LoRa mesh networks, software-defined radio protocols.
+- **Systems & Networking**: Packet analysis, low-level routing, custom DPI bypass implementation.
+- **Autonomous Systems**: Edge AI deployment, target detection & tracking (YOLO, OpenCV).
 
 ---
 
 ### 📊 Github Stats
 
 <div align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=bobberdolle1&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117&title_color=00d4ff&icon_color=00d4ff&text_color=c9d1d9&ring_color=00d4ff"/>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=bobberdolle1&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00d4ff&text_color=c9d1d9&langs_count=8"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=bobberdolle1&show_icons=true&theme=onyx&include_all_commits=true&count_private=true" />
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=bobberdolle1&layout=compact&theme=onyx&langs_count=8" />
 </div>
 
-<div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=bobberdolle1&theme=tokyo-night&bg_color=0d1117&color=00d4ff&line=00d4ff&point=ff6b35&area=true&hide_border=true" width="100%"/>
-</div>
+<br/>
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/output/github-contribution-grid-snake-dark.svg" alt="github contribution grid snake"/>
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=bobberdolle1&theme=react-dark&bg_color=000000&color=ffffff&line=00d4ff&point=ff6b35&area=true&hide_border=true" width="100%"/>
+</div>
+
+<br/>
+
+<!-- Snake Contribution Grid -->
+<div align="center">
+  <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/output/github-contribution-grid-snake-dark.svg" alt="contribution snake"/>
 </div>
 
 ---
 
 ### 💬 Contact
 
+<div align="left">
+
 - **Telegram**: [@norevived](https://t.me/norevived)
 - **Discord**: `bobberdolle1`
+
+</div>
