@@ -1,0 +1,21 @@
+{
+  "name": "quick-pasteur",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">   <picture>     <img src=\"https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/xmb_banner.svg?v=11\" alt=\"bobberdolle1 banner\" width=\"100%\" />   </picture> </div>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobberdolle1/bobberdolle1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/bobberdolle1/bobberdolle1/issues"
+  },
+  "homepage": "https://github.com/bobberdolle1/bobberdolle1#readme"
+}

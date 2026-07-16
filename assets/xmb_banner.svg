@@ -1,86 +1,153 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 160" width="100%">
-  <!-- Deep Dark Space Background -->
-  <rect width="100%" height="100%" fill="#000000" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" width="100%">
+  <!-- Cyber-Goth Dark Background -->
+  <rect width="100%" height="100%" fill="#050508" />
   
   <defs>
-    <!-- Cyan/Blue Wave Gradient -->
-    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#001829" />
-      <stop offset="35%" stop-color="#005f9e" />
-      <stop offset="50%" stop-color="#00d4ff" />
-      <stop offset="65%" stop-color="#005f9e" />
-      <stop offset="100%" stop-color="#001829" />
-    </linearGradient>
-    
-    <!-- Purple/Amethyst Wave Gradient -->
-    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#12001c" />
-      <stop offset="35%" stop-color="#4c007a" />
-      <stop offset="50%" stop-color="#9d00ff" />
-      <stop offset="65%" stop-color="#4c007a" />
-      <stop offset="100%" stop-color="#12001c" />
-    </linearGradient>
-    
-    <!-- Ambient Dust Particles -->
-    <radialGradient id="particle" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-    </radialGradient>
+    <!-- Retro CRT Grid Pattern -->
+    <pattern id="crt-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#121220" stroke-width="0.75" />
+    </pattern>
+
+    <!-- Scanline Pattern for Overlay -->
+    <pattern id="scanlines" width="100" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="100" y2="0" stroke="#000000" stroke-width="1.5" opacity="0.35" />
+    </pattern>
+
+    <!-- Glowing Filters -->
+    <filter id="neon-glow-pink">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="neon-glow-cyan">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
   </defs>
 
-  <!-- Flowing XMB Wave 1 -->
-  <path fill="none" stroke="url(#gradient1)" stroke-width="3" opacity="0.65">
-    <animate attributeName="d" 
-             dur="12s" 
-             repeatCount="indefinite"
-             values="
-               M0,80 Q250,15 500,80 T1000,80;
-               M0,80 Q250,145 500,80 T1000,80;
-               M0,80 Q250,15 500,80 T1000,80
-             " />
-  </path>
+  <!-- Render CRT Grid Background -->
+  <rect width="100%" height="100%" fill="url(#crt-grid)" />
+
+  <!-- Background Ambient Glows -->
+  <circle cx="500" cy="100" r="150" fill="#ff007f" opacity="0.08" filter="url(#neon-glow-pink)" />
+  <circle cx="220" cy="100" r="100" fill="#00f0ff" opacity="0.08" filter="url(#neon-glow-cyan)" />
+  <circle cx="780" cy="100" r="100" fill="#00f0ff" opacity="0.08" filter="url(#neon-glow-cyan)" />
+
+  <!-- FLOWING STEP-BASED PIXEL WAVES (SEAMLESS LOOPS) -->
   
-  <!-- Flowing XMB Wave 2 (Slow & Deep) -->
-  <path fill="none" stroke="url(#gradient2)" stroke-width="2" opacity="0.45">
-    <animate attributeName="d" 
-             dur="18s" 
-             repeatCount="indefinite"
-             values="
-               M0,80 Q250,145 500,80 T1000,80;
-               M0,80 Q250,15 500,80 T1000,80;
-               M0,80 Q250,145 500,80 T1000,80
-             " />
-  </path>
-
-  <!-- Flowing XMB Wave 3 (Thin Accent) -->
-  <path fill="none" stroke="#ffffff" stroke-width="0.75" opacity="0.25">
-    <animate attributeName="d" 
-             dur="15s" 
-             repeatCount="indefinite"
-             values="
-               M0,80 Q150,50 500,70 T1000,90;
-               M0,80 Q150,110 500,90 T1000,70;
-               M0,80 Q150,50 500,70 T1000,90
-             " />
-  </path>
-
-  <!-- PS2 / PS3 Dust Particles (Ambient floating) -->
-  <circle cx="200" cy="50" r="2" fill="url(#particle)">
-    <animate attributeName="cy" dur="8s" repeatCount="indefinite" values="50;45;50" />
-    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0.2;0.8;0.2" />
-  </circle>
-  <circle cx="750" cy="110" r="1.5" fill="url(#particle)">
-    <animate attributeName="cy" dur="11s" repeatCount="indefinite" values="110;115;110" />
-    <animate attributeName="opacity" dur="11s" repeatCount="indefinite" values="0.1;0.6;0.1" />
-  </circle>
-  <circle cx="480" cy="30" r="2.5" fill="url(#particle)">
-    <animate attributeName="cy" dur="6s" repeatCount="indefinite" values="30;20;30" />
-    <animate attributeName="opacity" dur="6s" repeatCount="indefinite" values="0.3;0.9;0.3" />
-  </circle>
-
-  <!-- Glowing Username -->
-  <g text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" letter-spacing="6">
-    <text x="500" y="82" font-size="36" font-weight="bold" fill="#00d4ff" opacity="0.3" filter="blur(4px)">bobberdolle1</text>
-    <text x="500" y="80" font-size="36" font-weight="bold" fill="#ffffff" opacity="0.9">bobberdolle1</text>
+  <!-- Wave 1: Magenta (Fastest, Front) -->
+  <g filter="url(#neon-glow-pink)">
+    <path d="M -200,100 H -180 V 80 H -160 V 60 H -140 V 50 H -120 V 70 H -100 V 100 H -80 V 120 H -60 V 140 H -40 V 150 H -20 V 130 H 0 V 100 H 20 V 80 H 40 V 60 H 60 V 50 H 80 V 70 H 100 V 100 H 120 V 120 H 140 V 140 H 160 V 150 H 180 V 130 H 200 V 100 H 220 V 80 H 240 V 60 H 260 V 50 H 280 V 70 H 300 V 100 H 320 V 120 H 340 V 140 H 360 V 150 H 380 V 130 H 400 V 100 H 420 V 80 H 440 V 60 H 460 V 50 H 480 V 70 H 500 V 100 H 520 V 120 H 540 V 140 H 560 V 150 H 580 V 130 H 600 V 100 H 620 V 80 H 640 V 60 H 660 V 50 H 680 V 70 H 700 V 100 H 720 V 120 H 740 V 140 H 760 V 150 H 780 V 130 H 800 V 100 H 820 V 80 H 840 V 60 H 860 V 50 H 880 V 70 H 900 V 100 H 920 V 120 H 940 V 140 H 960 V 150 H 980 V 130 H 1000 V 100 H 1020 V 80 H 1040 V 60 H 1060 V 50 H 1080 V 70 H 1100 V 100 H 1120 V 120 H 1140 V 140 H 1160 V 150 H 1180 V 130 H 1200 V 100" 
+          fill="none" stroke="#ff007f" stroke-width="2.5" opacity="0.6">
+      <animateTransform attributeName="transform" type="translate" from="0,0" to="-200,0" dur="6s" repeatCount="indefinite" />
+    </path>
   </g>
+
+  <!-- Wave 2: Cyan (Slower, Reverse Flow) -->
+  <g filter="url(#neon-glow-cyan)">
+    <path d="M -200,120 H -180 V 140 H -160 V 160 H -140 V 170 H -120 V 150 H -100 V 120 H -80 V 100 H -60 V 80 H -40 V 70 H -20 V 90 H 0 V 120 H 20 V 140 H 40 V 160 H 60 V 170 H 80 V 150 H 100 V 120 H 120 V 100 H 140 V 80 H 160 V 70 H 180 V 90 H 200 V 120 H 220 V 140 H 240 V 160 H 260 V 170 H 280 V 150 H 300 V 120 H 320 V 100 H 340 V 80 H 360 V 70 H 380 V 90 H 400 V 120 H 420 V 140 H 440 V 160 H 460 V 170 H 480 V 150 H 500 V 120 H 520 V 100 H 540 V 80 H 560 V 70 H 580 V 90 H 600 V 120 H 620 V 140 H 640 V 160 H 660 V 170 H 680 V 150 H 700 V 120 H 720 V 100 H 740 V 80 H 760 V 70 H 780 V 90 H 800 V 120 H 820 V 140 H 840 V 160 H 860 V 170 H 880 V 150 H 900 V 120 H 920 V 100 H 940 V 80 H 960 V 70 H 980 V 90 H 1000 V 120 H 1020 V 140 H 1040 V 160 H 1060 V 170 H 1080 V 150 H 1100 V 120 H 1120 V 100 H 1140 V 80 H 1160 V 70 H 1180 V 90 H 1200 V 120" 
+          fill="none" stroke="#00f0ff" stroke-width="2.0" opacity="0.55">
+      <animateTransform attributeName="transform" type="translate" from="0,0" to="200,0" dur="9s" repeatCount="indefinite" />
+    </path>
+  </g>
+
+  <!-- Wave 3: White Accent (Very thin, slow) -->
+  <path d="M -200,90 H -180 V 110 H -160 V 130 H -140 V 140 H -120 V 120 H -100 V 90 H -80 V 70 H -60 V 50 H -40 V 40 H -20 V 60 H 0 V 90 H 20 V 110 H 40 V 130 H 60 V 140 H 80 V 120 H 100 V 90 H 120 V 70 H 140 V 50 H 160 V 40 H 180 V 60 H 200 V 90 H 220 V 110 H 240 V 130 H 260 V 140 H 280 V 120 H 300 V 90 H 320 V 70 H 340 V 50 H 360 V 40 H 380 V 60 H 400 V 90 H 420 V 110 H 440 V 130 H 460 V 140 H 480 V 120 H 500 V 90 H 520 V 70 H 540 V 50 H 560 V 40 H 580 V 60 H 600 V 90 H 620 V 110 H 640 V 130 H 660 V 140 H 680 V 120 H 700 V 90 H 720 V 70 H 740 V 50 H 760 V 40 H 780 V 60 H 800 V 90 H 820 V 110 H 840 V 130 H 860 V 140 H 880 V 120 H 900 V 90 H 920 V 70 H 940 V 50 H 960 V 40 H 980 V 60 H 1000 V 90 H 1020 V 110 H 1040 V 130 H 1060 V 140 H 1080 V 120 H 1100 V 90 H 1120 V 70 H 1140 V 50 H 1160 V 40 H 1180 V 60 H 1200 V 90" 
+        fill="none" stroke="#ffffff" stroke-width="1.0" opacity="0.25">
+    <animateTransform attributeName="transform" type="translate" from="0,0" to="-200,0" dur="13s" repeatCount="indefinite" />
+  </path>
+
+  <!-- Ambient Floating Pixel Particles (Glitched dust) -->
+  <g fill="#ffffff" opacity="0.4">
+    <rect x="150" y="40" width="3" height="3">
+      <animate attributeName="y" values="40;30;40" dur="4s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;0.8;0.2" dur="4s" repeatCount="indefinite" />
+    </rect>
+    <rect x="350" y="160" width="4" height="4">
+      <animate attributeName="y" values="160;170;160" dur="5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.1;0.9;0.1" dur="5s" repeatCount="indefinite" />
+    </rect>
+    <rect x="620" y="50" width="3" height="3">
+      <animate attributeName="y" values="50;60;50" dur="6s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.3;0.7;0.3" dur="6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="850" y="130" width="4" height="4">
+      <animate attributeName="y" values="130;120;130" dur="4.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;1.0;0.2" dur="4.5s" repeatCount="indefinite" />
+    </rect>
+  </g>
+
+  <!-- LEFT NEON WIREFRAME CRYSTAL PRISM (Crystal Castles motif, bobs up/down) -->
+  <g transform="translate(0, 0)">
+    <animateTransform attributeName="transform" type="translate" values="0,-5; 0,5; 0,-5" dur="5s" repeatCount="indefinite" />
+    
+    <!-- Facet outlines and glows -->
+    <!-- Front-Left-Top -->
+    <polygon points="180,40 150,100 180,115" fill="#ff007f" fill-opacity="0.15" stroke="#ff007f" stroke-width="1.5" filter="url(#neon-glow-pink)" />
+    <!-- Front-Right-Top -->
+    <polygon points="180,40 210,100 180,115" fill="#00f0ff" fill-opacity="0.1" stroke="#00f0ff" stroke-width="1.5" filter="url(#neon-glow-cyan)" />
+    <!-- Front-Left-Bottom -->
+    <polygon points="180,160 150,100 180,115" fill="#00f0ff" fill-opacity="0.1" stroke="#00f0ff" stroke-width="1.5" filter="url(#neon-glow-cyan)" />
+    <!-- Front-Right-Bottom -->
+    <polygon points="180,160 210,100 180,115" fill="#ff007f" fill-opacity="0.15" stroke="#ff007f" stroke-width="1.5" filter="url(#neon-glow-pink)" />
+    
+    <!-- Back wireframe (dashed for optical depth) -->
+    <line x1="180" y1="40" x2="180" y2="85" stroke="#ff007f" stroke-width="0.75" stroke-dasharray="2,2" opacity="0.6" />
+    <line x1="180" y1="160" x2="180" y2="85" stroke="#00f0ff" stroke-width="0.75" stroke-dasharray="2,2" opacity="0.6" />
+    <line x1="150" y1="100" x2="180" y2="85" stroke="#ff007f" stroke-width="0.75" stroke-dasharray="2,2" opacity="0.6" />
+    <line x1="210" y1="100" x2="180" y2="85" stroke="#00f0ff" stroke-width="0.75" stroke-dasharray="2,2" opacity="0.6" />
+  </g>
+
+  <!-- RIGHT NEON WIREFRAME CRYSTAL PRISM (Symmetric) -->
+  <g transform="translate(0, 0)">
+    <animateTransform attributeName="transform" type="translate" values="0,5; 0,-5; 0,5" dur="5s" repeatCount="indefinite" />
+    
+    <!-- Facet outlines and glows -->
+    <!-- Front-Left-Top -->
+    <polygon points="820,40 790,100 820,115" fill="#ff007f" fill-opacity="0.15" stroke="#ff007f" stroke-width="1.5" filter="url(#neon-glow-pink)" />
+    <!-- Front-Right-Top -->
+    <polygon points="820,40 850,100 820,115" fill="#00f0ff" fill-opacity="0.1" stroke="#00f0ff" stroke-width="1.5" filter="url(#neon-glow-cyan)" />
+    <!-- Front-Left-Bottom -->
+    <polygon points="820,160 790,100 820,115" fill="#00f0ff" fill-opacity="0.1" stroke="#00f0ff" stroke-width="1.5" filter="url(#neon-glow-cyan)" />
+    <!-- Front-Right-Bottom -->
+    <polygon points="820,160 850,100 820,115" fill="#ff007f" fill-opacity="0.15" stroke="#ff007f" stroke-width="1.5" filter="url(#neon-glow-pink)" />
+    
+    <!-- Back wireframe -->
+    <line x1="820" y1="40" x2="820" y2="85" stroke="#ff007f" stroke-width="0.75" stroke-dasharray="2,2" opacity="0.6" />
+    <line x1="820" y1="160" x2="820" y2="85" stroke="#00f0ff" stroke-width="0.75" stroke-dasharray="2,2" opacity="0.6" />
+    <line x1="790" y1="100" x2="820" y2="85" stroke="#ff007f" stroke-width="0.75" stroke-dasharray="2,2" opacity="0.6" />
+    <line x1="850" y1="100" x2="820" y2="85" stroke="#00f0ff" stroke-width="0.75" stroke-dasharray="2,2" opacity="0.6" />
+  </g>
+
+  <!-- GLITCHING CHROMATIC-ABERRATION TITLE TEXT -->
+  <g text-anchor="middle" dominant-baseline="middle" font-family="'Courier New', Courier, monospace" font-weight="bold" letter-spacing="12">
+    <!-- Red/Pink Shadow (offset left-bottom + jittering opacity) -->
+    <text x="502" y="103" font-size="38" fill="#ff0055" opacity="0.7" filter="url(#neon-glow-pink)">
+      BOBBERDOLLE1
+      <animate attributeName="dx" values="0; 1; -2; 0; 2; 0" dur="0.8s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.7; 0.2; 0.9; 0.5; 0.7; 0.1; 0.8" dur="2s" repeatCount="indefinite" />
+    </text>
+    
+    <!-- Cyan Shadow (offset right-top + jittering opacity) -->
+    <text x="498" y="97" font-size="38" fill="#00f0ff" opacity="0.7" filter="url(#neon-glow-cyan)">
+      BOBBERDOLLE1
+      <animate attributeName="dx" values="0; -2; 1; 0; -1; 0" dur="0.9s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.6; 0.8; 0.3; 0.9; 0.4; 0.8; 0.5" dur="1.7s" repeatCount="indefinite" />
+    </text>
+
+    <!-- Main Stark White Text -->
+    <text x="500" y="100" font-size="38" fill="#ffffff" opacity="0.95">
+      BOBBERDOLLE1
+      <animate attributeName="dx" values="0; 0.5; -0.5; 0" dur="2.5s" repeatCount="indefinite" />
+    </text>
+  </g>
+
+  <!-- CRT SCANLINE OVERLAY -->
+  <rect width="100%" height="100%" fill="url(#scanlines)" pointer-events="none" />
 </svg>

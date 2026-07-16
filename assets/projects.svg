@@ -1,0 +1,224 @@
+<svg width="800" height="520" xmlns="http://www.w3.org/2000/svg">
+    
+    <defs>
+        <filter id="glitch">
+            <feTurbulence type="fractalNoise" baseFrequency="0.05 0.95" numOctaves="1" result="noise" />
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 3 -1" in="noise" result="coloredNoise" />
+            <feDisplacementMap in="SourceGraphic" in2="coloredNoise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <linearGradient id="neonGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f0ff" />
+            <stop offset="50%" stop-color="#8a2be2" />
+            <stop offset="100%" stop-color="#ff007f" />
+        </linearGradient>
+        <style>
+            @keyframes scanline {
+                0% { transform: translateY(-100%); }
+                100% { transform: translateY(100%); }
+            }
+            @keyframes glitch-anim {
+                0% { clip-path: inset(10% 0 80% 0); transform: translate(-2px, 2px); }
+                20% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); }
+                40% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, 0); }
+                60% { clip-path: inset(0 0 100% 0); transform: translate(2px, 2px); }
+                80% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, -2px); }
+                100% { clip-path: inset(40% 0 40% 0); transform: translate(2px, 0); }
+            }
+            .scanlines {
+                fill: url(#scanPattern);
+                opacity: 0.15;
+            }
+            .glitch-text {
+                font-family: monospace, "Courier New";
+                font-weight: bold;
+                font-size: 48px;
+                fill: #ffffff;
+            }
+            .glitch-red {
+                fill: #ff007f;
+                animation: glitch-anim 2s infinite linear alternate-reverse;
+            }
+            .glitch-blue {
+                fill: #00f0ff;
+                animation: glitch-anim 3s infinite linear alternate-reverse;
+            }
+            .text-title { font-family: monospace; font-size: 20px; fill: #00f0ff; font-weight: bold; }
+            .text-sub { font-family: monospace; font-size: 14px; fill: #555566; }
+            .text-desc { font-family: monospace; font-size: 13px; fill: #ffffff; }
+            .text-stat { font-family: monospace; font-size: 12px; fill: #ff007f; }
+            
+            .window { fill: #111116; stroke: #555566; stroke-width: 2; }
+            .window-header { fill: #555566; }
+            .window-dot-red { fill: #ff007f; }
+            .window-dot-yellow { fill: #ffff00; }
+            .window-dot-green { fill: #00f0ff; }
+            
+            .star-icon { fill: #00f0ff; }
+            
+            .grid-bg { stroke: rgba(255, 255, 255, 0.05); stroke-width: 1; }
+        </style>
+        <pattern id="scanPattern" width="4" height="4" patternUnits="userSpaceOnUse">
+            <rect width="4" height="1" fill="#ffffff" />
+        </pattern>
+        <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+            <rect width="40" height="40" fill="none" class="grid-bg" />
+            <path d="M 40 0 L 0 0 0 40" fill="none" class="grid-bg" />
+        </pattern>
+    </defs>
+    
+    
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="#050508" />
+    <rect width="100%" height="100%" fill="url(#gridPattern)" />
+    
+    <!-- Title -->
+    <text x="400" y="40" class="text-title" text-anchor="middle">>> TOP_DIRECTORIES</text>
+    <path d="M 250,50 L 550,50" stroke="#ff007f" stroke-width="2" fill="none"/>
+    <path d="M 260,55 L 540,55" stroke="#00f0ff" stroke-width="1" fill="none"/>
+    
+    <!-- Project Card Window -->
+    <g transform="translate(20, 80)">
+        <rect width="370" height="120" class="window" />
+        <rect width="370" height="20" class="window-header" />
+        <circle cx="10" cy="10" r="4" class="window-dot-red" />
+        <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
+        <circle cx="40" cy="10" r="4" class="window-dot-green" />
+        
+        <text x="55" y="14" class="text-sub" fill="#050508">~/SkySweep32</text>
+        
+        <!-- Repo Name -->
+        <text x="15" y="45" class="text-title" fill="#00f0ff">SkySweep32</text>
+        
+        <!-- Description -->
+        <text x="15" y="65" class="text-desc"> Multi-band passive drone detector on</text>
+        <text x="15" y="82" class="text-desc">ESP32 | Мультидиапазонный детектор...</text>
+        
+        <!-- Stars and Language -->
+        <text x="15" y="105" class="text-stat">[★ 25]</text>
+        <text x="80" y="105" class="text-stat">[<span style="color:#8a2be2">$</span> C++]</text>
+        
+        <path d="M 0,118 L 370,118" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+    </g>
+        
+    <!-- Project Card Window -->
+    <g transform="translate(410, 80)">
+        <rect width="370" height="120" class="window" />
+        <rect width="370" height="20" class="window-header" />
+        <circle cx="10" cy="10" r="4" class="window-dot-red" />
+        <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
+        <circle cx="40" cy="10" r="4" class="window-dot-green" />
+        
+        <text x="55" y="14" class="text-sub" fill="#050508">~/openflash</text>
+        
+        <!-- Repo Name -->
+        <text x="15" y="45" class="text-title" fill="#00f0ff">openflash</text>
+        
+        <!-- Description -->
+        <text x="15" y="65" class="text-desc">OpenFlash is an open-source</text>
+        <text x="15" y="82" class="text-desc">NAND/eMMC/NOR flash programmer that turns ch...</text>
+        
+        <!-- Stars and Language -->
+        <text x="15" y="105" class="text-stat">[★ 7]</text>
+        <text x="80" y="105" class="text-stat">[<span style="color:#8a2be2">$</span> Rust]</text>
+        
+        <path d="M 0,118 L 370,118" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+    </g>
+        
+    <!-- Project Card Window -->
+    <g transform="translate(20, 220)">
+        <rect width="370" height="120" class="window" />
+        <rect width="370" height="20" class="window-header" />
+        <circle cx="10" cy="10" r="4" class="window-dot-red" />
+        <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
+        <circle cx="40" cy="10" r="4" class="window-dot-green" />
+        
+        <text x="55" y="14" class="text-sub" fill="#050508">~/unbound</text>
+        
+        <!-- Repo Name -->
+        <text x="15" y="45" class="text-title" fill="#00f0ff">unbound</text>
+        
+        <!-- Description -->
+        <text x="15" y="65" class="text-desc">🚀 Универсальный обход DPI на уровне</text>
+        <text x="15" y="82" class="text-desc">пакетов (Windows, macOS, Linux, Ope...</text>
+        
+        <!-- Stars and Language -->
+        <text x="15" y="105" class="text-stat">[★ 6]</text>
+        <text x="80" y="105" class="text-stat">[<span style="color:#8a2be2">$</span> Lua]</text>
+        
+        <path d="M 0,118 L 370,118" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+    </g>
+        
+    <!-- Project Card Window -->
+    <g transform="translate(410, 220)">
+        <rect width="370" height="120" class="window" />
+        <rect width="370" height="20" class="window-header" />
+        <circle cx="10" cy="10" r="4" class="window-dot-red" />
+        <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
+        <circle cx="40" cy="10" r="4" class="window-dot-green" />
+        
+        <text x="55" y="14" class="text-sub" fill="#050508">~/BeamNG.WorldForge</text>
+        
+        <!-- Repo Name -->
+        <text x="15" y="45" class="text-title" fill="#00f0ff">BeamNG.WorldForge</text>
+        
+        <!-- Description -->
+        <text x="15" y="65" class="text-desc">BeamNG.WorldForge: Auto-generate</text>
+        <text x="15" y="82" class="text-desc">realistic BeamNG.drive maps from real s...</text>
+        
+        <!-- Stars and Language -->
+        <text x="15" y="105" class="text-stat">[★ 4]</text>
+        <text x="80" y="105" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
+        
+        <path d="M 0,118 L 370,118" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+    </g>
+        
+    <!-- Project Card Window -->
+    <g transform="translate(20, 360)">
+        <rect width="370" height="120" class="window" />
+        <rect width="370" height="20" class="window-header" />
+        <circle cx="10" cy="10" r="4" class="window-dot-red" />
+        <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
+        <circle cx="40" cy="10" r="4" class="window-dot-green" />
+        
+        <text x="55" y="14" class="text-sub" fill="#050508">~/Pico-Nand-Flasher</text>
+        
+        <!-- Repo Name -->
+        <text x="15" y="45" class="text-title" fill="#00f0ff">Pico-Nand-Flasher</text>
+        
+        <!-- Description -->
+        <text x="15" y="65" class="text-desc">NAND Flasher for Raspberry Pi Pico</text>
+        <text x="15" y="82" class="text-desc"></text>
+        
+        <!-- Stars and Language -->
+        <text x="15" y="105" class="text-stat">[★ 4]</text>
+        <text x="80" y="105" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
+        
+        <path d="M 0,118 L 370,118" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+    </g>
+        
+    <!-- Project Card Window -->
+    <g transform="translate(410, 360)">
+        <rect width="370" height="120" class="window" />
+        <rect width="370" height="20" class="window-header" />
+        <circle cx="10" cy="10" r="4" class="window-dot-red" />
+        <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
+        <circle cx="40" cy="10" r="4" class="window-dot-green" />
+        
+        <text x="55" y="14" class="text-sub" fill="#050508">~/Project-OLEG</text>
+        
+        <!-- Repo Name -->
+        <text x="15" y="45" class="text-title" fill="#00f0ff">Project-OLEG</text>
+        
+        <!-- Description -->
+        <text x="15" y="65" class="text-desc">Твой личный кибер-кентуха. Поясняю за</text>
+        <text x="15" y="82" class="text-desc">железо, разгоняю скуку и баню душн...</text>
+        
+        <!-- Stars and Language -->
+        <text x="15" y="105" class="text-stat">[★ 3]</text>
+        <text x="80" y="105" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
+        
+        <path d="M 0,118 L 370,118" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+    </g>
+        
+    <rect width="100%" height="100%" class="scanlines" pointer-events="none" />
+</svg>

@@ -1,0 +1,90 @@
+<svg width="800" height="200" xmlns="http://www.w3.org/2000/svg">
+    
+    <defs>
+        <filter id="glitch">
+            <feTurbulence type="fractalNoise" baseFrequency="0.05 0.95" numOctaves="1" result="noise" />
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 3 -1" in="noise" result="coloredNoise" />
+            <feDisplacementMap in="SourceGraphic" in2="coloredNoise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <linearGradient id="neonGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f0ff" />
+            <stop offset="50%" stop-color="#8a2be2" />
+            <stop offset="100%" stop-color="#ff007f" />
+        </linearGradient>
+        <style>
+            @keyframes scanline {
+                0% { transform: translateY(-100%); }
+                100% { transform: translateY(100%); }
+            }
+            @keyframes glitch-anim {
+                0% { clip-path: inset(10% 0 80% 0); transform: translate(-2px, 2px); }
+                20% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); }
+                40% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, 0); }
+                60% { clip-path: inset(0 0 100% 0); transform: translate(2px, 2px); }
+                80% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, -2px); }
+                100% { clip-path: inset(40% 0 40% 0); transform: translate(2px, 0); }
+            }
+            .scanlines {
+                fill: url(#scanPattern);
+                opacity: 0.15;
+            }
+            .glitch-text {
+                font-family: monospace, "Courier New";
+                font-weight: bold;
+                font-size: 48px;
+                fill: #ffffff;
+            }
+            .glitch-red {
+                fill: #ff007f;
+                animation: glitch-anim 2s infinite linear alternate-reverse;
+            }
+            .glitch-blue {
+                fill: #00f0ff;
+                animation: glitch-anim 3s infinite linear alternate-reverse;
+            }
+            .text-title { font-family: monospace; font-size: 20px; fill: #00f0ff; font-weight: bold; }
+            .text-sub { font-family: monospace; font-size: 14px; fill: #555566; }
+            .text-desc { font-family: monospace; font-size: 13px; fill: #ffffff; }
+            .text-stat { font-family: monospace; font-size: 12px; fill: #ff007f; }
+            
+            .window { fill: #111116; stroke: #555566; stroke-width: 2; }
+            .window-header { fill: #555566; }
+            .window-dot-red { fill: #ff007f; }
+            .window-dot-yellow { fill: #ffff00; }
+            .window-dot-green { fill: #00f0ff; }
+            
+            .star-icon { fill: #00f0ff; }
+            
+            .grid-bg { stroke: rgba(255, 255, 255, 0.05); stroke-width: 1; }
+        </style>
+        <pattern id="scanPattern" width="4" height="4" patternUnits="userSpaceOnUse">
+            <rect width="4" height="1" fill="#ffffff" />
+        </pattern>
+        <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+            <rect width="40" height="40" fill="none" class="grid-bg" />
+            <path d="M 40 0 L 0 0 0 40" fill="none" class="grid-bg" />
+        </pattern>
+    </defs>
+    
+    
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="#050508" />
+    <rect width="100%" height="100%" fill="url(#gridPattern)" />
+    
+    <!-- Decorative Elements -->
+    <path d="M 0,100 L 150,100 L 170,120 L 630,120 L 650,100 L 800,100" stroke="#00f0ff" stroke-width="2" fill="none" opacity="0.5"/>
+    <path d="M 0,110 L 145,110 L 165,130 L 635,130 L 655,110 L 800,110" stroke="#ff007f" stroke-width="1" fill="none" opacity="0.3"/>
+    
+    <!-- Glitching Title -->
+    <g transform="translate(400, 100)" text-anchor="middle">
+        <text class="glitch-text glitch-red" x="2" y="-2">bobberdolle1</text>
+        <text class="glitch-text glitch-blue" x="-2" y="2">bobberdolle1</text>
+        <text class="glitch-text" x="0" y="0">bobberdolle1</text>
+    </g>
+    
+    <!-- Subtitle -->
+    <text x="400" y="145" class="text-sub" text-anchor="middle" fill="#ffffff">SYS.HACKER // RF // EMBEDDED // CV</text>
+    
+    <!-- Scanlines -->
+    <rect width="100%" height="100%" class="scanlines" />
+</svg>
