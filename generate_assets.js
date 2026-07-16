@@ -437,7 +437,6 @@ async function generateTowersSvg() {
                     const full_top = `${t_back[0]},${t_back[1]} ${t_right[0]},${t_right[1]} ${t_front[0]},${t_front[1]} ${t_left[0]},${t_left[1]}`;
                     
                     svg += `
-                    svg += `
     <g class="tower-group">
       <title>Date: ${date} | Commits: ${level}</title>
       <polygon points="${base_left}" fill="${c.left}" opacity="0.9">
