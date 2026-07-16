@@ -50,7 +50,7 @@ def project(x, y, z):
     return iso_x, iso_y
 
 svg = [
-    f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 100 800 400" width="100%">',
+    f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 0 800 500" width="100%">',
     '  <!-- Dark Space Background -->',
     '  <rect x="-1000" y="-1000" width="5000" height="5000" fill="#020203" />',
     '  <defs>',
