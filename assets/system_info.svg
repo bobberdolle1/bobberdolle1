@@ -27,22 +27,22 @@
 
   <!-- Right: PS3 Style System Information -->
   <g transform="translate(145, 30)" font-family="'Space Grotesk', 'Segoe UI', monospace" fill="#ffffff">
-    <text x="0" y="20" font-size="16" font-weight="bold" fill="#00d4ff" letter-spacing="2">// SYSTEM INFORMATION</text>
+    <text x="0" y="20" font-size="16" font-weight="bold" fill="#00d4ff" letter-spacing="2">// PROFILE PROPERTIES</text>
     
-    <text x="0" y="55" font-size="12" fill="#555555" letter-spacing="1">System Software:</text>
-    <text x="140" y="55" font-size="12" font-weight="bold" fill="#ffffff">Vibecoder-OS v3.00</text>
+    <text x="0" y="55" font-size="12" fill="#555555" letter-spacing="1">GitHub User:</text>
+    <text x="140" y="55" font-size="12" font-weight="bold" fill="#ffffff">bobberdolle1</text>
     
-    <text x="0" y="75" font-size="12" fill="#555555" letter-spacing="1">Host IP Address:</text>
-    <text x="140" y="75" font-size="12" font-weight="bold" fill="#ffffff">192.168.1.37</text>
+    <text x="0" y="75" font-size="12" fill="#555555" letter-spacing="1">Location:</text>
+    <text x="140" y="75" font-size="12" font-weight="bold" fill="#ffffff">Ivanovo, Russia</text>
     
-    <text x="0" y="95" font-size="12" fill="#555555" letter-spacing="1">Storage Capacity:</text>
-    <text x="140" y="95" font-size="12" font-weight="bold" fill="#ffffff">8.00 MB / 128 KB Free</text>
+    <text x="0" y="95" font-size="12" fill="#555555" letter-spacing="1">Dev Stacks:</text>
+    <text x="140" y="95" font-size="12" font-weight="bold" fill="#ffffff">Rust, Python, C++, Lua</text>
     
-    <text x="0" y="115" font-size="12" fill="#555555" letter-spacing="1">Target MAC:</text>
-    <text x="140" y="115" font-size="12" font-weight="bold" fill="#ffffff">DE:AD:BE:EF:C0:DE</text>
+    <text x="0" y="115" font-size="12" fill="#555555" letter-spacing="1">Current Focus:</text>
+    <text x="140" y="115" font-size="12" font-weight="bold" fill="#ffffff">SkySweep32 Passive Radar</text>
 
-    <!-- Progress bar for storage (PS3 Style UI) -->
+    <!-- Progress bar (Console style UI) -->
     <rect x="0" y="135" width="470" height="6" rx="3" fill="#0a0a0a" />
-    <rect x="0" y="135" width="440" height="6" rx="3" fill="#00d4ff" />
+    <rect x="0" y="135" width="390" height="6" rx="3" fill="#00d4ff" />
   </g>
 </svg>

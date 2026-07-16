@@ -4,7 +4,7 @@
 
 ---
 
-### 🛰️ Projects
+### 💿 [ MEMORY CARD SLOT 1: PROJECTS ]
 
 <table width="100%">
   <tr>
@@ -47,7 +47,7 @@
 
 ---
 
-### 🛠️ Domains & Tech
+### 🛠️ [ TARGET FIELDS ]
 
 - **Embedded Hardware**: PCB layout & schematic design (KiCad), prototyping, firmware development (ESP32, RP2040).
 - **RF & Wireless**: ISM band monitoring (CC1101, NRF24), LoRa mesh networks, software-defined radio protocols.
@@ -56,7 +56,7 @@
 
 ---
 
-### ℹ️ Console Info
+### ℹ️ [ SYSTEM PROPERTIES ]
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/system_info.svg" width="100%" />
@@ -70,7 +70,7 @@
 
 ---
 
-### 💬 Contact
+### 💬 [ CONTROLLER INPUTS ]
 
 - **Telegram**: [@norevived](https://t.me/norevived)
 - **Discord**: `bobberdolle1`
