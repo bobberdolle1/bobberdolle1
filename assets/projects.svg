@@ -1,4 +1,4 @@
-<svg width="800" height="580" xmlns="http://www.w3.org/2000/svg">
+<svg width="800" height="700" xmlns="http://www.w3.org/2000/svg">
     
     <defs>
         <filter id="glitch">
@@ -84,7 +84,7 @@
     
     <!-- Project Card Window -->
     <g transform="translate(20, 80)" class="window-group">
-        <rect width="370" height="140" class="window" style="transition: all 0.3s;" />
+        <rect width="370" height="180" class="window" style="transition: all 0.3s;" />
         <rect width="370" height="20" class="window-header" style="transition: all 0.3s;" />
         <circle cx="10" cy="10" r="4" class="window-dot-red" />
         <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
@@ -98,21 +98,23 @@
         <!-- Description -->
         <text x="15" y="65" class="text-desc">Multi-band passive drone detector on</text>
         <text x="15" y="82" class="text-desc">ESP32 | Мультидиапазонный детектор БПЛА |</text>
-        <text x="15" y="99" class="text-desc">900MHz/2.4GHz/5.8GHz RF scanner with...</text>
+        <text x="15" y="99" class="text-desc">900MHz/2.4GHz/5.8GHz RF scanner with</text>
+        <text x="15" y="116" class="text-desc">countermeasures</text>
+        
         
         <!-- Stars and Language -->
-        <text x="15" y="125" class="text-stat">[★ 25]</text>
-        <text x="80" y="125" class="text-stat">[<span style="color:#8a2be2">$</span> C++]</text>
+        <text x="15" y="165" class="text-stat">[★ 25]</text>
+        <text x="80" y="165" class="text-stat">[<span style="color:#8a2be2">$</span> C++]</text>
         
-        <path d="M 0,138 L 370,138" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        <path d="M 0,178 L 370,178" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
         
         <!-- Interactive Overlay (to catch hover events better) -->
-        <rect width="370" height="140" fill="transparent" />
+        <rect width="370" height="180" fill="transparent" />
     </g>
         
     <!-- Project Card Window -->
     <g transform="translate(410, 80)" class="window-group">
-        <rect width="370" height="140" class="window" style="transition: all 0.3s;" />
+        <rect width="370" height="180" class="window" style="transition: all 0.3s;" />
         <rect width="370" height="20" class="window-header" style="transition: all 0.3s;" />
         <circle cx="10" cy="10" r="4" class="window-dot-red" />
         <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
@@ -126,21 +128,23 @@
         <!-- Description -->
         <text x="15" y="65" class="text-desc">OpenFlash is an open-source NAND/eMMC/NOR</text>
         <text x="15" y="82" class="text-desc">flash programmer that turns cheap</text>
-        <text x="15" y="99" class="text-desc">microcontrollers ($4 Raspberry Pi Pico...</text>
+        <text x="15" y="99" class="text-desc">microcontrollers ($4 Raspberry Pi Pico,</text>
+        <text x="15" y="116" class="text-desc">STM32, ESP32) into full-featured flash</text>
+        <text x="15" y="133" class="text-desc">memory readers/writers.</text>
         
         <!-- Stars and Language -->
-        <text x="15" y="125" class="text-stat">[★ 7]</text>
-        <text x="80" y="125" class="text-stat">[<span style="color:#8a2be2">$</span> Rust]</text>
+        <text x="15" y="165" class="text-stat">[★ 7]</text>
+        <text x="80" y="165" class="text-stat">[<span style="color:#8a2be2">$</span> Rust]</text>
         
-        <path d="M 0,138 L 370,138" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        <path d="M 0,178 L 370,178" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
         
         <!-- Interactive Overlay (to catch hover events better) -->
-        <rect width="370" height="140" fill="transparent" />
+        <rect width="370" height="180" fill="transparent" />
     </g>
         
     <!-- Project Card Window -->
-    <g transform="translate(20, 240)" class="window-group">
-        <rect width="370" height="140" class="window" style="transition: all 0.3s;" />
+    <g transform="translate(20, 280)" class="window-group">
+        <rect width="370" height="180" class="window" style="transition: all 0.3s;" />
         <rect width="370" height="20" class="window-header" style="transition: all 0.3s;" />
         <circle cx="10" cy="10" r="4" class="window-dot-red" />
         <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
@@ -154,21 +158,23 @@
         <!-- Description -->
         <text x="15" y="65" class="text-desc">🚀 Универсальный обход DPI на уровне</text>
         <text x="15" y="82" class="text-desc">пакетов (Windows, macOS, Linux, OpenWrt,</text>
-        <text x="15" y="99" class="text-desc">Android, iOS). Без VPN-туннелей, нулев...</text>
+        <text x="15" y="99" class="text-desc">Android, iOS). Без VPN-туннелей, нулевая</text>
+        <text x="15" y="116" class="text-desc">потеря скорости канала.</text>
+        
         
         <!-- Stars and Language -->
-        <text x="15" y="125" class="text-stat">[★ 6]</text>
-        <text x="80" y="125" class="text-stat">[<span style="color:#8a2be2">$</span> Lua]</text>
+        <text x="15" y="165" class="text-stat">[★ 6]</text>
+        <text x="80" y="165" class="text-stat">[<span style="color:#8a2be2">$</span> Lua]</text>
         
-        <path d="M 0,138 L 370,138" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        <path d="M 0,178 L 370,178" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
         
         <!-- Interactive Overlay (to catch hover events better) -->
-        <rect width="370" height="140" fill="transparent" />
+        <rect width="370" height="180" fill="transparent" />
     </g>
         
     <!-- Project Card Window -->
-    <g transform="translate(410, 240)" class="window-group">
-        <rect width="370" height="140" class="window" style="transition: all 0.3s;" />
+    <g transform="translate(410, 280)" class="window-group">
+        <rect width="370" height="180" class="window" style="transition: all 0.3s;" />
         <rect width="370" height="20" class="window-header" style="transition: all 0.3s;" />
         <circle cx="10" cy="10" r="4" class="window-dot-red" />
         <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
@@ -182,21 +188,23 @@
         <!-- Description -->
         <text x="15" y="65" class="text-desc">BeamNG.WorldForge: Auto-generate realistic</text>
         <text x="15" y="82" class="text-desc">BeamNG.drive maps from real satellite</text>
-        <text x="15" y="99" class="text-desc">data. Uses AI (Ollama/Qwen) for terrai...</text>
+        <text x="15" y="99" class="text-desc">data. Uses AI (Ollama/Qwen) for terrain,</text>
+        <text x="15" y="116" class="text-desc">roads, buildings. Free &amp; user-friendly. No</text>
+        <text x="15" y="133" class="text-desc">complex setup needed. Just select area...</text>
         
         <!-- Stars and Language -->
-        <text x="15" y="125" class="text-stat">[★ 4]</text>
-        <text x="80" y="125" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
+        <text x="15" y="165" class="text-stat">[★ 4]</text>
+        <text x="80" y="165" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
         
-        <path d="M 0,138 L 370,138" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        <path d="M 0,178 L 370,178" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
         
         <!-- Interactive Overlay (to catch hover events better) -->
-        <rect width="370" height="140" fill="transparent" />
+        <rect width="370" height="180" fill="transparent" />
     </g>
         
     <!-- Project Card Window -->
-    <g transform="translate(20, 400)" class="window-group">
-        <rect width="370" height="140" class="window" style="transition: all 0.3s;" />
+    <g transform="translate(20, 480)" class="window-group">
+        <rect width="370" height="180" class="window" style="transition: all 0.3s;" />
         <rect width="370" height="20" class="window-header" style="transition: all 0.3s;" />
         <circle cx="10" cy="10" r="4" class="window-dot-red" />
         <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
@@ -212,19 +220,21 @@
         
         
         
-        <!-- Stars and Language -->
-        <text x="15" y="125" class="text-stat">[★ 4]</text>
-        <text x="80" y="125" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
         
-        <path d="M 0,138 L 370,138" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        
+        <!-- Stars and Language -->
+        <text x="15" y="165" class="text-stat">[★ 4]</text>
+        <text x="80" y="165" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
+        
+        <path d="M 0,178 L 370,178" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
         
         <!-- Interactive Overlay (to catch hover events better) -->
-        <rect width="370" height="140" fill="transparent" />
+        <rect width="370" height="180" fill="transparent" />
     </g>
         
     <!-- Project Card Window -->
-    <g transform="translate(410, 400)" class="window-group">
-        <rect width="370" height="140" class="window" style="transition: all 0.3s;" />
+    <g transform="translate(410, 480)" class="window-group">
+        <rect width="370" height="180" class="window" style="transition: all 0.3s;" />
         <rect width="370" height="20" class="window-header" style="transition: all 0.3s;" />
         <circle cx="10" cy="10" r="4" class="window-dot-red" />
         <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
@@ -240,14 +250,16 @@
         <text x="15" y="82" class="text-desc">железо, разгоняю скуку и баню душнил.</text>
         <text x="15" y="99" class="text-desc">Работаю на Gemini, живу по понятиям.</text>
         
-        <!-- Stars and Language -->
-        <text x="15" y="125" class="text-stat">[★ 3]</text>
-        <text x="80" y="125" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
         
-        <path d="M 0,138 L 370,138" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        
+        <!-- Stars and Language -->
+        <text x="15" y="165" class="text-stat">[★ 3]</text>
+        <text x="80" y="165" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
+        
+        <path d="M 0,178 L 370,178" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
         
         <!-- Interactive Overlay (to catch hover events better) -->
-        <rect width="370" height="140" fill="transparent" />
+        <rect width="370" height="180" fill="transparent" />
     </g>
         
     <rect width="100%" height="100%" class="scanlines" pointer-events="none" />

@@ -146,7 +146,7 @@ function generateHeaderSvg() {
 
 function generateProjectsSvg(repos) {
     const width = 800;
-    const cardHeight = 140;
+    const cardHeight = 180;
     const padding = 20;
     const rows = Math.ceil(repos.length / 2);
     const height = rows * cardHeight + (rows + 1) * padding + 80;
@@ -180,7 +180,7 @@ function generateProjectsSvg(repos) {
         
         let desc = repo.description || '';
         
-        // Better word wrap into up to 3 lines
+        // Better word wrap into up to 5 lines
         const words = desc.split(' ');
         let lines = [];
         let currentLine = '';
@@ -193,9 +193,9 @@ function generateProjectsSvg(repos) {
             }
         });
         lines.push(currentLine.trim());
-        if (lines.length > 3) {
-            lines = lines.slice(0, 3);
-            lines[2] = lines[2].substring(0, 38) + '...';
+        if (lines.length > 5) {
+            lines = lines.slice(0, 5);
+            lines[4] = lines[4].substring(0, 38) + '...';
         }
         
         svg += `
@@ -216,10 +216,12 @@ function generateProjectsSvg(repos) {
         ${lines[0] ? `<text x="15" y="65" class="text-desc">${escapeHtml(lines[0])}</text>` : ''}
         ${lines[1] ? `<text x="15" y="82" class="text-desc">${escapeHtml(lines[1])}</text>` : ''}
         ${lines[2] ? `<text x="15" y="99" class="text-desc">${escapeHtml(lines[2])}</text>` : ''}
+        ${lines[3] ? `<text x="15" y="116" class="text-desc">${escapeHtml(lines[3])}</text>` : ''}
+        ${lines[4] ? `<text x="15" y="133" class="text-desc">${escapeHtml(lines[4])}</text>` : ''}
         
         <!-- Stars and Language -->
-        <text x="15" y="125" class="text-stat">[★ ${repo.stargazers_count}]</text>
-        <text x="80" y="125" class="text-stat">[<span style="color:${COLORS.purple}">$</span> ${escapeHtml(repo.language || 'Unknown')}]</text>
+        <text x="15" y="165" class="text-stat">[★ ${repo.stargazers_count}]</text>
+        <text x="80" y="165" class="text-stat">[<span style="color:${COLORS.purple}">$</span> ${escapeHtml(repo.language || 'Unknown')}]</text>
         
         <path d="M 0,${cardHeight-2} L ${cardWidth},${cardHeight-2}" stroke="${COLORS.magenta}" stroke-width="2" opacity="0.5"/>
         
@@ -277,6 +279,175 @@ function generateStatsSvg() {
     `.trim();
 }
 
+async function generateTowersSvg() {
+    const USERNAME = 'bobberdolle1';
+    const url = `https://github.com/users/${USERNAME}/contributions`;
+    
+    let html = '';
+    try {
+        const res = await fetch(url);
+        html = await res.text();
+    } catch (e) {
+        console.error('Error fetching contributions:', e);
+    }
+    
+    let days = [];
+    const re1 = /data-date="([^"]+)"[^>]*data-level="([^"]+)"/g;
+    let match;
+    while ((match = re1.exec(html)) !== null) {
+        days.push([match[1], parseInt(match[2], 10)]);
+    }
+    
+    if (days.length === 0) {
+        const re2 = /data-count="([^"]+)"[^>]*data-date="([^"]+)"/g;
+        while ((match = re2.exec(html)) !== null) {
+            days.push([match[2], parseInt(match[1], 10) > 0 ? Math.min(4, Math.ceil(parseInt(match[1], 10)/5)) : 0]);
+        }
+    }
+    
+    if (days.length === 0) {
+        for(let i=0; i<364; i++) days.push(["2026-01-01", 0]);
+    }
+    
+    const last364 = days.slice(-364);
+    
+    const GRID_W = 52;
+    const GRID_H = 7;
+    const grid = Array.from({length: GRID_W}, () => Array(GRID_H).fill(0));
+    
+    last364.forEach(([date, level], idx) => {
+        const w = Math.floor(idx / 7);
+        const d = idx % 7;
+        if (w < GRID_W && d < GRID_H) {
+            grid[w][d] = level;
+        }
+    });
+    
+    const WIDTH = 1000;
+    const HEIGHT = 500;
+    const CELL_W = 12;
+    const CELL_H = 6;
+    const PAD = 0.15;
+    
+    const TOWER_COLORS = {
+        1: { top: "#0088ff", left: "#003388", right: "#0055cc", edge: "#00f0ff", h: 12 },
+        2: { top: "#00ddff", left: "#006688", right: "#0099cc", edge: "#00f0ff", h: 28 },
+        3: { top: "#aa55ff", left: "#441188", right: "#6622bb", edge: "#ff007f", h: 50 },
+        4: { top: "#ff33cc", left: "#880055", right: "#cc1199", edge: "#ff007f", h: 85 }
+    };
+    
+    function project(x, y, z) {
+        const x0 = WIDTH / 2;
+        const y0 = 300;
+        const iso_x = x0 + (x - y) * CELL_W;
+        const iso_y = y0 + (x + y) * CELL_H - z;
+        return [iso_x, iso_y];
+    }
+    
+    let svg = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 0 800 500" width="100%">
+  <!-- Dark Space Background -->
+  <rect x="-1000" y="-1000" width="5000" height="5000" fill="${COLORS.bg}" />
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#004488" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="${COLORS.bg}" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <ellipse cx="500" cy="380" rx="450" ry="120" fill="url(#glow)" />
+  <g stroke-linejoin="round" stroke-linecap="round">
+`;
+
+    const x_off = -26;
+    const y_off = -3.5;
+    
+    // 1. Base grid
+    for (let depth = 0; depth < GRID_W + GRID_H - 1; depth++) {
+        for (let x = 0; x < GRID_W; x++) {
+            const y = depth - x;
+            if (y >= 0 && y < GRID_H) {
+                const px = x + x_off;
+                const py = y + y_off;
+                const gb = project(px, py, 0);
+                const gr = project(px + 1, py, 0);
+                const gl = project(px, py + 1, 0);
+                const gf = project(px + 1, py + 1, 0);
+                svg += `    <polygon points="${gb[0]},${gb[1]} ${gr[0]},${gr[1]} ${gf[0]},${gf[1]} ${gl[0]},${gl[1]}" fill="${COLORS.darkGray}" stroke="${COLORS.gray}" stroke-width="0.75" />\\n`;
+            }
+        }
+    }
+    
+    // 2. Columns
+    for (let depth = 0; depth < GRID_W + GRID_H - 1; depth++) {
+        for (let x = 0; x < GRID_W; x++) {
+            const y = depth - x;
+            if (y >= 0 && y < GRID_H) {
+                const lvl = grid[x][y];
+                if (lvl > 0 && TOWER_COLORS[lvl]) {
+                    const c = TOWER_COLORS[lvl];
+                    const h = c.h;
+                    
+                    const px1 = x + x_off + PAD;
+                    const py1 = y + y_off + PAD;
+                    const px2 = x + x_off + 1 - PAD;
+                    const py2 = y + y_off + 1 - PAD;
+                    
+                    const b_back = project(px1, py1, 0);
+                    const b_right = project(px2, py1, 0);
+                    const b_left = project(px1, py2, 0);
+                    const b_front = project(px2, py2, 0);
+                    
+                    const t_back = project(px1, py1, h);
+                    const t_right = project(px2, py1, h);
+                    const t_left = project(px1, py2, h);
+                    const t_front = project(px2, py2, h);
+                    
+                    const delay = (x + y) * 0.02;
+                    const ease = 'calcMode="spline" keySplines="0.25 0.1 0.25 1"';
+                    
+                    const base_left = `${b_left[0]},${b_left[1]} ${b_left[0]},${b_left[1]} ${b_front[0]},${b_front[1]} ${b_front[0]},${b_front[1]}`;
+                    const full_left = `${t_left[0]},${t_left[1]} ${b_left[0]},${b_left[1]} ${b_front[0]},${b_front[1]} ${t_front[0]},${t_front[1]}`;
+                    
+                    const base_right = `${b_right[0]},${b_right[1]} ${b_right[0]},${b_right[1]} ${b_front[0]},${b_front[1]} ${b_front[0]},${b_front[1]}`;
+                    const full_right = `${t_right[0]},${t_right[1]} ${b_right[0]},${b_right[1]} ${b_front[0]},${b_front[1]} ${t_front[0]},${t_front[1]}`;
+                    
+                    const base_top = `${b_back[0]},${b_back[1]} ${b_right[0]},${b_right[1]} ${b_front[0]},${b_front[1]} ${b_left[0]},${b_left[1]}`;
+                    const full_top = `${t_back[0]},${t_back[1]} ${t_right[0]},${t_right[1]} ${t_front[0]},${t_front[1]} ${t_left[0]},${t_left[1]}`;
+                    
+                    svg += `
+    <polygon points="${base_left}" fill="${c.left}" opacity="0.9">
+      <animate attributeName="points" values="${base_left};${full_left}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+    </polygon>
+    <polygon points="${base_right}" fill="${c.right}" opacity="0.9">
+      <animate attributeName="points" values="${base_right};${full_right}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+    </polygon>
+    <polygon points="${base_top}" fill="${c.top}" opacity="1.0">
+      <animate attributeName="points" values="${base_top};${full_top}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+    </polygon>
+    <polygon points="${base_top}" fill="none" stroke="${c.edge}" stroke-width="1.0" opacity="0.9">
+      <animate attributeName="points" values="${base_top};${full_top}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+    </polygon>
+    <line x1="${b_left[0]}" y1="${b_left[1]}" x2="${b_left[0]}" y2="${b_left[1]}" stroke="${c.edge}" stroke-width="1.2" opacity="0.9">
+      <animate attributeName="x1" values="${b_left[0]};${t_left[0]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+      <animate attributeName="y1" values="${b_left[1]};${t_left[1]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+    </line>
+    <line x1="${b_right[0]}" y1="${b_right[1]}" x2="${b_right[0]}" y2="${b_right[1]}" stroke="${c.edge}" stroke-width="1.2" opacity="0.9">
+      <animate attributeName="x1" values="${b_right[0]};${t_right[0]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+      <animate attributeName="y1" values="${b_right[1]};${t_right[1]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+    </line>
+    <line x1="${b_front[0]}" y1="${b_front[1]}" x2="${b_front[0]}" y2="${b_front[1]}" stroke="${c.edge}" stroke-width="1.2" opacity="0.9">
+      <animate attributeName="x1" values="${b_front[0]};${t_front[0]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+      <animate attributeName="y1" values="${b_front[1]};${t_front[1]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+    </line>`;
+                }
+            }
+        }
+    }
+    
+    svg += `\\n  </g>\\n</svg>`;
+    return svg;
+}
+
 async function main() {
     try {
         console.log('Fetching repositories...');
@@ -294,6 +465,9 @@ async function main() {
         
         console.log('Generating stats.svg...');
         await fs.writeFile(path.join(outDir, 'stats.svg'), generateStatsSvg());
+        
+        console.log('Generating ps2_towers.svg (from GitHub contributions)...');
+        await fs.writeFile(path.join(outDir, 'ps2_towers.svg'), await generateTowersSvg());
         
         console.log('Assets successfully generated!');
     } catch (e) {

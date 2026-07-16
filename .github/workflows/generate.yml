@@ -22,16 +22,8 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
       - name: Generate Pixel Art Assets
         run: node generate_assets.js
-
-      - name: Generate PS2 Towers
-        run: python generate_towers.py
 
       - name: Commit and Push
         run: |
