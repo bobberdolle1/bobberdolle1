@@ -54,9 +54,9 @@ COLORS = {
 
 # Isometric projection
 def project(x, y, z):
-    # Center origin horizontally, offset towards bottom
+    # Center origin horizontally and vertically
     x0 = WIDTH / 2
-    y0 = HEIGHT - 60
+    y0 = 200
     
     iso_x = x0 + (x - y) * CELL_WIDTH
     iso_y = y0 + (x + y) * CELL_HEIGHT - z
