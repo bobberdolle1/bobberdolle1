@@ -12,7 +12,7 @@
 
 <div align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/ps2_towers.svg?v=7" alt="PS2 Contribution Towers" width="100%" />
+    <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/ps2_towers.svg?v=8" alt="PS2 Contribution Towers" width="100%" />
   </picture>
 </div>
 

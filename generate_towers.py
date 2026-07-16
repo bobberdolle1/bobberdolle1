@@ -97,32 +97,65 @@ for depth in range(GRID_W + GRID_H - 1):
                 px2 = x + x_off + 1 - PAD
                 py2 = y + y_off + 1 - PAD
                 
-                # Base corners
+                # Base corners (for animation start state)
                 b_back = project(px1, py1, 0)
                 b_right = project(px2, py1, 0)
                 b_left = project(px1, py2, 0)
                 b_front = project(px2, py2, 0)
                 
-                # Top corners
+                # Top corners (for animation end state)
                 t_back = project(px1, py1, h)
                 t_right = project(px2, py1, h)
                 t_left = project(px1, py2, h)
                 t_front = project(px2, py2, h)
                 
+                # Animation strings
+                delay = (x + y) * 0.02
+                ease = 'calcMode="spline" keySplines="0.25 0.1 0.25 1"'
+                
+                base_left = f'{b_left[0]},{b_left[1]} {b_left[0]},{b_left[1]} {b_front[0]},{b_front[1]} {b_front[0]},{b_front[1]}'
+                full_left = f'{t_left[0]},{t_left[1]} {b_left[0]},{b_left[1]} {b_front[0]},{b_front[1]} {t_front[0]},{t_front[1]}'
+                
+                base_right = f'{b_right[0]},{b_right[1]} {b_right[0]},{b_right[1]} {b_front[0]},{b_front[1]} {b_front[0]},{b_front[1]}'
+                full_right = f'{t_right[0]},{t_right[1]} {b_right[0]},{b_right[1]} {b_front[0]},{b_front[1]} {t_front[0]},{t_front[1]}'
+                
+                base_top = f'{b_back[0]},{b_back[1]} {b_right[0]},{b_right[1]} {b_front[0]},{b_front[1]} {b_left[0]},{b_left[1]}'
+                full_top = f'{t_back[0]},{t_back[1]} {t_right[0]},{t_right[1]} {t_front[0]},{t_front[1]} {t_left[0]},{t_left[1]}'
+                
                 # Left Face
-                svg.append(f'    <polygon points="{t_left[0]},{t_left[1]} {b_left[0]},{b_left[1]} {b_front[0]},{b_front[1]} {t_front[0]},{t_front[1]}" fill="{c["left"]}" opacity="0.9" />')
+                svg.append(f'    <polygon points="{base_left}" fill="{c["left"]}" opacity="0.9">')
+                svg.append(f'      <animate attributeName="points" values="{base_left};{full_left}" begin="{delay}s" dur="0.8s" fill="freeze" {ease} />')
+                svg.append('    </polygon>')
                 
                 # Right Face
-                svg.append(f'    <polygon points="{t_right[0]},{t_right[1]} {b_right[0]},{b_right[1]} {b_front[0]},{b_front[1]} {t_front[0]},{t_front[1]}" fill="{c["right"]}" opacity="0.9" />')
+                svg.append(f'    <polygon points="{base_right}" fill="{c["right"]}" opacity="0.9">')
+                svg.append(f'      <animate attributeName="points" values="{base_right};{full_right}" begin="{delay}s" dur="0.8s" fill="freeze" {ease} />')
+                svg.append('    </polygon>')
                 
                 # Top Face
-                svg.append(f'    <polygon points="{t_back[0]},{t_back[1]} {t_right[0]},{t_right[1]} {t_front[0]},{t_front[1]} {t_left[0]},{t_left[1]}" fill="{c["top"]}" opacity="1.0" />')
+                svg.append(f'    <polygon points="{base_top}" fill="{c["top"]}" opacity="1.0">')
+                svg.append(f'      <animate attributeName="points" values="{base_top};{full_top}" begin="{delay}s" dur="0.8s" fill="freeze" {ease} />')
+                svg.append('    </polygon>')
                 
                 # Edges (Neon wireframe)
-                svg.append(f'    <polygon points="{t_back[0]},{t_back[1]} {t_right[0]},{t_right[1]} {t_front[0]},{t_front[1]} {t_left[0]},{t_left[1]}" fill="none" stroke="{c["edge"]}" stroke-width="1.0" opacity="0.9" />')
-                svg.append(f'    <line x1="{t_left[0]}" y1="{t_left[1]}" x2="{b_left[0]}" y2="{b_left[1]}" stroke="{c["edge"]}" stroke-width="1.2" opacity="0.9" />')
-                svg.append(f'    <line x1="{t_right[0]}" y1="{t_right[1]}" x2="{b_right[0]}" y2="{b_right[1]}" stroke="{c["edge"]}" stroke-width="1.2" opacity="0.9" />')
-                svg.append(f'    <line x1="{t_front[0]}" y1="{t_front[1]}" x2="{b_front[0]}" y2="{b_front[1]}" stroke="{c["edge"]}" stroke-width="1.2" opacity="0.9" />')
+                svg.append(f'    <polygon points="{base_top}" fill="none" stroke="{c["edge"]}" stroke-width="1.0" opacity="0.9">')
+                svg.append(f'      <animate attributeName="points" values="{base_top};{full_top}" begin="{delay}s" dur="0.8s" fill="freeze" {ease} />')
+                svg.append('    </polygon>')
+                
+                svg.append(f'    <line x1="{b_left[0]}" y1="{b_left[1]}" x2="{b_left[0]}" y2="{b_left[1]}" stroke="{c["edge"]}" stroke-width="1.2" opacity="0.9">')
+                svg.append(f'      <animate attributeName="x1" values="{b_left[0]};{t_left[0]}" begin="{delay}s" dur="0.8s" fill="freeze" {ease} />')
+                svg.append(f'      <animate attributeName="y1" values="{b_left[1]};{t_left[1]}" begin="{delay}s" dur="0.8s" fill="freeze" {ease} />')
+                svg.append('    </line>')
+                
+                svg.append(f'    <line x1="{b_right[0]}" y1="{b_right[1]}" x2="{b_right[0]}" y2="{b_right[1]}" stroke="{c["edge"]}" stroke-width="1.2" opacity="0.9">')
+                svg.append(f'      <animate attributeName="x1" values="{b_right[0]};{t_right[0]}" begin="{delay}s" dur="0.8s" fill="freeze" {ease} />')
+                svg.append(f'      <animate attributeName="y1" values="{b_right[1]};{t_right[1]}" begin="{delay}s" dur="0.8s" fill="freeze" {ease} />')
+                svg.append('    </line>')
+                
+                svg.append(f'    <line x1="{b_front[0]}" y1="{b_front[1]}" x2="{b_front[0]}" y2="{b_front[1]}" stroke="{c["edge"]}" stroke-width="1.2" opacity="0.9">')
+                svg.append(f'      <animate attributeName="x1" values="{b_front[0]};{t_front[0]}" begin="{delay}s" dur="0.8s" fill="freeze" {ease} />')
+                svg.append(f'      <animate attributeName="y1" values="{b_front[1]};{t_front[1]}" begin="{delay}s" dur="0.8s" fill="freeze" {ease} />')
+                svg.append('    </line>')
 
 svg.append('  </g>')
 svg.append('</svg>')
