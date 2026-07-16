@@ -147,6 +147,6 @@ svg_content.append('</svg>')
 
 os.makedirs('assets', exist_ok=True)
 with open('assets/ps2_towers.svg', 'w') as f:
-    f.write('\\n'.join(svg_content))
+    f.write('\n'.join(svg_content))
 
 print("Successfully generated gorgeous PS2 towers SVG")

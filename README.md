@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/xmb_banner.svg" width="100%" />
+  <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/xmb_banner.svg?v=2" width="100%" />
 </div>
 
 <div align="center">
@@ -9,7 +9,7 @@
 <br/>
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/ps2_towers.svg" width="100%" />
+  <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/ps2_towers.svg?v=2" width="100%" />
 </div>
 
 <br/>
