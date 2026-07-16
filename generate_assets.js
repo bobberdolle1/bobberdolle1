@@ -345,17 +345,39 @@ async function generateTowersSvg() {
     }
     
     let svg = `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 0 800 500" width="100%">
-  <!-- Dark Space Background -->
-  <rect x="-1000" y="-1000" width="5000" height="5000" fill="${COLORS.bg}" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%">
+  ${createGlitchFilters()}
+  <style>
+    .tower-group { cursor: pointer; }
+    .tower-group:hover polygon { stroke: #fff; stroke-width: 1.5; filter: drop-shadow(0 0 8px #ff007f); }
+    .tower-group:hover line { stroke: #fff; stroke-width: 2; }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="${COLORS.bg}" />
+  <rect width="100%" height="100%" fill="url(#gridPattern)" />
+  
+  <!-- Window Frame -->
+  <rect x="20" y="20" width="960" height="560" fill="none" stroke="${COLORS.gray}" stroke-width="2" />
+  <rect x="20" y="20" width="960" height="25" fill="${COLORS.darkGray}" />
+  <circle cx="35" cy="32" r="5" fill="#ff5f56" />
+  <circle cx="55" cy="32" r="5" fill="#ffbd2e" />
+  <circle cx="75" cy="32" r="5" fill="#27c93f" />
+  <text x="90" y="37" font-family="Courier New, monospace" font-size="14" fill="${COLORS.cyan}">~/commits</text>
+  
+  <!-- Title -->
+  <text x="500" y="80" font-family="Courier New, monospace" font-size="24" font-weight="bold" fill="${COLORS.cyan}" text-anchor="middle">>> COMMIT_ACTIVITY</text>
+  <path d="M 350,90 L 650,90" stroke="${COLORS.magenta}" stroke-width="2" fill="none"/>
+
   <defs>
     <radialGradient id="glow" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#004488" stop-opacity="0.3" />
       <stop offset="100%" stop-color="${COLORS.bg}" stop-opacity="0" />
     </radialGradient>
   </defs>
-  <ellipse cx="500" cy="380" rx="450" ry="120" fill="url(#glow)" />
-  <g stroke-linejoin="round" stroke-linecap="round">
+  
+  <g transform="translate(0, 50)" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="500" cy="380" rx="450" ry="120" fill="url(#glow)" />
 `;
 
     const x_off = -26;
@@ -415,36 +437,42 @@ async function generateTowersSvg() {
                     const full_top = `${t_back[0]},${t_back[1]} ${t_right[0]},${t_right[1]} ${t_front[0]},${t_front[1]} ${t_left[0]},${t_left[1]}`;
                     
                     svg += `
-    <polygon points="${base_left}" fill="${c.left}" opacity="0.9">
-      <animate attributeName="points" values="${base_left};${full_left}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
-    </polygon>
-    <polygon points="${base_right}" fill="${c.right}" opacity="0.9">
-      <animate attributeName="points" values="${base_right};${full_right}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
-    </polygon>
-    <polygon points="${base_top}" fill="${c.top}" opacity="1.0">
-      <animate attributeName="points" values="${base_top};${full_top}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
-    </polygon>
-    <polygon points="${base_top}" fill="none" stroke="${c.edge}" stroke-width="1.0" opacity="0.9">
-      <animate attributeName="points" values="${base_top};${full_top}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
-    </polygon>
-    <line x1="${b_left[0]}" y1="${b_left[1]}" x2="${b_left[0]}" y2="${b_left[1]}" stroke="${c.edge}" stroke-width="1.2" opacity="0.9">
-      <animate attributeName="x1" values="${b_left[0]};${t_left[0]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
-      <animate attributeName="y1" values="${b_left[1]};${t_left[1]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
-    </line>
-    <line x1="${b_right[0]}" y1="${b_right[1]}" x2="${b_right[0]}" y2="${b_right[1]}" stroke="${c.edge}" stroke-width="1.2" opacity="0.9">
-      <animate attributeName="x1" values="${b_right[0]};${t_right[0]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
-      <animate attributeName="y1" values="${b_right[1]};${t_right[1]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
-    </line>
-    <line x1="${b_front[0]}" y1="${b_front[1]}" x2="${b_front[0]}" y2="${b_front[1]}" stroke="${c.edge}" stroke-width="1.2" opacity="0.9">
-      <animate attributeName="x1" values="${b_front[0]};${t_front[0]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
-      <animate attributeName="y1" values="${b_front[1]};${t_front[1]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
-    </line>`;
+                    svg += `
+    <g class="tower-group">
+      <title>Date: ${date} | Commits: ${level}</title>
+      <polygon points="${base_left}" fill="${c.left}" opacity="0.9">
+        <animate attributeName="points" values="${base_left};${full_left}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+      </polygon>
+      <polygon points="${base_right}" fill="${c.right}" opacity="0.9">
+        <animate attributeName="points" values="${base_right};${full_right}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+      </polygon>
+      <polygon points="${base_top}" fill="${c.top}" opacity="1.0">
+        <animate attributeName="points" values="${base_top};${full_top}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+      </polygon>
+      <polygon points="${base_top}" fill="none" stroke="${c.edge}" stroke-width="1.0" opacity="0.9">
+        <animate attributeName="points" values="${base_top};${full_top}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+      </polygon>
+      <line x1="${b_left[0]}" y1="${b_left[1]}" x2="${b_left[0]}" y2="${b_left[1]}" stroke="${c.edge}" stroke-width="1.2" opacity="0.9">
+        <animate attributeName="x1" values="${b_left[0]};${t_left[0]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+        <animate attributeName="y1" values="${b_left[1]};${t_left[1]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+      </line>
+      <line x1="${b_right[0]}" y1="${b_right[1]}" x2="${b_right[0]}" y2="${b_right[1]}" stroke="${c.edge}" stroke-width="1.2" opacity="0.9">
+        <animate attributeName="x1" values="${b_right[0]};${t_right[0]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+        <animate attributeName="y1" values="${b_right[1]};${t_right[1]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+      </line>
+      <line x1="${b_front[0]}" y1="${b_front[1]}" x2="${b_front[0]}" y2="${b_front[1]}" stroke="${c.edge}" stroke-width="1.2" opacity="0.9">
+        <animate attributeName="x1" values="${b_front[0]};${t_front[0]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+        <animate attributeName="y1" values="${b_front[1]};${t_front[1]}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
+      </line>
+    </g>`;
                 }
             }
         }
     }
     
-    svg += `\\n  </g>\\n</svg>`;
+    svg += `\n  </g>
+  <rect width="100%" height="100%" class="scanlines" pointer-events="none" />
+</svg>`;
     return svg;
 }
 

@@ -1,28 +1,28 @@
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/header.svg?v=20">
-    <img src="assets/header.svg?v=20" alt="bobberdolle1 glitch header" width="100%" />
+    <source media="(prefers-color-scheme: dark)" srcset="assets/header.svg?v=22">
+    <img src="assets/header.svg?v=22" alt="bobberdolle1 glitch header" width="100%" />
   </picture>
 
   <br/>
 
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/projects.svg?v=20">
-    <img src="assets/projects.svg?v=20" alt="bobberdolle1 top projects" width="100%" />
+    <source media="(prefers-color-scheme: dark)" srcset="assets/projects.svg?v=22">
+    <img src="assets/projects.svg?v=22" alt="bobberdolle1 top projects" width="100%" />
   </picture>
 
   <br/>
 
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/ps2_towers.svg?v=20">
-    <img src="assets/ps2_towers.svg?v=20" alt="PS2 Contribution Towers" width="100%" />
+    <source media="(prefers-color-scheme: dark)" srcset="assets/ps2_towers.svg?v=22">
+    <img src="assets/ps2_towers.svg?v=22" alt="PS2 Contribution Towers" width="100%" />
   </picture>
 
   <br/>
 
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg?v=20">
-    <img src="assets/stats.svg?v=20" alt="bobberdolle1 system stats" width="100%" />
+    <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg?v=22">
+    <img src="assets/stats.svg?v=22" alt="bobberdolle1 system stats" width="100%" />
   </picture>
 </div>
 
