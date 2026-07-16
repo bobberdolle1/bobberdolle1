@@ -56,7 +56,7 @@
 
 ---
 
-### 📊 Github Activity
+### 📊 Github Stats
 
 <div align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=bobberdolle1&theme=react-dark&bg_color=000000&color=ffffff&line=00d4ff&point=ff6b35&area=true&hide_border=true" width="100%"/>
