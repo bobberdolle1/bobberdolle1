@@ -1,141 +1,356 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="100%">
-  <!-- Pure Black Background -->
-  <rect width="100%" height="100%" fill="#000000"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" width="100%">
+  <!-- Deep Dark Space Background -->
+  <rect width="100%" height="100%" fill="#000000" />
   
+  <!-- Grid Scanlines -->
   <defs>
-    <!-- Cyan Glow and Glass Gradients for PS2 Towers -->
-    <linearGradient id="topGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00f3ff" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#00a8ff" stop-opacity="0.95"/>
-    </linearGradient>
-    <linearGradient id="leftGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#00b0ff" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#00182b" stop-opacity="0.1"/>
-    </linearGradient>
-    <linearGradient id="rightGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#00d8ff" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#000e1a" stop-opacity="0.05"/>
-    </linearGradient>
-    
-    <!-- Amethyst/Purple Accent Gradients -->
-    <linearGradient id="topPurpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#cc55ff" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#8800ff" stop-opacity="0.95"/>
-    </linearGradient>
-    <linearGradient id="leftPurpleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#aa44ff" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#1d003b" stop-opacity="0.1"/>
-    </linearGradient>
-    <linearGradient id="rightPurpleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#9900ff" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#0f0021" stop-opacity="0.05"/>
-    </linearGradient>
-
-    <!-- Grid Line Gradient -->
-    <linearGradient id="gridGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#002b47" stop-opacity="0.1"/>
-      <stop offset="50%" stop-color="#00d4ff" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#002b47" stop-opacity="0.1"/>
-    </linearGradient>
-
-    <radialGradient id="baseGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#0088cc" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-    </radialGradient>
+    <pattern id="lines" width="100" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="100" y2="0" stroke="#080808" stroke-width="1.5" />
+    </pattern>
   </defs>
-
-  <!-- Ambient light glow at the base -->
-  <ellipse cx="400" cy="220" rx="320" ry="70" fill="url(#baseGlow)"/>
-
-  <!-- Isometric Grid Lines -->
-  <g stroke="url(#gridGrad)" stroke-width="1.5" fill="none">
-    <!-- Back to front perspective grid -->
-    <path d="M 50,220 L 750,220" />
-    <path d="M 120,180 L 680,260" />
-    <path d="M 120,260 L 680,180" />
-    <path d="M 220,150 L 580,290" />
-    <path d="M 220,290 L 580,150" />
-  </g>
-
-  <!-- Isometric 3D Columns (PS2 Save Towers) -->
-  <!-- Render order: Back rows first, then middle, then front to handle overlaps correctly -->
+  <rect width="100%" height="100%" fill="url(#lines)" />
   
-  <!-- Row 1: Back (Y = 160) -->
-  <g transform="translate(240, 160)">
-    <!-- Tower 1: Small Cyan -->
-    <polygon points="-12,-6 0,0 0,50 -12,44" fill="url(#leftGrad)"/>
-    <polygon points="0,0 12,-6 12,44 0,50" fill="url(#rightGrad)"/>
-    <polygon points="-12,-6 0,-12 12,-6 0,0" fill="url(#topGrad)"/>
-  </g>
-  <g transform="translate(400, 150)">
-    <!-- Tower 2: Tall Purple -->
-    <polygon points="-12,-6 0,0 0,110 -12,104" fill="url(#leftPurpleGrad)"/>
-    <polygon points="0,0 12,-6 12,104 0,110" fill="url(#rightPurpleGrad)"/>
-    <polygon points="-12,-6 0,-12 12,-6 0,0" fill="url(#topPurpleGrad)"/>
-  </g>
-  <g transform="translate(560, 165)">
-    <!-- Tower 3: Medium Cyan -->
-    <polygon points="-12,-6 0,0 0,70 -12,64" fill="url(#leftGrad)"/>
-    <polygon points="0,0 12,-6 12,64 0,70" fill="url(#rightGrad)"/>
-    <polygon points="-12,-6 0,-12 12,-6 0,0" fill="url(#topGrad)"/>
-  </g>
-
-  <!-- Row 2: Mid-Back (Y = 190) -->
-  <g transform="translate(180, 190)">
-    <!-- Tower 4: Medium Purple -->
-    <polygon points="-14,-7 0,0 0,85 -14,78" fill="url(#leftPurpleGrad)"/>
-    <polygon points="0,0 14,-7 14,78 0,85" fill="url(#rightPurpleGrad)"/>
-    <polygon points="-14,-7 0,-14 14,-7 0,0" fill="url(#topPurpleGrad)"/>
-  </g>
-  <g transform="translate(320, 185)">
-    <!-- Tower 5: Very Tall Cyan -->
-    <polygon points="-16,-8 0,0 0,140 -16,132" fill="url(#leftGrad)"/>
-    <polygon points="0,0 16,-8 16,132 0,140" fill="url(#rightGrad)"/>
-    <polygon points="-16,-8 0,-16 16,-8 0,0" fill="url(#topGrad)"/>
-  </g>
-  <g transform="translate(480, 190)">
-    <!-- Tower 6: Tall Cyan -->
-    <polygon points="-14,-7 0,0 0,120 -14,113" fill="url(#leftGrad)"/>
-    <polygon points="0,0 14,-7 14,113 0,120" fill="url(#rightGrad)"/>
-    <polygon points="-14,-7 0,-14 14,-7 0,0" fill="url(#topGrad)"/>
-  </g>
-
-  <!-- Row 3: Mid-Front (Y = 220) -->
-  <g transform="translate(250, 220)">
-    <!-- Tower 7: Giant Cyan -->
-    <polygon points="-18,-9 0,0 0,165 -18,156" fill="url(#leftGrad)"/>
-    <polygon points="0,0 18,-9 18,156 0,165" fill="url(#rightGrad)"/>
-    <polygon points="-18,-9 0,-18 18,-9 0,0" fill="url(#topGrad)"/>
-  </g>
-  <g transform="translate(390, 225)">
-    <!-- Tower 8: Medium Purple -->
-    <polygon points="-16,-8 0,0 0,90 -16,82" fill="url(#leftPurpleGrad)"/>
-    <polygon points="0,0 16,-8 16,82 0,90" fill="url(#rightPurpleGrad)"/>
-    <polygon points="-16,-8 0,-16 16,-8 0,0" fill="url(#topPurpleGrad)"/>
-  </g>
-  <g transform="translate(530, 215)">
-    <!-- Tower 9: Very Tall Purple -->
-    <polygon points="-16,-8 0,0 0,135 -16,127" fill="url(#leftPurpleGrad)"/>
-    <polygon points="0,0 16,-8 16,127 0,135" fill="url(#rightPurpleGrad)"/>
-    <polygon points="-16,-8 0,-16 16,-8 0,0" fill="url(#topPurpleGrad)"/>
-  </g>
-
-  <!-- Row 4: Front (Y = 250) -->
-  <g transform="translate(310, 255)">
-    <!-- Tower 10: Medium Cyan -->
-    <polygon points="-14,-7 0,0 0,80 -14,73" fill="url(#leftGrad)"/>
-    <polygon points="0,0 14,-7 14,73 0,80" fill="url(#rightGrad)"/>
-    <polygon points="-14,-7 0,-14 14,-7 0,0" fill="url(#topGrad)"/>
-  </g>
-  <g transform="translate(460, 250)">
-    <!-- Tower 11: Tall Cyan -->
-    <polygon points="-15,-8 0,0 0,115 -15,107" fill="url(#leftGrad)"/>
-    <polygon points="0,0 15,-8 15,107 0,115" fill="url(#rightGrad)"/>
-    <polygon points="-15,-8 0,-16 15,-8 0,0" fill="url(#topGrad)"/>
-  </g>
-
-  <!-- PS2 Menu Title style text -->
-  <text x="50%" y="300" dominant-baseline="middle" text-anchor="middle" font-family="'Space Grotesk', 'Segoe UI', monospace" font-weight="600" font-size="11" fill="#444" letter-spacing="6">
-    PS2 MEMORY CARD SLOTS / SYSTEM ACTIVITY
-  </text>
+  <polygon points="390.0,340 350.0,360 350.0,325 390.0,305" fill="#003b5c" opacity="0.65" />
+  <polygon points="350.0,360 310.0,340 310.0,305 350.0,325" fill="#005580" opacity="0.65" />
+  <polygon points="350.0,285 390.0,305 350.0,325 310.0,305" fill="#00d4ff" opacity="0.2" />
+  <polyline points="390.0,305 350.0,325 310.0,305" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="350.0,285 390.0,305 390.0,340" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="350.0,285 310.0,305 310.0,340" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="350.0" y1="325" x2="350.0" y2="360" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="350.0,360 310.0,380 310.0,375 350.0,355" fill="#2d0047" opacity="0.65" />
+  <polygon points="310.0,380 270.0,360 270.0,355 310.0,375" fill="#440066" opacity="0.65" />
+  <polygon points="310.0,335 350.0,355 310.0,375 270.0,355" fill="#7000ff" opacity="0.2" />
+  <polyline points="350.0,355 310.0,375 270.0,355" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="310.0,335 350.0,355 350.0,360" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="310.0,335 270.0,355 270.0,360" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="310.0" y1="375" x2="310.0" y2="380" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="430.0,360 390.0,380 390.0,375 430.0,355" fill="#2d0047" opacity="0.65" />
+  <polygon points="390.0,380 350.0,360 350.0,355 390.0,375" fill="#440066" opacity="0.65" />
+  <polygon points="390.0,335 430.0,355 390.0,375 350.0,355" fill="#7000ff" opacity="0.2" />
+  <polyline points="430.0,355 390.0,375 350.0,355" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="390.0,335 430.0,355 430.0,360" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="390.0,335 350.0,355 350.0,360" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="390.0" y1="375" x2="390.0" y2="380" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="310.0,380 270.0,400 270.0,395 310.0,375" fill="#222222" opacity="0.65" />
+  <polygon points="270.0,400 230.0,380 230.0,375 270.0,395" fill="#333333" opacity="0.65" />
+  <polygon points="270.0,355 310.0,375 270.0,395 230.0,375" fill="#ffffff" opacity="0.2" />
+  <polyline points="310.0,375 270.0,395 230.0,375" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="270.0,355 310.0,375 310.0,380" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="270.0,355 230.0,375 230.0,380" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="270.0" y1="395" x2="270.0" y2="400" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="390.0,380 350.0,400 350.0,362 390.0,342" fill="#222222" opacity="0.65" />
+  <polygon points="350.0,400 310.0,380 310.0,342 350.0,362" fill="#333333" opacity="0.65" />
+  <polygon points="350.0,322 390.0,342 350.0,362 310.0,342" fill="#ffffff" opacity="0.2" />
+  <polyline points="390.0,342 350.0,362 310.0,342" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="350.0,322 390.0,342 390.0,380" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="350.0,322 310.0,342 310.0,380" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="350.0" y1="362" x2="350.0" y2="400" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="470.0,380 430.0,400 430.0,395 470.0,375" fill="#222222" opacity="0.65" />
+  <polygon points="430.0,400 390.0,380 390.0,375 430.0,395" fill="#333333" opacity="0.65" />
+  <polygon points="430.0,355 470.0,375 430.0,395 390.0,375" fill="#ffffff" opacity="0.2" />
+  <polyline points="470.0,375 430.0,395 390.0,375" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="430.0,355 470.0,375 470.0,380" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="430.0,355 390.0,375 390.0,380" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="430.0" y1="395" x2="430.0" y2="400" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="270.0,400 230.0,420 230.0,408 270.0,388" fill="#003b5c" opacity="0.65" />
+  <polygon points="230.0,420 190.0,400 190.0,388 230.0,408" fill="#005580" opacity="0.65" />
+  <polygon points="230.0,368 270.0,388 230.0,408 190.0,388" fill="#00d4ff" opacity="0.2" />
+  <polyline points="270.0,388 230.0,408 190.0,388" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="230.0,368 270.0,388 270.0,400" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="230.0,368 190.0,388 190.0,400" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="230.0" y1="408" x2="230.0" y2="420" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="350.0,400 310.0,420 310.0,379.309518948453 350.0,359.309518948453" fill="#003b5c" opacity="0.65" />
+  <polygon points="310.0,420 270.0,400 270.0,359.309518948453 310.0,379.309518948453" fill="#005580" opacity="0.65" />
+  <polygon points="310.0,339.309518948453 350.0,359.309518948453 310.0,379.309518948453 270.0,359.309518948453" fill="#00d4ff" opacity="0.2" />
+  <polyline points="350.0,359.309518948453 310.0,379.309518948453 270.0,359.309518948453" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="310.0,339.309518948453 350.0,359.309518948453 350.0,400" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="310.0,339.309518948453 270.0,359.309518948453 270.0,400" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="310.0" y1="379.309518948453" x2="310.0" y2="420" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="430.0,400 390.0,420 390.0,408.309518948453 430.0,388.309518948453" fill="#003b5c" opacity="0.65" />
+  <polygon points="390.0,420 350.0,400 350.0,388.309518948453 390.0,408.309518948453" fill="#005580" opacity="0.65" />
+  <polygon points="390.0,368.309518948453 430.0,388.309518948453 390.0,408.309518948453 350.0,388.309518948453" fill="#00d4ff" opacity="0.2" />
+  <polyline points="430.0,388.309518948453 390.0,408.309518948453 350.0,388.309518948453" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="390.0,368.309518948453 430.0,388.309518948453 430.0,400" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="390.0,368.309518948453 350.0,388.309518948453 350.0,400" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="390.0" y1="408.309518948453" x2="390.0" y2="420" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="510.0,400 470.0,420 470.0,390 510.0,370" fill="#003b5c" opacity="0.65" />
+  <polygon points="470.0,420 430.0,400 430.0,370 470.0,390" fill="#005580" opacity="0.65" />
+  <polygon points="470.0,350 510.0,370 470.0,390 430.0,370" fill="#00d4ff" opacity="0.2" />
+  <polyline points="510.0,370 470.0,390 430.0,370" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="470.0,350 510.0,370 510.0,400" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="470.0,350 430.0,370 430.0,400" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="470.0" y1="390" x2="470.0" y2="420" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="230.0,420 190.0,440 190.0,430 230.0,410" fill="#2d0047" opacity="0.65" />
+  <polygon points="190.0,440 150.0,420 150.0,410 190.0,430" fill="#440066" opacity="0.65" />
+  <polygon points="190.0,390 230.0,410 190.0,430 150.0,410" fill="#7000ff" opacity="0.2" />
+  <polyline points="230.0,410 190.0,430 150.0,410" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="190.0,390 230.0,410 230.0,420" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="190.0,390 150.0,410 150.0,420" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="190.0" y1="430" x2="190.0" y2="440" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="310.0,420 270.0,440 270.0,420.9901951359278 310.0,400.9901951359278" fill="#2d0047" opacity="0.65" />
+  <polygon points="270.0,440 230.0,420 230.0,400.9901951359278 270.0,420.9901951359278" fill="#440066" opacity="0.65" />
+  <polygon points="270.0,380.9901951359278 310.0,400.9901951359278 270.0,420.9901951359278 230.0,400.9901951359278" fill="#7000ff" opacity="0.2" />
+  <polyline points="310.0,400.9901951359278 270.0,420.9901951359278 230.0,400.9901951359278" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="270.0,380.9901951359278 310.0,400.9901951359278 310.0,420" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="270.0,380.9901951359278 230.0,400.9901951359278 230.0,420" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="270.0" y1="420.9901951359278" x2="270.0" y2="440" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="390.0,420 350.0,440 350.0,404.42640687119285 390.0,384.42640687119285" fill="#2d0047" opacity="0.65" />
+  <polygon points="350.0,440 310.0,420 310.0,384.42640687119285 350.0,404.42640687119285" fill="#440066" opacity="0.65" />
+  <polygon points="350.0,364.42640687119285 390.0,384.42640687119285 350.0,404.42640687119285 310.0,384.42640687119285" fill="#7000ff" opacity="0.2" />
+  <polyline points="390.0,384.42640687119285 350.0,404.42640687119285 310.0,384.42640687119285" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="350.0,364.42640687119285 390.0,384.42640687119285 390.0,420" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="350.0,364.42640687119285 310.0,384.42640687119285 310.0,420" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="350.0" y1="404.42640687119285" x2="350.0" y2="440" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="470.0,420 430.0,440 430.0,413.9901951359278 470.0,393.9901951359278" fill="#2d0047" opacity="0.65" />
+  <polygon points="430.0,440 390.0,420 390.0,393.9901951359278 430.0,413.9901951359278" fill="#440066" opacity="0.65" />
+  <polygon points="430.0,373.9901951359278 470.0,393.9901951359278 430.0,413.9901951359278 390.0,393.9901951359278" fill="#7000ff" opacity="0.2" />
+  <polyline points="470.0,393.9901951359278 430.0,413.9901951359278 390.0,393.9901951359278" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="430.0,373.9901951359278 470.0,393.9901951359278 470.0,420" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="430.0,373.9901951359278 390.0,393.9901951359278 390.0,420" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="430.0" y1="413.9901951359278" x2="430.0" y2="440" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="550.0,420 510.0,440 510.0,431 550.0,411" fill="#2d0047" opacity="0.65" />
+  <polygon points="510.0,440 470.0,420 470.0,411 510.0,431" fill="#440066" opacity="0.65" />
+  <polygon points="510.0,391 550.0,411 510.0,431 470.0,411" fill="#7000ff" opacity="0.2" />
+  <polyline points="550.0,411 510.0,431 470.0,411" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="510.0,391 550.0,411 550.0,420" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="510.0,391 470.0,411 470.0,420" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="510.0" y1="431" x2="510.0" y2="440" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="190.0,440 150.0,460 150.0,451 190.0,431" fill="#222222" opacity="0.65" />
+  <polygon points="150.0,460 110.0,440 110.0,431 150.0,451" fill="#333333" opacity="0.65" />
+  <polygon points="150.0,411 190.0,431 150.0,451 110.0,431" fill="#ffffff" opacity="0.2" />
+  <polyline points="190.0,431 150.0,451 110.0,431" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="150.0,411 190.0,431 190.0,440" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="150.0,411 110.0,431 110.0,440" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="150.0" y1="451" x2="150.0" y2="460" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="270.0,440 230.0,460 230.0,408.9901951359278 270.0,388.9901951359278" fill="#222222" opacity="0.65" />
+  <polygon points="230.0,460 190.0,440 190.0,388.9901951359278 230.0,408.9901951359278" fill="#333333" opacity="0.65" />
+  <polygon points="230.0,368.9901951359278 270.0,388.9901951359278 230.0,408.9901951359278 190.0,388.9901951359278" fill="#ffffff" opacity="0.2" />
+  <polyline points="270.0,388.9901951359278 230.0,408.9901951359278 190.0,388.9901951359278" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="230.0,368.9901951359278 270.0,388.9901951359278 270.0,440" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="230.0,368.9901951359278 190.0,388.9901951359278 190.0,440" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="230.0" y1="408.9901951359278" x2="230.0" y2="460" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="350.0,440 310.0,460 310.0,412.62277660168377 350.0,392.62277660168377" fill="#222222" opacity="0.65" />
+  <polygon points="310.0,460 270.0,440 270.0,392.62277660168377 310.0,412.62277660168377" fill="#333333" opacity="0.65" />
+  <polygon points="310.0,372.62277660168377 350.0,392.62277660168377 310.0,412.62277660168377 270.0,392.62277660168377" fill="#ffffff" opacity="0.2" />
+  <polyline points="350.0,392.62277660168377 310.0,412.62277660168377 270.0,392.62277660168377" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="310.0,372.62277660168377 350.0,392.62277660168377 350.0,440" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="310.0,372.62277660168377 270.0,392.62277660168377 270.0,440" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="310.0" y1="412.62277660168377" x2="310.0" y2="460" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="430.0,440 390.0,460 390.0,381.62277660168377 430.0,361.62277660168377" fill="#222222" opacity="0.65" />
+  <polygon points="390.0,460 350.0,440 350.0,361.62277660168377 390.0,381.62277660168377" fill="#333333" opacity="0.65" />
+  <polygon points="390.0,341.62277660168377 430.0,361.62277660168377 390.0,381.62277660168377 350.0,361.62277660168377" fill="#ffffff" opacity="0.2" />
+  <polyline points="430.0,361.62277660168377 390.0,381.62277660168377 350.0,361.62277660168377" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="390.0,341.62277660168377 430.0,361.62277660168377 430.0,440" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="390.0,341.62277660168377 350.0,361.62277660168377 350.0,440" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="390.0" y1="381.62277660168377" x2="390.0" y2="460" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="510.0,440 470.0,460 470.0,417.9901951359278 510.0,397.9901951359278" fill="#222222" opacity="0.65" />
+  <polygon points="470.0,460 430.0,440 430.0,397.9901951359278 470.0,417.9901951359278" fill="#333333" opacity="0.65" />
+  <polygon points="470.0,377.9901951359278 510.0,397.9901951359278 470.0,417.9901951359278 430.0,397.9901951359278" fill="#ffffff" opacity="0.2" />
+  <polyline points="510.0,397.9901951359278 470.0,417.9901951359278 430.0,397.9901951359278" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="470.0,377.9901951359278 510.0,397.9901951359278 510.0,440" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="470.0,377.9901951359278 430.0,397.9901951359278 430.0,440" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="470.0" y1="417.9901951359278" x2="470.0" y2="460" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="590.0,440 550.0,460 550.0,438 590.0,418" fill="#222222" opacity="0.65" />
+  <polygon points="550.0,460 510.0,440 510.0,418 550.0,438" fill="#333333" opacity="0.65" />
+  <polygon points="550.0,398 590.0,418 550.0,438 510.0,418" fill="#ffffff" opacity="0.2" />
+  <polyline points="590.0,418 550.0,438 510.0,418" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="550.0,398 590.0,418 590.0,440" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="550.0,398 510.0,418 510.0,440" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="550.0" y1="438" x2="550.0" y2="460" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="150.0,460 110.0,480 110.0,475 150.0,455" fill="#003b5c" opacity="0.65" />
+  <polygon points="110.0,480 70.0,460 70.0,455 110.0,475" fill="#005580" opacity="0.65" />
+  <polygon points="110.0,435 150.0,455 110.0,475 70.0,455" fill="#00d4ff" opacity="0.2" />
+  <polyline points="150.0,455 110.0,475 70.0,455" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="110.0,435 150.0,455 150.0,460" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="110.0,435 70.0,455 70.0,460" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="110.0" y1="475" x2="110.0" y2="480" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="230.0,460 190.0,480 190.0,446.309518948453 230.0,426.309518948453" fill="#003b5c" opacity="0.65" />
+  <polygon points="190.0,480 150.0,460 150.0,426.309518948453 190.0,446.309518948453" fill="#005580" opacity="0.65" />
+  <polygon points="190.0,406.309518948453 230.0,426.309518948453 190.0,446.309518948453 150.0,426.309518948453" fill="#00d4ff" opacity="0.2" />
+  <polyline points="230.0,426.309518948453 190.0,446.309518948453 150.0,426.309518948453" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="190.0,406.309518948453 230.0,426.309518948453 230.0,460" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="190.0,406.309518948453 150.0,426.309518948453 150.0,460" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="190.0" y1="446.309518948453" x2="190.0" y2="480" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="310.0,460 270.0,480 270.0,414.62277660168377 310.0,394.62277660168377" fill="#003b5c" opacity="0.65" />
+  <polygon points="270.0,480 230.0,460 230.0,394.62277660168377 270.0,414.62277660168377" fill="#005580" opacity="0.65" />
+  <polygon points="270.0,374.62277660168377 310.0,394.62277660168377 270.0,414.62277660168377 230.0,394.62277660168377" fill="#00d4ff" opacity="0.2" />
+  <polyline points="310.0,394.62277660168377 270.0,414.62277660168377 230.0,394.62277660168377" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="270.0,374.62277660168377 310.0,394.62277660168377 310.0,460" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="270.0,374.62277660168377 230.0,394.62277660168377 230.0,460" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="270.0" y1="414.62277660168377" x2="270.0" y2="480" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="390.0,460 350.0,480 350.0,388.14213562373095 390.0,368.14213562373095" fill="#003b5c" opacity="0.65" />
+  <polygon points="350.0,480 310.0,460 310.0,368.14213562373095 350.0,388.14213562373095" fill="#005580" opacity="0.65" />
+  <polygon points="350.0,348.14213562373095 390.0,368.14213562373095 350.0,388.14213562373095 310.0,368.14213562373095" fill="#00d4ff" opacity="0.2" />
+  <polyline points="390.0,368.14213562373095 350.0,388.14213562373095 310.0,368.14213562373095" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="350.0,348.14213562373095 390.0,368.14213562373095 390.0,460" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="350.0,348.14213562373095 310.0,368.14213562373095 310.0,460" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="350.0" y1="388.14213562373095" x2="350.0" y2="480" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="470.0,460 430.0,480 430.0,409.62277660168377 470.0,389.62277660168377" fill="#003b5c" opacity="0.65" />
+  <polygon points="430.0,480 390.0,460 390.0,389.62277660168377 430.0,409.62277660168377" fill="#005580" opacity="0.65" />
+  <polygon points="430.0,369.62277660168377 470.0,389.62277660168377 430.0,409.62277660168377 390.0,389.62277660168377" fill="#00d4ff" opacity="0.2" />
+  <polyline points="470.0,389.62277660168377 430.0,409.62277660168377 390.0,389.62277660168377" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="430.0,369.62277660168377 470.0,389.62277660168377 470.0,460" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="430.0,369.62277660168377 390.0,389.62277660168377 390.0,460" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="430.0" y1="409.62277660168377" x2="430.0" y2="480" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="550.0,460 510.0,480 510.0,452.309518948453 550.0,432.309518948453" fill="#003b5c" opacity="0.65" />
+  <polygon points="510.0,480 470.0,460 470.0,432.309518948453 510.0,452.309518948453" fill="#005580" opacity="0.65" />
+  <polygon points="510.0,412.309518948453 550.0,432.309518948453 510.0,452.309518948453 470.0,432.309518948453" fill="#00d4ff" opacity="0.2" />
+  <polyline points="550.0,432.309518948453 510.0,452.309518948453 470.0,432.309518948453" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="510.0,412.309518948453 550.0,432.309518948453 550.0,460" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="510.0,412.309518948453 470.0,432.309518948453 470.0,460" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="510.0" y1="452.309518948453" x2="510.0" y2="480" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="630.0,460 590.0,480 590.0,475 630.0,455" fill="#003b5c" opacity="0.65" />
+  <polygon points="590.0,480 550.0,460 550.0,455 590.0,475" fill="#005580" opacity="0.65" />
+  <polygon points="590.0,435 630.0,455 590.0,475 550.0,455" fill="#00d4ff" opacity="0.2" />
+  <polyline points="630.0,455 590.0,475 550.0,455" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="590.0,435 630.0,455 630.0,460" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="590.0,435 550.0,455 550.0,460" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="590.0" y1="475" x2="590.0" y2="480" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="190.0,480 150.0,500 150.0,495 190.0,475" fill="#2d0047" opacity="0.65" />
+  <polygon points="150.0,500 110.0,480 110.0,475 150.0,495" fill="#440066" opacity="0.65" />
+  <polygon points="150.0,455 190.0,475 150.0,495 110.0,475" fill="#7000ff" opacity="0.2" />
+  <polyline points="190.0,475 150.0,495 110.0,475" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="150.0,455 190.0,475 190.0,480" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="150.0,455 110.0,475 110.0,480" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="150.0" y1="495" x2="150.0" y2="500" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="270.0,480 230.0,500 230.0,439.42640687119285 270.0,419.42640687119285" fill="#2d0047" opacity="0.65" />
+  <polygon points="230.0,500 190.0,480 190.0,419.42640687119285 230.0,439.42640687119285" fill="#440066" opacity="0.65" />
+  <polygon points="230.0,399.42640687119285 270.0,419.42640687119285 230.0,439.42640687119285 190.0,419.42640687119285" fill="#7000ff" opacity="0.2" />
+  <polyline points="270.0,419.42640687119285 230.0,439.42640687119285 190.0,419.42640687119285" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="230.0,399.42640687119285 270.0,419.42640687119285 270.0,480" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="230.0,399.42640687119285 190.0,419.42640687119285 190.0,480" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="230.0" y1="439.42640687119285" x2="230.0" y2="500" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="350.0,480 310.0,500 310.0,405.14213562373095 350.0,385.14213562373095" fill="#2d0047" opacity="0.65" />
+  <polygon points="310.0,500 270.0,480 270.0,385.14213562373095 310.0,405.14213562373095" fill="#440066" opacity="0.65" />
+  <polygon points="310.0,365.14213562373095 350.0,385.14213562373095 310.0,405.14213562373095 270.0,385.14213562373095" fill="#7000ff" opacity="0.2" />
+  <polyline points="350.0,385.14213562373095 310.0,405.14213562373095 270.0,385.14213562373095" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="310.0,365.14213562373095 350.0,385.14213562373095 350.0,480" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="310.0,365.14213562373095 270.0,385.14213562373095 270.0,480" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="310.0" y1="405.14213562373095" x2="310.0" y2="500" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="430.0,480 390.0,500 390.0,432.14213562373095 430.0,412.14213562373095" fill="#2d0047" opacity="0.65" />
+  <polygon points="390.0,500 350.0,480 350.0,412.14213562373095 390.0,432.14213562373095" fill="#440066" opacity="0.65" />
+  <polygon points="390.0,392.14213562373095 430.0,412.14213562373095 390.0,432.14213562373095 350.0,412.14213562373095" fill="#7000ff" opacity="0.2" />
+  <polyline points="430.0,412.14213562373095 390.0,432.14213562373095 350.0,412.14213562373095" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="390.0,392.14213562373095 430.0,412.14213562373095 430.0,480" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="390.0,392.14213562373095 350.0,412.14213562373095 350.0,480" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="390.0" y1="432.14213562373095" x2="390.0" y2="500" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="510.0,480 470.0,500 470.0,460.42640687119285 510.0,440.42640687119285" fill="#2d0047" opacity="0.65" />
+  <polygon points="470.0,500 430.0,480 430.0,440.42640687119285 470.0,460.42640687119285" fill="#440066" opacity="0.65" />
+  <polygon points="470.0,420.42640687119285 510.0,440.42640687119285 470.0,460.42640687119285 430.0,440.42640687119285" fill="#7000ff" opacity="0.2" />
+  <polyline points="510.0,440.42640687119285 470.0,460.42640687119285 430.0,440.42640687119285" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="470.0,420.42640687119285 510.0,440.42640687119285 510.0,480" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="470.0,420.42640687119285 430.0,440.42640687119285 430.0,480" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="470.0" y1="460.42640687119285" x2="470.0" y2="500" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="590.0,480 550.0,500 550.0,481 590.0,461" fill="#2d0047" opacity="0.65" />
+  <polygon points="550.0,500 510.0,480 510.0,461 550.0,481" fill="#440066" opacity="0.65" />
+  <polygon points="550.0,441 590.0,461 550.0,481 510.0,461" fill="#7000ff" opacity="0.2" />
+  <polyline points="590.0,461 550.0,481 510.0,461" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="550.0,441 590.0,461 590.0,480" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="550.0,441 510.0,461 510.0,480" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="550.0" y1="481" x2="550.0" y2="500" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="230.0,500 190.0,520 190.0,512.309518948453 230.0,492.309518948453" fill="#222222" opacity="0.65" />
+  <polygon points="190.0,520 150.0,500 150.0,492.309518948453 190.0,512.309518948453" fill="#333333" opacity="0.65" />
+  <polygon points="190.0,472.309518948453 230.0,492.309518948453 190.0,512.309518948453 150.0,492.309518948453" fill="#ffffff" opacity="0.2" />
+  <polyline points="230.0,492.309518948453 190.0,512.309518948453 150.0,492.309518948453" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="190.0,472.309518948453 230.0,492.309518948453 230.0,500" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="190.0,472.309518948453 150.0,492.309518948453 150.0,500" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="190.0" y1="512.309518948453" x2="190.0" y2="520" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="310.0,500 270.0,520 270.0,452.62277660168377 310.0,432.62277660168377" fill="#222222" opacity="0.65" />
+  <polygon points="270.0,520 230.0,500 230.0,432.62277660168377 270.0,452.62277660168377" fill="#333333" opacity="0.65" />
+  <polygon points="270.0,412.62277660168377 310.0,432.62277660168377 270.0,452.62277660168377 230.0,432.62277660168377" fill="#ffffff" opacity="0.2" />
+  <polyline points="310.0,432.62277660168377 270.0,452.62277660168377 230.0,432.62277660168377" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="270.0,412.62277660168377 310.0,432.62277660168377 310.0,500" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="270.0,412.62277660168377 230.0,432.62277660168377 230.0,500" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="270.0" y1="452.62277660168377" x2="270.0" y2="520" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="390.0,500 350.0,520 350.0,469.14213562373095 390.0,449.14213562373095" fill="#222222" opacity="0.65" />
+  <polygon points="350.0,520 310.0,500 310.0,449.14213562373095 350.0,469.14213562373095" fill="#333333" opacity="0.65" />
+  <polygon points="350.0,429.14213562373095 390.0,449.14213562373095 350.0,469.14213562373095 310.0,449.14213562373095" fill="#ffffff" opacity="0.2" />
+  <polyline points="390.0,449.14213562373095 350.0,469.14213562373095 310.0,449.14213562373095" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="350.0,429.14213562373095 390.0,449.14213562373095 390.0,500" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="350.0,429.14213562373095 310.0,449.14213562373095 310.0,500" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="350.0" y1="469.14213562373095" x2="350.0" y2="520" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="470.0,500 430.0,520 430.0,477.62277660168377 470.0,457.62277660168377" fill="#222222" opacity="0.65" />
+  <polygon points="430.0,520 390.0,500 390.0,457.62277660168377 430.0,477.62277660168377" fill="#333333" opacity="0.65" />
+  <polygon points="430.0,437.62277660168377 470.0,457.62277660168377 430.0,477.62277660168377 390.0,457.62277660168377" fill="#ffffff" opacity="0.2" />
+  <polyline points="470.0,457.62277660168377 430.0,477.62277660168377 390.0,457.62277660168377" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="430.0,437.62277660168377 470.0,457.62277660168377 470.0,500" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="430.0,437.62277660168377 390.0,457.62277660168377 390.0,500" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="430.0" y1="477.62277660168377" x2="430.0" y2="520" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="550.0,500 510.0,520 510.0,507.309518948453 550.0,487.309518948453" fill="#222222" opacity="0.65" />
+  <polygon points="510.0,520 470.0,500 470.0,487.309518948453 510.0,507.309518948453" fill="#333333" opacity="0.65" />
+  <polygon points="510.0,467.309518948453 550.0,487.309518948453 510.0,507.309518948453 470.0,487.309518948453" fill="#ffffff" opacity="0.2" />
+  <polyline points="550.0,487.309518948453 510.0,507.309518948453 470.0,487.309518948453" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="510.0,467.309518948453 550.0,487.309518948453 550.0,500" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="510.0,467.309518948453 470.0,487.309518948453 470.0,500" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="510.0" y1="507.309518948453" x2="510.0" y2="520" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="270.0,520 230.0,540 230.0,499.9901951359278 270.0,479.9901951359278" fill="#003b5c" opacity="0.65" />
+  <polygon points="230.0,540 190.0,520 190.0,479.9901951359278 230.0,499.9901951359278" fill="#005580" opacity="0.65" />
+  <polygon points="230.0,459.9901951359278 270.0,479.9901951359278 230.0,499.9901951359278 190.0,479.9901951359278" fill="#00d4ff" opacity="0.2" />
+  <polyline points="270.0,479.9901951359278 230.0,499.9901951359278 190.0,479.9901951359278" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="230.0,459.9901951359278 270.0,479.9901951359278 270.0,520" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="230.0,459.9901951359278 190.0,479.9901951359278 190.0,520" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="230.0" y1="499.9901951359278" x2="230.0" y2="540" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="350.0,520 310.0,540 310.0,496.62277660168377 350.0,476.62277660168377" fill="#003b5c" opacity="0.65" />
+  <polygon points="310.0,540 270.0,520 270.0,476.62277660168377 310.0,496.62277660168377" fill="#005580" opacity="0.65" />
+  <polygon points="310.0,456.62277660168377 350.0,476.62277660168377 310.0,496.62277660168377 270.0,476.62277660168377" fill="#00d4ff" opacity="0.2" />
+  <polyline points="350.0,476.62277660168377 310.0,496.62277660168377 270.0,476.62277660168377" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="310.0,456.62277660168377 350.0,476.62277660168377 350.0,520" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="310.0,456.62277660168377 270.0,476.62277660168377 270.0,520" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="310.0" y1="496.62277660168377" x2="310.0" y2="540" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="430.0,520 390.0,540 390.0,493.62277660168377 430.0,473.62277660168377" fill="#003b5c" opacity="0.65" />
+  <polygon points="390.0,540 350.0,520 350.0,473.62277660168377 390.0,493.62277660168377" fill="#005580" opacity="0.65" />
+  <polygon points="390.0,453.62277660168377 430.0,473.62277660168377 390.0,493.62277660168377 350.0,473.62277660168377" fill="#00d4ff" opacity="0.2" />
+  <polyline points="430.0,473.62277660168377 390.0,493.62277660168377 350.0,473.62277660168377" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="390.0,453.62277660168377 430.0,473.62277660168377 430.0,520" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="390.0,453.62277660168377 350.0,473.62277660168377 350.0,520" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="390.0" y1="493.62277660168377" x2="390.0" y2="540" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="510.0,520 470.0,540 470.0,503.9901951359278 510.0,483.9901951359278" fill="#003b5c" opacity="0.65" />
+  <polygon points="470.0,540 430.0,520 430.0,483.9901951359278 470.0,503.9901951359278" fill="#005580" opacity="0.65" />
+  <polygon points="470.0,463.9901951359278 510.0,483.9901951359278 470.0,503.9901951359278 430.0,483.9901951359278" fill="#00d4ff" opacity="0.2" />
+  <polyline points="510.0,483.9901951359278 470.0,503.9901951359278 430.0,483.9901951359278" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="470.0,463.9901951359278 510.0,483.9901951359278 510.0,520" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="470.0,463.9901951359278 430.0,483.9901951359278 430.0,520" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="470.0" y1="503.9901951359278" x2="470.0" y2="540" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
+  <polygon points="310.0,540 270.0,560 270.0,501.9901951359278 310.0,481.9901951359278" fill="#2d0047" opacity="0.65" />
+  <polygon points="270.0,560 230.0,540 230.0,481.9901951359278 270.0,501.9901951359278" fill="#440066" opacity="0.65" />
+  <polygon points="270.0,461.9901951359278 310.0,481.9901951359278 270.0,501.9901951359278 230.0,481.9901951359278" fill="#7000ff" opacity="0.2" />
+  <polyline points="310.0,481.9901951359278 270.0,501.9901951359278 230.0,481.9901951359278" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="270.0,461.9901951359278 310.0,481.9901951359278 310.0,540" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="270.0,461.9901951359278 230.0,481.9901951359278 230.0,540" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="270.0" y1="501.9901951359278" x2="270.0" y2="560" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="390.0,540 350.0,560 350.0,516.4264068711929 390.0,496.42640687119285" fill="#2d0047" opacity="0.65" />
+  <polygon points="350.0,560 310.0,540 310.0,496.42640687119285 350.0,516.4264068711929" fill="#440066" opacity="0.65" />
+  <polygon points="350.0,476.42640687119285 390.0,496.42640687119285 350.0,516.4264068711929 310.0,496.42640687119285" fill="#7000ff" opacity="0.2" />
+  <polyline points="390.0,496.42640687119285 350.0,516.4264068711929 310.0,496.42640687119285" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="350.0,476.42640687119285 390.0,496.42640687119285 390.0,540" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="350.0,476.42640687119285 310.0,496.42640687119285 310.0,540" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="350.0" y1="516.4264068711929" x2="350.0" y2="560" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="470.0,540 430.0,560 430.0,523.9901951359278 470.0,503.9901951359278" fill="#2d0047" opacity="0.65" />
+  <polygon points="430.0,560 390.0,540 390.0,503.9901951359278 430.0,523.9901951359278" fill="#440066" opacity="0.65" />
+  <polygon points="430.0,483.9901951359278 470.0,503.9901951359278 430.0,523.9901951359278 390.0,503.9901951359278" fill="#7000ff" opacity="0.2" />
+  <polyline points="470.0,503.9901951359278 430.0,523.9901951359278 390.0,503.9901951359278" fill="none" stroke="#8833ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="430.0,483.9901951359278 470.0,503.9901951359278 470.0,540" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <polyline points="430.0,483.9901951359278 390.0,503.9901951359278 390.0,540" fill="none" stroke="#8833ff" stroke-width="1" opacity="0.4" />
+  <line x1="430.0" y1="523.9901951359278" x2="430.0" y2="560" stroke="#8833ff" stroke-width="2" opacity="0.95" />
+  <polygon points="350.0,560 310.0,580 310.0,567.309518948453 350.0,547.309518948453" fill="#222222" opacity="0.65" />
+  <polygon points="310.0,580 270.0,560 270.0,547.309518948453 310.0,567.309518948453" fill="#333333" opacity="0.65" />
+  <polygon points="310.0,527.309518948453 350.0,547.309518948453 310.0,567.309518948453 270.0,547.309518948453" fill="#ffffff" opacity="0.2" />
+  <polyline points="350.0,547.309518948453 310.0,567.309518948453 270.0,547.309518948453" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="310.0,527.309518948453 350.0,547.309518948453 350.0,560" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="310.0,527.309518948453 270.0,547.309518948453 270.0,560" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="310.0" y1="567.309518948453" x2="310.0" y2="580" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="430.0,560 390.0,580 390.0,535.309518948453 430.0,515.309518948453" fill="#222222" opacity="0.65" />
+  <polygon points="390.0,580 350.0,560 350.0,515.309518948453 390.0,535.309518948453" fill="#333333" opacity="0.65" />
+  <polygon points="390.0,495.309518948453 430.0,515.309518948453 390.0,535.309518948453 350.0,515.309518948453" fill="#ffffff" opacity="0.2" />
+  <polyline points="430.0,515.309518948453 390.0,535.309518948453 350.0,515.309518948453" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="390.0,495.309518948453 430.0,515.309518948453 430.0,560" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <polyline points="390.0,495.309518948453 350.0,515.309518948453 350.0,560" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+  <line x1="390.0" y1="535.309518948453" x2="390.0" y2="580" stroke="#ffffff" stroke-width="2" opacity="0.95" />
+  <polygon points="390.0,580 350.0,600 350.0,589 390.0,569" fill="#003b5c" opacity="0.65" />
+  <polygon points="350.0,600 310.0,580 310.0,569 350.0,589" fill="#005580" opacity="0.65" />
+  <polygon points="350.0,549 390.0,569 350.0,589 310.0,569" fill="#00d4ff" opacity="0.2" />
+  <polyline points="390.0,569 350.0,589 310.0,569" fill="none" stroke="#00e1ff" stroke-width="1.5" opacity="0.9" />
+  <polyline points="350.0,549 390.0,569 390.0,580" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <polyline points="350.0,549 310.0,569 310.0,580" fill="none" stroke="#00e1ff" stroke-width="1" opacity="0.4" />
+  <line x1="350.0" y1="589" x2="350.0" y2="600" stroke="#00e1ff" stroke-width="2" opacity="0.95" />
 </svg>

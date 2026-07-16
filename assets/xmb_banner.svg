@@ -1,24 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 220" width="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 160" width="100%">
   <!-- Deep Dark Space Background -->
   <rect width="100%" height="100%" fill="#000000" />
   
   <defs>
     <!-- Cyan/Blue Wave Gradient -->
     <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#001220" />
-      <stop offset="35%" stop-color="#004b7c" />
-      <stop offset="50%" stop-color="#00a8ff" />
-      <stop offset="65%" stop-color="#004b7c" />
-      <stop offset="100%" stop-color="#001220" />
+      <stop offset="0%" stop-color="#001829" />
+      <stop offset="35%" stop-color="#005f9e" />
+      <stop offset="50%" stop-color="#00d4ff" />
+      <stop offset="65%" stop-color="#005f9e" />
+      <stop offset="100%" stop-color="#001829" />
     </linearGradient>
     
     <!-- Purple/Amethyst Wave Gradient -->
     <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0f0017" />
-      <stop offset="35%" stop-color="#3c0061" />
-      <stop offset="50%" stop-color="#8000ff" />
-      <stop offset="65%" stop-color="#3c0061" />
-      <stop offset="100%" stop-color="#0f0017" />
+      <stop offset="0%" stop-color="#12001c" />
+      <stop offset="35%" stop-color="#4c007a" />
+      <stop offset="50%" stop-color="#9d00ff" />
+      <stop offset="65%" stop-color="#4c007a" />
+      <stop offset="100%" stop-color="#12001c" />
     </linearGradient>
     
     <!-- Ambient Dust Particles -->
@@ -29,57 +29,52 @@
   </defs>
 
   <!-- Flowing XMB Wave 1 -->
-  <path fill="none" stroke="url(#gradient1)" stroke-width="2.5" opacity="0.5">
+  <path fill="none" stroke="url(#gradient1)" stroke-width="3" opacity="0.65">
     <animate attributeName="d" 
              dur="12s" 
              repeatCount="indefinite"
              values="
-               M0,110 Q250,25 500,110 T1000,110;
-               M0,110 Q250,195 500,110 T1000,110;
-               M0,110 Q250,25 500,110 T1000,110
+               M0,80 Q250,15 500,80 T1000,80;
+               M0,80 Q250,145 500,80 T1000,80;
+               M0,80 Q250,15 500,80 T1000,80
              " />
   </path>
   
   <!-- Flowing XMB Wave 2 (Slow & Deep) -->
-  <path fill="none" stroke="url(#gradient2)" stroke-width="1.8" opacity="0.3">
+  <path fill="none" stroke="url(#gradient2)" stroke-width="2" opacity="0.45">
     <animate attributeName="d" 
              dur="18s" 
              repeatCount="indefinite"
              values="
-               M0,110 Q250,195 500,110 T1000,110;
-               M0,110 Q250,25 500,110 T1000,110;
-               M0,110 Q250,195 500,110 T1000,110
+               M0,80 Q250,145 500,80 T1000,80;
+               M0,80 Q250,15 500,80 T1000,80;
+               M0,80 Q250,145 500,80 T1000,80
              " />
   </path>
 
   <!-- Flowing XMB Wave 3 (Thin Accent) -->
-  <path fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.15">
+  <path fill="none" stroke="#ffffff" stroke-width="0.75" opacity="0.25">
     <animate attributeName="d" 
              dur="15s" 
              repeatCount="indefinite"
              values="
-               M0,110 Q150,70 500,100 T1000,120;
-               M0,110 Q150,150 500,120 T1000,100;
-               M0,110 Q150,70 500,100 T1000,120
+               M0,80 Q150,50 500,70 T1000,90;
+               M0,80 Q150,110 500,90 T1000,70;
+               M0,80 Q150,50 500,70 T1000,90
              " />
   </path>
 
-  <!-- Floating Particles -->
-  <circle cx="200" cy="70" r="1.5" fill="url(#particle)">
-    <animate attributeName="cy" dur="8s" repeatCount="indefinite" values="70;65;70" />
-    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0.2;0.7;0.2" />
+  <!-- PS2 / PS3 Dust Particles (Ambient floating) -->
+  <circle cx="200" cy="50" r="2" fill="url(#particle)">
+    <animate attributeName="cy" dur="8s" repeatCount="indefinite" values="50;45;50" />
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0.2;0.8;0.2" />
   </circle>
-  <circle cx="750" cy="140" r="1" fill="url(#particle)">
-    <animate attributeName="cy" dur="11s" repeatCount="indefinite" values="140;145;140" />
-    <animate attributeName="opacity" dur="11s" repeatCount="indefinite" values="0.1;0.5;0.1" />
+  <circle cx="750" cy="110" r="1.5" fill="url(#particle)">
+    <animate attributeName="cy" dur="11s" repeatCount="indefinite" values="110;115;110" />
+    <animate attributeName="opacity" dur="11s" repeatCount="indefinite" values="0.1;0.6;0.1" />
   </circle>
-  <circle cx="480" cy="45" r="2" fill="url(#particle)">
-    <animate attributeName="cy" dur="6s" repeatCount="indefinite" values="45;35;45" />
-    <animate attributeName="opacity" dur="6s" repeatCount="indefinite" values="0.3;0.8;0.3" />
+  <circle cx="480" cy="30" r="2.5" fill="url(#particle)">
+    <animate attributeName="cy" dur="6s" repeatCount="indefinite" values="30;20;30" />
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite" values="0.3;0.9;0.3" />
   </circle>
-
-  <!-- Central Brand Typography (Futuristic, Spaced) -->
-  <text x="50%" y="115" dominant-baseline="middle" text-anchor="middle" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="32" font-weight="800" fill="#ffffff" letter-spacing="14" opacity="0.9">
-    BOBBERDOLLE1
-  </text>
 </svg>

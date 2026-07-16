@@ -2,58 +2,26 @@
   <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/xmb_banner.svg" width="100%" />
 </div>
 
-<br/>
+# bobberdolle1
 
-### About Me
-
-Hardware hacker and systems tinkerer. Focused on embedded hardware, RF scanning, autonomous computer vision, and network bypassing.
+Hardware hacker and systems tinkerer. Focused on embedded hardware, RF monitoring, computer vision, and network bypassing.
 
 ---
 
-### Featured Projects
+### 🛰️ Featured Projects
 
-<table width="100%">
-  <tr>
-    <td width="50%" valign="top">
-      <h4>📡 <a href="https://github.com/bobberdolle1/SkySweep32">SkySweep32</a></h4>
-      <p>Multi-band passive drone detector (900MHz / 2.4GHz / 5.8GHz RF) with custom carrier PCBs & 3D printed enclosures.</p>
-      <code>C++</code> <code>ESP32</code> <code>KiCad</code> <code>FreeCAD</code>
-    </td>
-    <td width="50%" valign="top">
-      <h4>🔌 <a href="https://github.com/bobberdolle1/openflash">openflash</a></h4>
-      <p>NAND/eMMC/NOR flash programmer running on budget microcontrollers.</p>
-      <code>Rust</code> <code>Embedded</code> <code>Hardware</code>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h4>⚡ <a href="https://github.com/bobberdolle1/unbound">unbound</a></h4>
-      <p>Packet-level DPI bypass utility without VPN overhead.</p>
-      <code>Lua</code> <code>Networking</code> <code>DPI Bypass</code>
-    </td>
-    <td width="50%" valign="top">
-      <h4>🚗 <a href="https://github.com/bobberdolle1/BeamNG.WorldForge">BeamNG.WorldForge</a></h4>
-      <p>Real-world map generator from satellite data for BeamNG.drive.</p>
-      <code>Python</code> <code>OpenCV</code> <code>GIS</code>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h4>🎯 <a href="https://github.com/bobberdolle1/maixcam-servo-control">maixcam-servo-control</a></h4>
-      <p>Ballistic servo drop controller using optical flow and YOLO object detection.</p>
-      <code>Python</code> <code>YOLO</code> <code>Robotics</code>
-    </td>
-    <td width="50%" valign="top">
-      <h4>🎭 <a href="https://github.com/bobberdolle1/Puppeteer">Puppeteer</a></h4>
-      <p>Multi-account Telegram userbot wrapper with LLM integration.</p>
-      <code>Rust</code> <code>Telegram API</code> <code>LLM</code>
-    </td>
-  </tr>
-</table>
+| Project | Stack | Description |
+| :--- | :--- | :--- |
+| [**SkySweep32**](https://github.com/bobberdolle1/SkySweep32) | C++ / ESP32 / KiCad | Multi-band passive drone detector (900MHz / 2.4GHz / 5.8GHz RF) with custom carrier PCBs & 3D printed enclosures. |
+| [**openflash**](https://github.com/bobberdolle1/openflash) | Rust | NAND/eMMC/NOR flash programmer running on budget microcontrollers. |
+| [**unbound**](https://github.com/bobberdolle1/unbound) | Lua | Packet-level DPI bypass utility without VPN overhead. |
+| [**BeamNG.WorldForge**](https://github.com/bobberdolle1/BeamNG.WorldForge) | Python / OpenCV / GIS | Real-world map generator from satellite data for BeamNG.drive. |
+| [**maixcam-servo-control**](https://github.com/bobberdolle1/maixcam-servo-control) | Python / YOLO | Ballistic servo drop controller using optical flow and YOLO object detection. |
+| [**Puppeteer**](https://github.com/bobberdolle1/Puppeteer) | Rust / Telegram | Multi-account Telegram userbot wrapper with LLM integration. |
 
 ---
 
-### Fields of Work
+### 🛠️ Fields of Work
 
 - **Embedded Hardware**: PCB layout & schematic design (KiCad), prototyping, firmware development (ESP32, RP2040).
 - **RF & Wireless**: ISM band monitoring (CC1101, NRF24), LoRa mesh networks, software-defined radio protocols.
@@ -62,14 +30,7 @@ Hardware hacker and systems tinkerer. Focused on embedded hardware, RF scanning,
 
 ---
 
-### System Statistics
-
-<div align="center">
-  <img height="150em" src="https://github-readme-stats.vercel.app/api?username=bobberdolle1&hide_icons=true&theme=onyx&include_all_commits=true&count_private=true&hide_border=true" />
-  <img height="150em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=bobberdolle1&layout=compact&theme=onyx&hide_border=true" />
-</div>
-
-<br/>
+### 📊 System Activity & PS2 Save Towers
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/ps2_towers.svg" width="100%" />
@@ -83,7 +44,7 @@ Hardware hacker and systems tinkerer. Focused on embedded hardware, RF scanning,
 
 ---
 
-### Contact
+### 💬 Contact
 
 - **Telegram**: [@norevived](https://t.me/norevived)
 - **Discord**: `bobberdolle1`
