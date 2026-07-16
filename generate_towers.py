@@ -1,6 +1,5 @@
 import urllib.request
 import re
-import math
 import os
 
 # Fetch contribution HTML
@@ -8,25 +7,20 @@ url = 'https://github.com/users/bobberdolle1/contributions'
 try:
     req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
     html = urllib.request.urlopen(req).read().decode('utf-8')
-    # Extract date and level
     days = re.findall(r'data-date="([^"]+)"[^>]*data-level="([^"]+)"', html)
     if not days:
-        # Fallback
         days = re.findall(r'data-count="([^"]+)"[^>]*data-date="([^"]+)"', html)
-        days = [(d, c) for c, d in days]  # Normalize
+        days = [(d, c) for c, d in days]
 except Exception as e:
     print("Failed to fetch contribution data:", e)
     days = []
 
-# If we couldn't fetch, mock some days so the build doesn't fail
 if not days:
     print("Using fallback mock data")
-    days = [("2026-01-01", "0") for _ in range(84)]
+    days = [("2026-01-01", "0") for _ in range(364)]
 
-# We need the last 52 weeks of data (52 * 7 = 364 days)
 last_364 = days[-364:]
 
-# Reshape into a 52 (weeks, cols) x 7 (days, rows) grid
 GRID_W = 52
 GRID_H = 7
 grid = [[0 for _ in range(GRID_H)] for _ in range(GRID_W)]
@@ -37,27 +31,24 @@ for idx, (date, level_str) in enumerate(last_364):
     if week < GRID_W and day < GRID_H:
         grid[week][day] = int(level_str)
 
-# Canvas Configuration
 WIDTH = 1000
 HEIGHT = 500
 CELL_WIDTH = 12
 CELL_HEIGHT = 6
+GAP = 0.25 # Adds a gap between columns
+W = 1.0 - GAP
 
-# Color palettes by level (PS2 memory card aesthetic)
 COLORS = {
-    0: {"top": "#050505", "left": "#020202", "right": "#030303", "line": "#111111", "height": 2},
-    1: {"top": "#002d42", "left": "#00131f", "right": "#001e30", "line": "#005f8c", "height": 10},
-    2: {"top": "#005580", "left": "#002b42", "right": "#003d5c", "line": "#00a2f3", "height": 30},
-    3: {"top": "#00d4ff", "left": "#005f9e", "right": "#0077c2", "line": "#5cf0ff", "height": 60},
-    4: {"top": "#8000ff", "left": "#330066", "right": "#4d0099", "line": "#b366ff", "height": 100}
+    0: {"top": "rgba(20,20,20,0.5)", "left": "rgba(10,10,10,0.5)", "right": "rgba(15,15,15,0.5)", "line": "rgba(40,40,40,0.3)", "height": 1},
+    1: {"top": "url(#top1)", "left": "url(#left1)", "right": "url(#right1)", "line": "rgba(0,162,243,0.8)", "height": 10},
+    2: {"top": "url(#top2)", "left": "url(#left2)", "right": "url(#right2)", "line": "rgba(0,212,255,0.9)", "height": 30},
+    3: {"top": "url(#top3)", "left": "url(#left3)", "right": "url(#right3)", "line": "rgba(92,240,255,1.0)", "height": 60},
+    4: {"top": "url(#top4)", "left": "url(#left4)", "right": "url(#right4)", "line": "rgba(179,102,255,1.0)", "height": 100}
 }
 
-# Isometric projection
 def project(x, y, z):
-    # Center origin horizontally, offset towards bottom
     x0 = WIDTH / 2
-    y0 = HEIGHT - 80
-    
+    y0 = HEIGHT - 90
     iso_x = x0 + (x - y) * CELL_WIDTH
     iso_y = y0 + (x + y) * CELL_HEIGHT - z
     return iso_x, iso_y
@@ -66,22 +57,36 @@ svg_content = [
     f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HEIGHT}" width="100%">',
     '  <!-- Deep Dark Space Background -->',
     '  <rect width="100%" height="100%" fill="#000000" />',
-    '  ',
-    '  <!-- Grid Scanlines -->',
     '  <defs>',
-    '    <pattern id="lines" width="100" height="4" patternUnits="userSpaceOnUse">',
-    '      <line x1="0" y1="0" x2="100" y2="0" stroke="#060606" stroke-width="1.5" />',
-    '    </pattern>',
+    '    <!-- Floor glow -->',
+    '    <radialGradient id="floorGlow" cx="50%" cy="50%" r="50%">',
+    '      <stop offset="0%" stop-color="#002b42" stop-opacity="0.3" />',
+    '      <stop offset="100%" stop-color="#000000" stop-opacity="0" />',
+    '    </radialGradient>',
+    '    <!-- Linear Gradients for 3D Faces -->',
+    '    <linearGradient id="top1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#005f8c" stop-opacity="0.9"/><stop offset="100%" stop-color="#002d42" stop-opacity="0.7"/></linearGradient>',
+    '    <linearGradient id="left1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#003d5c" stop-opacity="0.8"/><stop offset="100%" stop-color="#00131f" stop-opacity="0.5"/></linearGradient>',
+    '    <linearGradient id="right1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#005580" stop-opacity="0.8"/><stop offset="100%" stop-color="#001e30" stop-opacity="0.5"/></linearGradient>',
+    
+    '    <linearGradient id="top2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00a2f3" stop-opacity="0.9"/><stop offset="100%" stop-color="#005580" stop-opacity="0.7"/></linearGradient>',
+    '    <linearGradient id="left2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#0077c2" stop-opacity="0.8"/><stop offset="100%" stop-color="#002b42" stop-opacity="0.5"/></linearGradient>',
+    '    <linearGradient id="right2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#0088cc" stop-opacity="0.8"/><stop offset="100%" stop-color="#003d5c" stop-opacity="0.5"/></linearGradient>',
+    
+    '    <linearGradient id="top3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#5cf0ff" stop-opacity="0.9"/><stop offset="100%" stop-color="#00d4ff" stop-opacity="0.7"/></linearGradient>',
+    '    <linearGradient id="left3" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00a2f3" stop-opacity="0.8"/><stop offset="100%" stop-color="#005f9e" stop-opacity="0.5"/></linearGradient>',
+    '    <linearGradient id="right3" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00bfff" stop-opacity="0.8"/><stop offset="100%" stop-color="#0077c2" stop-opacity="0.5"/></linearGradient>',
+    
+    '    <linearGradient id="top4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#b366ff" stop-opacity="0.9"/><stop offset="100%" stop-color="#8000ff" stop-opacity="0.7"/></linearGradient>',
+    '    <linearGradient id="left4" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#8c1aff" stop-opacity="0.8"/><stop offset="100%" stop-color="#330066" stop-opacity="0.5"/></linearGradient>',
+    '    <linearGradient id="right4" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#9933ff" stop-opacity="0.8"/><stop offset="100%" stop-color="#4d0099" stop-opacity="0.5"/></linearGradient>',
     '  </defs>',
-    '  <rect width="100%" height="100%" fill="url(#lines)" />',
-    '  '
+    '  <ellipse cx="500" cy="350" rx="400" ry="150" fill="url(#floorGlow)" />'
 ]
 
-# Shift the grid slightly for centered composition
-# We center the grid of 52x7
 x_offset = -26
 y_offset = -3.5
 
+# Render from back to front
 for depth in range(GRID_W + GRID_H - 1):
     for x in range(GRID_W):
         y = depth - x
@@ -94,60 +99,54 @@ for depth in range(GRID_W + GRID_H - 1):
             py = y + y_offset
             
             b_top = project(px, py, 0)
-            b_left = project(px + 1, py, 0)
-            b_right = project(px, py + 1, 0)
-            b_bottom = project(px + 1, py + 1, 0)
+            b_left = project(px + W, py, 0)
+            b_right = project(px, py + W, 0)
+            b_bottom = project(px + W, py + W, 0)
             
             t_top = project(px, py, h)
-            t_left = project(px + 1, py, h)
-            t_right = project(px, py + 1, h)
-            t_bottom = project(px + 1, py + 1, h)
+            t_left = project(px + W, py, h)
+            t_right = project(px, py + W, h)
+            t_bottom = project(px + W, py + W, h)
             
             # Left Face
             svg_content.append(
                 f'  <polygon points="{b_left[0]},{b_left[1]} {b_bottom[0]},{b_bottom[1]} {t_bottom[0]},{t_bottom[1]} {t_left[0]},{t_left[1]}" '
-                f'fill="{color["left"]}" opacity="0.85" />'
+                f'fill="{color["left"]}" />'
             )
             
             # Right Face
             svg_content.append(
                 f'  <polygon points="{b_bottom[0]},{b_bottom[1]} {b_right[0]},{b_right[1]} {t_right[0]},{t_right[1]} {t_bottom[0]},{t_bottom[1]}" '
-                f'fill="{color["right"]}" opacity="0.85" />'
+                f'fill="{color["right"]}" />'
             )
             
             # Top Face
             svg_content.append(
                 f'  <polygon points="{t_top[0]},{t_top[1]} {t_left[0]},{t_left[1]} {t_bottom[0]},{t_bottom[1]} {t_right[0]},{t_right[1]}" '
-                f'fill="{color["top"]}" opacity="0.9" />'
+                f'fill="{color["top"]}" />'
             )
             
             # Edges
             if level > 0:
                 svg_content.append(
                     f'  <polyline points="{t_left[0]},{t_left[1]} {t_bottom[0]},{t_bottom[1]} {t_right[0]},{t_right[1]}" '
-                    f'fill="none" stroke="{color["line"]}" stroke-width="0.8" opacity="0.9" />'
+                    f'fill="none" stroke="{color["line"]}" stroke-width="1.2" opacity="0.8" />'
                 )
                 svg_content.append(
                     f'  <line x1="{t_bottom[0]}" y1="{t_bottom[1]}" x2="{b_bottom[0]}" y2="{b_bottom[1]}" '
-                    f'stroke="{color["line"]}" stroke-width="1.2" opacity="0.9" />'
+                    f'stroke="{color["line"]}" stroke-width="1.5" opacity="0.8" />'
                 )
             else:
+                # Slight outline for the ground blocks
                 svg_content.append(
                     f'  <polygon points="{t_top[0]},{t_top[1]} {t_left[0]},{t_left[1]} {t_bottom[0]},{t_bottom[1]} {t_right[0]},{t_right[1]}" '
-                    f'fill="none" stroke="{color["line"]}" stroke-width="0.3" opacity="0.4" />'
+                    f'fill="none" stroke="{color["line"]}" stroke-width="0.5" />'
                 )
 
 svg_content.append('</svg>')
 
-# Create assets folder if not exists
 os.makedirs('assets', exist_ok=True)
-
-# Write to file
 with open('assets/ps2_towers.svg', 'w') as f:
-    f.write('\n'.join(svg_content))
+    f.write('\\n'.join(svg_content))
 
-# Clean up scratch test file
-if os.path.exists('test_scrape.py'):
-    os.remove('test_scrape.py')
-
-print("Successfully generated assets/ps2_towers.svg from Github commit history")
+print("Successfully generated gorgeous PS2 towers SVG")
