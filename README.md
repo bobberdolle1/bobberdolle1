@@ -2,15 +2,21 @@
   <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/xmb_banner.svg" width="100%" />
 </div>
 
+<br/>
+
+### About Me
+
+Hardware hacker and systems tinkerer. Focused on embedded hardware, RF scanning, autonomous computer vision, and network bypassing.
+
 ---
 
-### 🛰️ Featured Projects
+### Featured Projects
 
 <table width="100%">
   <tr>
     <td width="50%" valign="top">
       <h4>📡 <a href="https://github.com/bobberdolle1/SkySweep32">SkySweep32</a></h4>
-      <p>Multi-band passive drone detector (900MHz / 2.4GHz / 5.8GHz RF) with custom carrier PCBs &amp; 3D printed enclosures.</p>
+      <p>Multi-band passive drone detector (900MHz / 2.4GHz / 5.8GHz RF) with custom carrier PCBs & 3D printed enclosures.</p>
       <code>C++</code> <code>ESP32</code> <code>KiCad</code> <code>FreeCAD</code>
     </td>
     <td width="50%" valign="top">
@@ -47,15 +53,29 @@
 
 ---
 
-### 🎮 Engineering Domains (Memory Towers)
+### Fields of Work
+
+- **Embedded Hardware**: PCB layout & schematic design (KiCad), prototyping, firmware development (ESP32, RP2040).
+- **RF & Wireless**: ISM band monitoring (CC1101, NRF24), LoRa mesh networks, software-defined radio protocols.
+- **Systems & Networking**: Packet analysis, low-level routing, custom DPI bypass implementation.
+- **Autonomous Systems**: Edge AI deployment, target detection & tracking (YOLO, OpenCV).
+
+---
+
+### System Statistics
+
+<div align="center">
+  <img height="150em" src="https://github-readme-stats.vercel.app/api?username=bobberdolle1&hide_icons=true&theme=onyx&include_all_commits=true&count_private=true&hide_border=true" />
+  <img height="150em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=bobberdolle1&layout=compact&theme=onyx&hide_border=true" />
+</div>
+
+<br/>
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/ps2_towers.svg" width="100%" />
 </div>
 
----
-
-### 📊 Github Activity
+<br/>
 
 <div align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=bobberdolle1&theme=react-dark&bg_color=000000&color=ffffff&line=00d4ff&point=ff6b35&area=true&hide_border=true" width="100%"/>
@@ -63,7 +83,7 @@
 
 ---
 
-### 💬 Contact
+### Contact
 
 - **Telegram**: [@norevived](https://t.me/norevived)
 - **Discord**: `bobberdolle1`
