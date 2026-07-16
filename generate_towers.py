@@ -42,9 +42,9 @@ COLORS = {
 }
 
 def project(x, y, z):
-    # center is at (WIDTH/2, HEIGHT - 100)
+    # center is at (WIDTH/2, HEIGHT/2 + 50) to perfectly fit the grid
     x0 = WIDTH / 2
-    y0 = HEIGHT - 80
+    y0 = 300
     iso_x = x0 + (x - y) * CELL_W
     iso_y = y0 + (x + y) * CELL_H - z
     return iso_x, iso_y
