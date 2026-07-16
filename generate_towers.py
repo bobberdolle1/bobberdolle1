@@ -52,7 +52,7 @@ def project(x, y, z):
 svg = [
     f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 100 800 400" width="100%">',
     '  <!-- Dark Space Background -->',
-    '  <rect width="100%" height="100%" fill="#020203" />',
+    '  <rect x="-1000" y="-1000" width="5000" height="5000" fill="#020203" />',
     '  <defs>',
     '    <radialGradient id="glow" cx="50%" cy="50%" r="50%">',
     '      <stop offset="0%" stop-color="#004488" stop-opacity="0.3" />',
