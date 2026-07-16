@@ -438,7 +438,7 @@ async function generateTowersSvg() {
                     
                     svg += `
     <g class="tower-group">
-      <title>Date: ${date} | Commits: ${level}</title>
+      <title>Commits Level: ${level}</title>
       <polygon points="${base_left}" fill="${c.left}" opacity="0.9">
         <animate attributeName="points" values="${base_left};${full_left}" begin="${delay}s" dur="0.8s" fill="freeze" ${ease} />
       </polygon>
