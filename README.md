@@ -4,7 +4,7 @@
 
 ---
 
-### 🛰️ Projects
+### 🛰️ Featured Projects
 
 <table width="100%">
   <tr>
@@ -47,16 +47,15 @@
 
 ---
 
-### 🛠️ Fields of Work
+### 🎮 Engineering Domains (Memory Towers)
 
-- **Embedded Hardware**: PCB layout & schematic design (KiCad), prototyping, firmware development (ESP32, RP2040).
-- **RF & Wireless**: ISM band monitoring (CC1101, NRF24), LoRa mesh networks, software-defined radio protocols.
-- **Systems & Networking**: Packet analysis, low-level routing, custom DPI bypass implementation.
-- **Autonomous Systems**: Edge AI deployment, target detection & tracking (YOLO, OpenCV).
+<div align="center">
+  <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/ps2_towers.svg" width="100%" />
+</div>
 
 ---
 
-### 📊 Github Stats
+### 📊 Github Activity
 
 <div align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=bobberdolle1&theme=react-dark&bg_color=000000&color=ffffff&line=00d4ff&point=ff6b35&area=true&hide_border=true" width="100%"/>

@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" width="100%">
+  <!-- Deep Black Console Background -->
+  <rect width="100%" height="100%" fill="#000000" />
+
+  <defs>
+    <!-- Scanlines for CRT feel -->
+    <pattern id="scanlines" width="100" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="100" y2="0" stroke="#080808" stroke-width="1.5" />
+    </pattern>
+    
+    <!-- Tower Gradients (Translucent Glowing) -->
+    <!-- Left face gradient (Darker) -->
+    <linearGradient id="left-cyan" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00668a" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#001a24" stop-opacity="0.1"/>
+    </linearGradient>
+    <!-- Right face gradient (Lighter/Glowing) -->
+    <linearGradient id="right-cyan" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#003b47" stop-opacity="0.2"/>
+    </linearGradient>
+    <!-- Top face (Solid glowing border) -->
+    <linearGradient id="top-cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#80f3ff" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Purple Tower Gradients -->
+    <linearGradient id="left-purple" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#56008a" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#160024" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="right-purple" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9d00ff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#2d0047" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="top-purple" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b652ff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#d699ff" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- White/Silver Tower Gradients -->
+    <linearGradient id="left-silver" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#555555" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#111111" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="right-silver" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#cccccc" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#333333" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="top-silver" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#dddddd" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Ambient Dust Particles -->
+    <radialGradient id="particle" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#00d4ff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#scanlines)" />
+
+  <!-- Floating Particles -->
+  <circle cx="180" cy="120" r="3" fill="url(#particle)">
+    <animate attributeName="cy" dur="6s" repeatCount="indefinite" values="120;90;120" />
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite" values="0.1;0.8;0.1" />
+  </circle>
+  <circle cx="340" cy="70" r="2" fill="url(#particle)">
+    <animate attributeName="cy" dur="8s" repeatCount="indefinite" values="70;40;70" />
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0.2;0.9;0.2" />
+  </circle>
+  <circle cx="520" cy="150" r="2.5" fill="url(#particle)">
+    <animate attributeName="cy" dur="7s" repeatCount="indefinite" values="150;110;150" />
+    <animate attributeName="opacity" dur="7s" repeatCount="indefinite" values="0.1;0.7;0.1" />
+  </circle>
+  <circle cx="680" cy="90" r="3.5" fill="url(#particle)">
+    <animate attributeName="cy" dur="9s" repeatCount="indefinite" values="90;60;90" />
+    <animate attributeName="opacity" dur="9s" repeatCount="indefinite" values="0.2;0.8;0.2" />
+  </circle>
+
+  <!-- Ground Grid/Reflections -->
+  <ellipse cx="400" cy="225" rx="350" ry="25" fill="none" stroke="#111111" stroke-width="1.5" />
+  <line x1="50" y1="225" x2="750" y2="225" stroke="#111111" stroke-width="1.5" />
+
+  <!-- TOWER 1: EMBEDDED (Cyan, cx=180, cy=220, base h=120) -->
+  <g>
+    <animateTransform attributeName="transform" type="scale" additive="sum"
+                      values="1 0.8; 1 1.1; 1 0.8" dur="8s" repeatCount="indefinite"
+                      transform-origin="180 220" />
+    <!-- Left Face -->
+    <path d="M 150,100 L 150,220 L 180,230 L 180,110 Z" fill="url(#left-cyan)" />
+    <!-- Right Face -->
+    <path d="M 180,110 L 180,230 L 210,220 L 210,100 Z" fill="url(#right-cyan)" stroke="#00d4ff" stroke-width="0.5" stroke-opacity="0.3" />
+    <!-- Top Diamond Face -->
+    <path d="M 150,100 L 180,90 L 210,100 L 180,110 Z" fill="url(#top-cyan)" />
+  </g>
+  <text x="180" y="255" dominant-baseline="middle" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="bold" fill="#00d4ff" letter-spacing="1">EMBEDDED</text>
+
+  <!-- TOWER 2: RF SCANNING (Purple, cx=340, cy=220, base h=160) -->
+  <g>
+    <animateTransform attributeName="transform" type="scale" additive="sum"
+                      values="1 1.05; 1 0.85; 1 1.05" dur="10s" repeatCount="indefinite"
+                      transform-origin="340 220" />
+    <!-- Left Face -->
+    <path d="M 310,60 L 310,220 L 340,230 L 340,70 Z" fill="url(#left-purple)" />
+    <!-- Right Face -->
+    <path d="M 340,70 L 340,230 L 370,220 L 370,60 Z" fill="url(#right-purple)" stroke="#9d00ff" stroke-width="0.5" stroke-opacity="0.3" />
+    <!-- Top Diamond Face -->
+    <path d="M 310,60 L 340,50 L 370,60 L 340,70 Z" fill="url(#top-purple)" />
+  </g>
+  <text x="340" y="255" dominant-baseline="middle" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="bold" fill="#9d00ff" letter-spacing="1">RF / WIRELESS</text>
+
+  <!-- TOWER 3: COMPUTER VISION (Silver, cx=500, cy=220, base h=90) -->
+  <g>
+    <animateTransform attributeName="transform" type="scale" additive="sum"
+                      values="1 0.75; 1 1.2; 1 0.75" dur="7s" repeatCount="indefinite"
+                      transform-origin="500 220" />
+    <!-- Left Face -->
+    <path d="M 470,130 L 470,220 L 500,230 L 500,140 Z" fill="url(#left-silver)" />
+    <!-- Right Face -->
+    <path d="M 500,140 L 500,230 L 530,220 L 530,130 Z" fill="url(#right-silver)" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.2" />
+    <!-- Top Diamond Face -->
+    <path d="M 470,130 L 500,120 L 530,130 L 500,140 Z" fill="url(#top-silver)" />
+  </g>
+  <text x="500" y="255" dominant-baseline="middle" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="bold" fill="#ffffff" letter-spacing="1">CV / ROBOTICS</text>
+
+  <!-- TOWER 4: NETWORKING / BYPASS (Cyan, cx=660, cy=220, base h=130) -->
+  <g>
+    <animateTransform attributeName="transform" type="scale" additive="sum"
+                      values="1 0.9; 1 1.15; 1 0.9" dur="9s" repeatCount="indefinite"
+                      transform-origin="660 220" />
+    <!-- Left Face -->
+    <path d="M 630,90 L 630,220 L 660,230 L 660,100 Z" fill="url(#left-cyan)" />
+    <!-- Right Face -->
+    <path d="M 660,100 L 660,230 L 690,220 L 690,90 Z" fill="url(#right-cyan)" stroke="#00d4ff" stroke-width="0.5" stroke-opacity="0.3" />
+    <!-- Top Diamond Face -->
+    <path d="M 630,90 L 660,80 L 690,90 L 660,100 Z" fill="url(#top-cyan)" />
+  </g>
+  <text x="660" y="255" dominant-baseline="middle" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="bold" fill="#00d4ff" letter-spacing="1">NETWORKS</text>
+</svg>
