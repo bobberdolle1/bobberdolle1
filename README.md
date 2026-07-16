@@ -1,14 +1,38 @@
 <div align="center">
-
-# 🛰️ bobberdolle1
-**Hardware Hacker & Systems Developer**  
-*Embedded Systems | RF Monitoring | Computer Vision | Network Bypassing*
-
+  <img src="assets/xmb_banner.svg" width="100%" />
 </div>
 
 ---
 
-### 📦 Featured Projects
+<div align="center">
+  <h3>🎮 XMB MENU (SELECT CATEGORY)</h3>
+</div>
+
+<br/>
+
+<table width="100%">
+  <tr>
+    <td width="33%" align="center" valign="top">
+      <h3>🛠️</h3>
+      <strong>SYSTEM SETTINGS</strong>
+      <p><small>ESP32 / RP2040 / PCB design (KiCad) / Firmware prototyping</small></p>
+    </td>
+    <td width="33%" align="center" valign="top">
+      <h3>📡</h3>
+      <strong>NETWORK &amp; RF</strong>
+      <p><small>DPI bypass, 900M/2.4G/5.8G band scanning, LoRa mesh nets</small></p>
+    </td>
+    <td width="33%" align="center" valign="top">
+      <h3>💿</h3>
+      <strong>GAME / SOFTWARE</strong>
+      <p><small>Ballistic drops, flash programmers, AI map generators</small></p>
+    </td>
+  </tr>
+</table>
+
+---
+
+### 💿 Memory Card Slot 1 (Featured Projects)
 
 <table width="100%">
   <tr>
@@ -51,20 +75,10 @@
 
 ---
 
-### 🛠️ Fields of Work
-
-- **Embedded Hardware**: PCB layout & schematic design (KiCad), prototyping, firmware development (ESP32, RP2040).
-- **RF & Wireless**: ISM band monitoring (CC1101, NRF24), LoRa mesh networks, software-defined radio protocols.
-- **Systems & Networking**: Packet analysis, low-level routing, custom DPI bypass implementation.
-- **Autonomous Systems**: Edge AI deployment, target detection & tracking (YOLO, OpenCV).
-
----
-
-### 📊 Github Stats
+### ℹ️ Console Information
 
 <div align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=bobberdolle1&show_icons=true&theme=onyx&include_all_commits=true&count_private=true" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=bobberdolle1&layout=compact&theme=onyx&langs_count=8" />
+  <img src="assets/system_info.svg" width="100%" />
 </div>
 
 <br/>
@@ -82,11 +96,7 @@
 
 ---
 
-### 💬 Contact
-
-<div align="left">
+### 💬 Controller Inputs (Contact)
 
 - **Telegram**: [@norevived](https://t.me/norevived)
 - **Discord**: `bobberdolle1`
-
-</div>
