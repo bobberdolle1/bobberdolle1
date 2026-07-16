@@ -146,7 +146,7 @@ function generateHeaderSvg() {
 
 function generateProjectsSvg(repos) {
     const width = 800;
-    const cardHeight = 120;
+    const cardHeight = 140;
     const padding = 20;
     const rows = Math.ceil(repos.length / 2);
     const height = rows * cardHeight + (rows + 1) * padding + 80;
@@ -154,6 +154,12 @@ function generateProjectsSvg(repos) {
     let svg = `
 <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
     ${createGlitchFilters()}
+    <style>
+        .window-group { cursor: pointer; }
+        .window-group:hover .window { stroke: ${COLORS.magenta}; stroke-width: 3; }
+        .window-group:hover .text-title { fill: ${COLORS.magenta}; }
+        .window-group:hover .window-header { fill: ${COLORS.magenta}; opacity: 0.3; }
+    </style>
     
     <!-- Background -->
     <rect width="100%" height="100%" fill="${COLORS.bg}" />
@@ -172,26 +178,31 @@ function generateProjectsSvg(repos) {
         const x = padding + col * (cardWidth + padding);
         const y = 80 + row * (cardHeight + padding);
         
-        let desc = escapeHtml(repo.description);
-        // Truncate desc if too long
-        if (desc.length > 75) desc = desc.substring(0, 72) + '...';
+        let desc = repo.description || '';
         
-        // Break description into two lines
-        let descLine1 = desc;
-        let descLine2 = '';
-        if (desc.length > 40) {
-            const splitIndex = desc.lastIndexOf(' ', 40);
-            if (splitIndex > 0) {
-                descLine1 = desc.substring(0, splitIndex);
-                descLine2 = desc.substring(splitIndex + 1);
+        // Better word wrap into up to 3 lines
+        const words = desc.split(' ');
+        let lines = [];
+        let currentLine = '';
+        words.forEach(word => {
+            if ((currentLine + word).length > 42) {
+                lines.push(currentLine.trim());
+                currentLine = word + ' ';
+            } else {
+                currentLine += word + ' ';
             }
+        });
+        lines.push(currentLine.trim());
+        if (lines.length > 3) {
+            lines = lines.slice(0, 3);
+            lines[2] = lines[2].substring(0, 38) + '...';
         }
         
         svg += `
     <!-- Project Card Window -->
-    <g transform="translate(${x}, ${y})">
-        <rect width="${cardWidth}" height="${cardHeight}" class="window" />
-        <rect width="${cardWidth}" height="20" class="window-header" />
+    <g transform="translate(${x}, ${y})" class="window-group">
+        <rect width="${cardWidth}" height="${cardHeight}" class="window" style="transition: all 0.3s;" />
+        <rect width="${cardWidth}" height="20" class="window-header" style="transition: all 0.3s;" />
         <circle cx="10" cy="10" r="4" class="window-dot-red" />
         <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
         <circle cx="40" cy="10" r="4" class="window-dot-green" />
@@ -199,17 +210,21 @@ function generateProjectsSvg(repos) {
         <text x="55" y="14" class="text-sub" fill="${COLORS.bg}">~/${escapeHtml(repo.name)}</text>
         
         <!-- Repo Name -->
-        <text x="15" y="45" class="text-title" fill="${COLORS.cyan}">${escapeHtml(repo.name)}</text>
+        <text x="15" y="45" class="text-title" style="transition: fill 0.3s;">${escapeHtml(repo.name)}</text>
         
         <!-- Description -->
-        <text x="15" y="65" class="text-desc">${descLine1}</text>
-        <text x="15" y="82" class="text-desc">${descLine2}</text>
+        ${lines[0] ? `<text x="15" y="65" class="text-desc">${escapeHtml(lines[0])}</text>` : ''}
+        ${lines[1] ? `<text x="15" y="82" class="text-desc">${escapeHtml(lines[1])}</text>` : ''}
+        ${lines[2] ? `<text x="15" y="99" class="text-desc">${escapeHtml(lines[2])}</text>` : ''}
         
         <!-- Stars and Language -->
-        <text x="15" y="105" class="text-stat">[★ ${repo.stargazers_count}]</text>
-        <text x="80" y="105" class="text-stat">[<span style="color:${COLORS.purple}">$</span> ${escapeHtml(repo.language || 'Unknown')}]</text>
+        <text x="15" y="125" class="text-stat">[★ ${repo.stargazers_count}]</text>
+        <text x="80" y="125" class="text-stat">[<span style="color:${COLORS.purple}">$</span> ${escapeHtml(repo.language || 'Unknown')}]</text>
         
         <path d="M 0,${cardHeight-2} L ${cardWidth},${cardHeight-2}" stroke="${COLORS.magenta}" stroke-width="2" opacity="0.5"/>
+        
+        <!-- Interactive Overlay (to catch hover events better) -->
+        <rect width="${cardWidth}" height="${cardHeight}" fill="transparent" />
     </g>
         `;
     });

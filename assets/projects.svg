@@ -1,4 +1,4 @@
-<svg width="800" height="520" xmlns="http://www.w3.org/2000/svg">
+<svg width="800" height="580" xmlns="http://www.w3.org/2000/svg">
     
     <defs>
         <filter id="glitch">
@@ -66,6 +66,12 @@
         </pattern>
     </defs>
     
+    <style>
+        .window-group { cursor: pointer; }
+        .window-group:hover .window { stroke: #ff007f; stroke-width: 3; }
+        .window-group:hover .text-title { fill: #ff007f; }
+        .window-group:hover .window-header { fill: #ff007f; opacity: 0.3; }
+    </style>
     
     <!-- Background -->
     <rect width="100%" height="100%" fill="#050508" />
@@ -77,9 +83,9 @@
     <path d="M 260,55 L 540,55" stroke="#00f0ff" stroke-width="1" fill="none"/>
     
     <!-- Project Card Window -->
-    <g transform="translate(20, 80)">
-        <rect width="370" height="120" class="window" />
-        <rect width="370" height="20" class="window-header" />
+    <g transform="translate(20, 80)" class="window-group">
+        <rect width="370" height="140" class="window" style="transition: all 0.3s;" />
+        <rect width="370" height="20" class="window-header" style="transition: all 0.3s;" />
         <circle cx="10" cy="10" r="4" class="window-dot-red" />
         <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
         <circle cx="40" cy="10" r="4" class="window-dot-green" />
@@ -87,23 +93,27 @@
         <text x="55" y="14" class="text-sub" fill="#050508">~/SkySweep32</text>
         
         <!-- Repo Name -->
-        <text x="15" y="45" class="text-title" fill="#00f0ff">SkySweep32</text>
+        <text x="15" y="45" class="text-title" style="transition: fill 0.3s;">SkySweep32</text>
         
         <!-- Description -->
-        <text x="15" y="65" class="text-desc"> Multi-band passive drone detector on</text>
-        <text x="15" y="82" class="text-desc">ESP32 | Мультидиапазонный детектор...</text>
+        <text x="15" y="65" class="text-desc">Multi-band passive drone detector on</text>
+        <text x="15" y="82" class="text-desc">ESP32 | Мультидиапазонный детектор БПЛА |</text>
+        <text x="15" y="99" class="text-desc">900MHz/2.4GHz/5.8GHz RF scanner with...</text>
         
         <!-- Stars and Language -->
-        <text x="15" y="105" class="text-stat">[★ 25]</text>
-        <text x="80" y="105" class="text-stat">[<span style="color:#8a2be2">$</span> C++]</text>
+        <text x="15" y="125" class="text-stat">[★ 25]</text>
+        <text x="80" y="125" class="text-stat">[<span style="color:#8a2be2">$</span> C++]</text>
         
-        <path d="M 0,118 L 370,118" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        <path d="M 0,138 L 370,138" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        
+        <!-- Interactive Overlay (to catch hover events better) -->
+        <rect width="370" height="140" fill="transparent" />
     </g>
         
     <!-- Project Card Window -->
-    <g transform="translate(410, 80)">
-        <rect width="370" height="120" class="window" />
-        <rect width="370" height="20" class="window-header" />
+    <g transform="translate(410, 80)" class="window-group">
+        <rect width="370" height="140" class="window" style="transition: all 0.3s;" />
+        <rect width="370" height="20" class="window-header" style="transition: all 0.3s;" />
         <circle cx="10" cy="10" r="4" class="window-dot-red" />
         <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
         <circle cx="40" cy="10" r="4" class="window-dot-green" />
@@ -111,23 +121,27 @@
         <text x="55" y="14" class="text-sub" fill="#050508">~/openflash</text>
         
         <!-- Repo Name -->
-        <text x="15" y="45" class="text-title" fill="#00f0ff">openflash</text>
+        <text x="15" y="45" class="text-title" style="transition: fill 0.3s;">openflash</text>
         
         <!-- Description -->
-        <text x="15" y="65" class="text-desc">OpenFlash is an open-source</text>
-        <text x="15" y="82" class="text-desc">NAND/eMMC/NOR flash programmer that turns ch...</text>
+        <text x="15" y="65" class="text-desc">OpenFlash is an open-source NAND/eMMC/NOR</text>
+        <text x="15" y="82" class="text-desc">flash programmer that turns cheap</text>
+        <text x="15" y="99" class="text-desc">microcontrollers ($4 Raspberry Pi Pico...</text>
         
         <!-- Stars and Language -->
-        <text x="15" y="105" class="text-stat">[★ 7]</text>
-        <text x="80" y="105" class="text-stat">[<span style="color:#8a2be2">$</span> Rust]</text>
+        <text x="15" y="125" class="text-stat">[★ 7]</text>
+        <text x="80" y="125" class="text-stat">[<span style="color:#8a2be2">$</span> Rust]</text>
         
-        <path d="M 0,118 L 370,118" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        <path d="M 0,138 L 370,138" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        
+        <!-- Interactive Overlay (to catch hover events better) -->
+        <rect width="370" height="140" fill="transparent" />
     </g>
         
     <!-- Project Card Window -->
-    <g transform="translate(20, 220)">
-        <rect width="370" height="120" class="window" />
-        <rect width="370" height="20" class="window-header" />
+    <g transform="translate(20, 240)" class="window-group">
+        <rect width="370" height="140" class="window" style="transition: all 0.3s;" />
+        <rect width="370" height="20" class="window-header" style="transition: all 0.3s;" />
         <circle cx="10" cy="10" r="4" class="window-dot-red" />
         <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
         <circle cx="40" cy="10" r="4" class="window-dot-green" />
@@ -135,23 +149,27 @@
         <text x="55" y="14" class="text-sub" fill="#050508">~/unbound</text>
         
         <!-- Repo Name -->
-        <text x="15" y="45" class="text-title" fill="#00f0ff">unbound</text>
+        <text x="15" y="45" class="text-title" style="transition: fill 0.3s;">unbound</text>
         
         <!-- Description -->
         <text x="15" y="65" class="text-desc">🚀 Универсальный обход DPI на уровне</text>
-        <text x="15" y="82" class="text-desc">пакетов (Windows, macOS, Linux, Ope...</text>
+        <text x="15" y="82" class="text-desc">пакетов (Windows, macOS, Linux, OpenWrt,</text>
+        <text x="15" y="99" class="text-desc">Android, iOS). Без VPN-туннелей, нулев...</text>
         
         <!-- Stars and Language -->
-        <text x="15" y="105" class="text-stat">[★ 6]</text>
-        <text x="80" y="105" class="text-stat">[<span style="color:#8a2be2">$</span> Lua]</text>
+        <text x="15" y="125" class="text-stat">[★ 6]</text>
+        <text x="80" y="125" class="text-stat">[<span style="color:#8a2be2">$</span> Lua]</text>
         
-        <path d="M 0,118 L 370,118" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        <path d="M 0,138 L 370,138" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        
+        <!-- Interactive Overlay (to catch hover events better) -->
+        <rect width="370" height="140" fill="transparent" />
     </g>
         
     <!-- Project Card Window -->
-    <g transform="translate(410, 220)">
-        <rect width="370" height="120" class="window" />
-        <rect width="370" height="20" class="window-header" />
+    <g transform="translate(410, 240)" class="window-group">
+        <rect width="370" height="140" class="window" style="transition: all 0.3s;" />
+        <rect width="370" height="20" class="window-header" style="transition: all 0.3s;" />
         <circle cx="10" cy="10" r="4" class="window-dot-red" />
         <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
         <circle cx="40" cy="10" r="4" class="window-dot-green" />
@@ -159,23 +177,27 @@
         <text x="55" y="14" class="text-sub" fill="#050508">~/BeamNG.WorldForge</text>
         
         <!-- Repo Name -->
-        <text x="15" y="45" class="text-title" fill="#00f0ff">BeamNG.WorldForge</text>
+        <text x="15" y="45" class="text-title" style="transition: fill 0.3s;">BeamNG.WorldForge</text>
         
         <!-- Description -->
-        <text x="15" y="65" class="text-desc">BeamNG.WorldForge: Auto-generate</text>
-        <text x="15" y="82" class="text-desc">realistic BeamNG.drive maps from real s...</text>
+        <text x="15" y="65" class="text-desc">BeamNG.WorldForge: Auto-generate realistic</text>
+        <text x="15" y="82" class="text-desc">BeamNG.drive maps from real satellite</text>
+        <text x="15" y="99" class="text-desc">data. Uses AI (Ollama/Qwen) for terrai...</text>
         
         <!-- Stars and Language -->
-        <text x="15" y="105" class="text-stat">[★ 4]</text>
-        <text x="80" y="105" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
+        <text x="15" y="125" class="text-stat">[★ 4]</text>
+        <text x="80" y="125" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
         
-        <path d="M 0,118 L 370,118" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        <path d="M 0,138 L 370,138" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        
+        <!-- Interactive Overlay (to catch hover events better) -->
+        <rect width="370" height="140" fill="transparent" />
     </g>
         
     <!-- Project Card Window -->
-    <g transform="translate(20, 360)">
-        <rect width="370" height="120" class="window" />
-        <rect width="370" height="20" class="window-header" />
+    <g transform="translate(20, 400)" class="window-group">
+        <rect width="370" height="140" class="window" style="transition: all 0.3s;" />
+        <rect width="370" height="20" class="window-header" style="transition: all 0.3s;" />
         <circle cx="10" cy="10" r="4" class="window-dot-red" />
         <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
         <circle cx="40" cy="10" r="4" class="window-dot-green" />
@@ -183,23 +205,27 @@
         <text x="55" y="14" class="text-sub" fill="#050508">~/Pico-Nand-Flasher</text>
         
         <!-- Repo Name -->
-        <text x="15" y="45" class="text-title" fill="#00f0ff">Pico-Nand-Flasher</text>
+        <text x="15" y="45" class="text-title" style="transition: fill 0.3s;">Pico-Nand-Flasher</text>
         
         <!-- Description -->
         <text x="15" y="65" class="text-desc">NAND Flasher for Raspberry Pi Pico</text>
-        <text x="15" y="82" class="text-desc"></text>
+        
+        
         
         <!-- Stars and Language -->
-        <text x="15" y="105" class="text-stat">[★ 4]</text>
-        <text x="80" y="105" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
+        <text x="15" y="125" class="text-stat">[★ 4]</text>
+        <text x="80" y="125" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
         
-        <path d="M 0,118 L 370,118" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        <path d="M 0,138 L 370,138" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        
+        <!-- Interactive Overlay (to catch hover events better) -->
+        <rect width="370" height="140" fill="transparent" />
     </g>
         
     <!-- Project Card Window -->
-    <g transform="translate(410, 360)">
-        <rect width="370" height="120" class="window" />
-        <rect width="370" height="20" class="window-header" />
+    <g transform="translate(410, 400)" class="window-group">
+        <rect width="370" height="140" class="window" style="transition: all 0.3s;" />
+        <rect width="370" height="20" class="window-header" style="transition: all 0.3s;" />
         <circle cx="10" cy="10" r="4" class="window-dot-red" />
         <circle cx="25" cy="10" r="4" class="window-dot-yellow" />
         <circle cx="40" cy="10" r="4" class="window-dot-green" />
@@ -207,17 +233,21 @@
         <text x="55" y="14" class="text-sub" fill="#050508">~/Project-OLEG</text>
         
         <!-- Repo Name -->
-        <text x="15" y="45" class="text-title" fill="#00f0ff">Project-OLEG</text>
+        <text x="15" y="45" class="text-title" style="transition: fill 0.3s;">Project-OLEG</text>
         
         <!-- Description -->
         <text x="15" y="65" class="text-desc">Твой личный кибер-кентуха. Поясняю за</text>
-        <text x="15" y="82" class="text-desc">железо, разгоняю скуку и баню душн...</text>
+        <text x="15" y="82" class="text-desc">железо, разгоняю скуку и баню душнил.</text>
+        <text x="15" y="99" class="text-desc">Работаю на Gemini, живу по понятиям.</text>
         
         <!-- Stars and Language -->
-        <text x="15" y="105" class="text-stat">[★ 3]</text>
-        <text x="80" y="105" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
+        <text x="15" y="125" class="text-stat">[★ 3]</text>
+        <text x="80" y="125" class="text-stat">[<span style="color:#8a2be2">$</span> Python]</text>
         
-        <path d="M 0,118 L 370,118" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        <path d="M 0,138 L 370,138" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
+        
+        <!-- Interactive Overlay (to catch hover events better) -->
+        <rect width="370" height="140" fill="transparent" />
     </g>
         
     <rect width="100%" height="100%" class="scanlines" pointer-events="none" />

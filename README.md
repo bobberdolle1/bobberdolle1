@@ -14,6 +14,13 @@
   <br/>
 
   <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/ps2_towers.svg?v=20">
+    <img src="assets/ps2_towers.svg?v=20" alt="PS2 Contribution Towers" width="100%" />
+  </picture>
+
+  <br/>
+
+  <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/stats.svg?v=20">
     <img src="assets/stats.svg?v=20" alt="bobberdolle1 system stats" width="100%" />
   </picture>
