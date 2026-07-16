@@ -1,5 +1,7 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/xmb_banner.svg?v=3" width="100%" />
+  <picture>
+    <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/xmb_banner.svg?v=5" alt="bobberdolle1 banner" style="max-width: 100%; height: auto;" />
+  </picture>
 </div>
 
 <div align="center">
@@ -9,7 +11,9 @@
 <br/>
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/ps2_towers.svg?v=4" width="100%" />
+  <picture>
+    <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/ps2_towers.svg?v=5" alt="PS2 Contribution Towers" style="max-width: 100%; height: auto;" />
+  </picture>
 </div>
 
 <br/>
