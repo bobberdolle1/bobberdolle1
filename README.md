@@ -1,44 +1,16 @@
 <div align="center">
-  <img src="assets/xmb_banner.svg" width="100%" />
+  <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/xmb_banner.svg" width="100%" />
 </div>
 
 ---
 
-<div align="center">
-  <h3>🎮 XMB MENU (SELECT CATEGORY)</h3>
-</div>
-
-<br/>
-
-<table width="100%">
-  <tr>
-    <td width="33%" align="center" valign="top">
-      <h3>🛠️</h3>
-      <strong>SYSTEM SETTINGS</strong>
-      <p><small>ESP32 / RP2040 / PCB design (KiCad) / Firmware prototyping</small></p>
-    </td>
-    <td width="33%" align="center" valign="top">
-      <h3>📡</h3>
-      <strong>NETWORK &amp; RF</strong>
-      <p><small>DPI bypass, 900M/2.4G/5.8G band scanning, LoRa mesh nets</small></p>
-    </td>
-    <td width="33%" align="center" valign="top">
-      <h3>💿</h3>
-      <strong>GAME / SOFTWARE</strong>
-      <p><small>Ballistic drops, flash programmers, AI map generators</small></p>
-    </td>
-  </tr>
-</table>
-
----
-
-### 💿 Memory Card Slot 1 (Featured Projects)
+### 🛰️ Projects
 
 <table width="100%">
   <tr>
     <td width="50%" valign="top">
       <h4>📡 <a href="https://github.com/bobberdolle1/SkySweep32">SkySweep32</a></h4>
-      <p>Multi-band passive drone detector (900MHz / 2.4GHz / 5.8GHz RF) with custom carrier PCBs & 3D printed enclosures.</p>
+      <p>Multi-band passive drone detector (900MHz / 2.4GHz / 5.8GHz RF) with custom carrier PCBs &amp; 3D printed enclosures.</p>
       <code>C++</code> <code>ESP32</code> <code>KiCad</code> <code>FreeCAD</code>
     </td>
     <td width="50%" valign="top">
@@ -75,10 +47,19 @@
 
 ---
 
-### ℹ️ Console Information
+### 🛠️ Domains & Tech
+
+- **Embedded Hardware**: PCB layout & schematic design (KiCad), prototyping, firmware development (ESP32, RP2040).
+- **RF & Wireless**: ISM band monitoring (CC1101, NRF24), LoRa mesh networks, software-defined radio protocols.
+- **Systems & Networking**: Packet analysis, low-level routing, custom DPI bypass implementation.
+- **Autonomous Systems**: Edge AI deployment, target detection & tracking (YOLO, OpenCV).
+
+---
+
+### ℹ️ Console Info
 
 <div align="center">
-  <img src="assets/system_info.svg" width="100%" />
+  <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/main/assets/system_info.svg" width="100%" />
 </div>
 
 <br/>
@@ -87,16 +68,9 @@
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=bobberdolle1&theme=react-dark&bg_color=000000&color=ffffff&line=00d4ff&point=ff6b35&area=true&hide_border=true" width="100%"/>
 </div>
 
-<br/>
-
-<!-- Snake Contribution Grid -->
-<div align="center">
-  <img src="https://raw.githubusercontent.com/bobberdolle1/bobberdolle1/output/github-contribution-grid-snake-dark.svg" alt="contribution snake"/>
-</div>
-
 ---
 
-### 💬 Controller Inputs (Contact)
+### 💬 Contact
 
 - **Telegram**: [@norevived](https://t.me/norevived)
 - **Discord**: `bobberdolle1`
