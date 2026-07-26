@@ -103,7 +103,7 @@
         
         
         <!-- Stars and Language -->
-        <text x="15" y="165" class="text-stat">[★ 25]</text>
+        <text x="15" y="165" class="text-stat">[★ 28]</text>
         <text x="80" y="165" class="text-stat">[<span style="color:#8a2be2">$</span> C++]</text>
         
         <path d="M 0,178 L 370,178" stroke="#ff007f" stroke-width="2" opacity="0.5"/>
@@ -133,7 +133,7 @@
         <text x="15" y="133" class="text-desc">memory readers/writers.</text>
         
         <!-- Stars and Language -->
-        <text x="15" y="165" class="text-stat">[★ 7]</text>
+        <text x="15" y="165" class="text-stat">[★ 8]</text>
         <text x="80" y="165" class="text-stat">[<span style="color:#8a2be2">$</span> Rust]</text>
         
         <path d="M 0,178 L 370,178" stroke="#ff007f" stroke-width="2" opacity="0.5"/>

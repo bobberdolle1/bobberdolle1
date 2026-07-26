@@ -17,7 +17,11 @@ const COLORS = {
 
 async function fetchRepos() {
     try {
-        const res = await fetch(API_URL);
+        const headers = {
+            'User-Agent': 'bobberdolle1-readme-generator',
+            ...(process.env.GITHUB_TOKEN ? { 'Authorization': `token ${process.env.GITHUB_TOKEN}` } : {})
+        };
+        const res = await fetch(API_URL, { headers });
         if (!res.ok) throw new Error(`Failed to fetch: ${res.statusText}`);
         const data = await res.json();
         return data
@@ -285,7 +289,11 @@ async function generateTowersSvg() {
     
     let html = '';
     try {
-        const res = await fetch(url);
+        const headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)',
+            ...(process.env.GITHUB_TOKEN ? { 'Authorization': `token ${process.env.GITHUB_TOKEN}` } : {})
+        };
+        const res = await fetch(url, { headers });
         html = await res.text();
     } catch (e) {
         console.error('Error fetching contributions:', e);
