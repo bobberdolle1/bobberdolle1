@@ -2,7 +2,7 @@ name: Generate Pixel Art README Assets
 
 on:
   schedule:
-    - cron: "0 */12 * * *"
+    - cron: "0 */6 * * *"
   workflow_dispatch:
   push:
     branches:
@@ -13,6 +13,8 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -23,6 +25,8 @@ jobs:
           node-version: "20"
 
       - name: Generate Pixel Art Assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node generate_assets.js
 
       - name: Commit and Push
