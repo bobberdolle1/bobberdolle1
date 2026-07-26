@@ -40,7 +40,9 @@ jobs:
 
       - name: Commit if the field changed
         run: |
-          if git diff --quiet -- assets/; then
+          # git diff --quiet misses newly created files; status --porcelain
+          # catches modified and untracked alike.
+          if [ -z "$(git status --porcelain -- assets/)" ]; then
             echo "no change — same data as the last run"
             exit 0
           fi
