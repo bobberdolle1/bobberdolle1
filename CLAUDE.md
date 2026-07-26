@@ -4,15 +4,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository purpose
 
-This repo is named `bobberdolle1`, matching the GitHub username — GitHub renders its `README.md` directly on the user's profile page (github.com/bobberdolle1). Most of the repo's content is that README: a stylized, meme-heavy profile page (capsule-render banners, typing SVGs, stat/streak/trophy widgets, a Rust-flavored "whoami" block, a featured-projects table). Edits to `README.md` are edits to the public profile, not application code — treat wording/tone changes there as content edits, not refactors.
+This repo is named `bobberdolle1`, matching the GitHub username — GitHub renders its `README.md` directly on the user's profile page (github.com/bobberdolle1). The profile is a generated art piece: a PS2-boot / PS3-XMB inspired scene (cold blue-white light in a black void, no console-UI literalism) built entirely from SVGs that `generate_assets.js` renders from live GitHub data. Edits to the profile's look belong in `generate_assets.js`, not in the SVGs (they are overwritten every 6 hours by CI) and mostly not in `README.md` (its card grid section is also generated).
 
-There is no build system, package manifest, or test suite in this repo.
+There is no test suite; `node generate_assets.js` (with `GITHUB_TOKEN` set) is the whole build.
 
 ## Structure
 
-- `README.md` — the GitHub profile page content described above.
+- `generate_assets.js` — the single source of truth for the profile's look. Fetches repos/user/contribution-calendar/language bytes (REST + GraphQL) and commit timestamps (GraphQL history walk), then writes every SVG in `assets/` and rewrites the clickable project-card grid in `README.md` between the `<!-- projects:start -->` / `<!-- projects:end -->` markers. Decorative randomness (dust, beam flicker) is seeded via `mulberry32` so identical data produces byte-identical files. Every animation must keep a fully visible resting state (GitHub may render frame 0 only) and be listed in the shared `prefers-reduced-motion` block.
+- `README.md` — mostly a stack of `<img>` blocks pointing at `assets/*.svg`; only the footer tagline and block order are hand-edited. The card grid between the projects markers is machine-written — never edit it by hand.
+- `assets/` — generated output only (header, towers, signal, telemetry, label-work, card-0..5, link chips). Never hand-edit.
+- `.github/workflows/generate.yml` — cron (every 6h) + push-triggered Action that runs the generator and commits `assets/` and `README.md` when the data changed.
 - `termvibes/vibes.py` — standalone, dependency-free Python 3 script: a terminal ANSI/ASCII animation toy (matrix rain, fire, plasma, starfield, DVD-bounce logo). Single file, no package structure; not imported by anything else in the repo.
-- `.github/workflows/snake.yml` — scheduled GitHub Action (`Platane/snk`) that regenerates a contribution "snake" SVG and pushes it to the `output` branch, consumed by an image embed elsewhere (the Spotify/snake badges have been added and removed from the README over time — check current README state before assuming a badge is live).
+
+## Design rules for the profile SVGs
+
+- Palette is strict: `#cfeeff` / `#7fd4ff` / `#1d6fb8` / `#0a2c55` on near-black. No magenta/synthwave pink (tried, rejected); no brand colors (shields.io badges were removed for this reason).
+- The towers block is the page's only loud element and its only large number. New blocks must stay quiet: thin strokes, mono captions, one idea each.
+- No literal console UI: no menus, memory cards, crossbars, HUD chrome.
 
 ## Working with termvibes/vibes.py
 
