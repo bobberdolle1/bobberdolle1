@@ -1,4 +1,4 @@
-name: Generate Pixel Art README Assets
+name: Rebuild profile assets
 
 on:
   schedule:
@@ -9,12 +9,18 @@ on:
       - main
     paths:
       - "generate_assets.js"
+      - ".github/workflows/generate.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generate-assets
+  cancel-in-progress: true
 
 jobs:
   generate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -24,14 +30,22 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Generate Pixel Art Assets
+      - name: Render SVGs from live GitHub data
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # The contributions calendar is a GraphQL-only field. GITHUB_TOKEN
+          # reads it fine for public contributions; set a GH_PAT with read:user
+          # if private contributions should be counted too.
+          GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         run: node generate_assets.js
 
-      - name: Commit and Push
+      - name: Commit if the field changed
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/header.svg assets/projects.svg assets/stats.svg assets/ps2_towers.svg
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update crystal castles pixel art SVGs" && git push)
+          if git diff --quiet -- assets/; then
+            echo "no change — same data as the last run"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/
+          git commit -m "chore: rebuild profile assets"
+          git push
