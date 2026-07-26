@@ -39,13 +39,18 @@ jobs:
         run: node generate_assets.js
 
       - name: Commit if the field changed
+        # README.md is included because the generator rewrites the clickable
+        # card grid between its projects:start/end markers.
         run: |
-          if git diff --quiet -- assets/; then
+          # git diff --quiet misses newly created files; status --porcelain
+          # catches modified and untracked alike.
+          if [ -z "$(git status --porcelain -- assets/ README.md)" ]; then
             echo "no change — same data as the last run"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/
+          git add assets/ README.md
           git commit -m "chore: rebuild profile assets"
+          git pull --rebase origin main
           git push
