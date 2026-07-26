@@ -251,20 +251,34 @@ function generateTowersSvg(cal) {
  * header / projects / stats
  * ------------------------------------------------------------------ */
 
-function generateHeaderSvg() {
+function generateHeaderSvg(cal) {
     const W = 1000, H = 190;
+
+    // A low silhouette skyline built from the most recent weeks, so the header
+    // and the tower field below are visibly the same world and the same data.
+    const recent = cal.weeks.flatMap(w => w.contributionDays.map(d => d.contributionCount)).slice(-98);
+    const peak = Math.max(1, ...recent);
+    const bw = W / recent.length;
+    let skyline = '';
+    recent.forEach((c, i) => {
+        if (c <= 0) return;
+        const h = 5 + 33 * Math.pow(c / peak, 0.6);
+        skyline += `<rect x="${r2(i * bw)}" y="${r2(H - h)}" width="${r2(bw - 1.6)}" height="${r2(h)}" fill="${COLORS.blue}"/>`;
+    });
+
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="vibecoder37">
   ${createDefs()}
   <rect width="100%" height="100%" fill="url(#skyFade)" />
   <ellipse cx="${W / 2}" cy="${H}" rx="460" ry="120" fill="url(#horizonGlow)" />
+  <g opacity="0.34">${skyline}</g>
   <g filter="url(#bloom)">
-    <text x="${W / 2}" y="92" class="t-title" font-size="46" text-anchor="middle">vibecoder37</text>
+    <text x="${W / 2}" y="80" class="t-title" font-size="46" text-anchor="middle">vibecoder37</text>
   </g>
-  <text x="${W / 2}" y="122" class="t-sub" font-size="11" text-anchor="middle">RF · EMBEDDED · COMPUTER VISION · RUST</text>
-  <line x1="${W / 2 - 150}" y1="140" x2="${W / 2 + 150}" y2="140" stroke="${COLORS.blue}" stroke-width="0.75" opacity="0.5">
+  <text x="${W / 2}" y="108" class="t-sub" font-size="11" text-anchor="middle">RF · EMBEDDED · COMPUTER VISION · RUST</text>
+  <line x1="${W / 2 - 150}" y1="125" x2="${W / 2 + 150}" y2="125" stroke="${COLORS.blue}" stroke-width="0.75" opacity="0.5">
     <animate attributeName="opacity" values="0.15;0.6;0.15" dur="4s" repeatCount="indefinite"/>
   </line>
-  <text x="${W / 2}" y="162" class="t-sub" font-size="9.5" text-anchor="middle">IVANOVO, RU</text>
+  <text x="${W / 2}" y="143" class="t-sub" font-size="9.5" text-anchor="middle">IVANOVO, RU</text>
 </svg>`;
 }
 
@@ -347,7 +361,7 @@ async function main() {
     console.log(`repos: ${repos.length}, contributions: ${cal.totalContributions}`);
 
     const files = {
-        'header.svg': generateHeaderSvg(),
+        'header.svg': generateHeaderSvg(cal),
         'projects.svg': generateProjectsSvg(repos),
         'towers.svg': generateTowersSvg(cal),
         'stats.svg': generateStatsSvg(cal, repos)
