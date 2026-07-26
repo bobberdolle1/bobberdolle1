@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 150" width="100%" role="img" aria-label="stats">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 112" width="100%" role="img" aria-label="Language composition across public repos: PYTHON 57.8%  ·  RUST 14.7%  ·  LUA 6.2%  ·  TYPESCRIPT 5.6%  ·  GO 3.4%  ·  C++ 3.1%  ·  OTHER 9.3%">
   
     <defs>
         <linearGradient id="skyFade" x1="0" y1="0" x2="0" y2="1">
@@ -28,15 +28,16 @@
             @media (prefers-reduced-motion: reduce) { .tw { animation: none; } }
         </style>
     </defs>
+  <defs>
+    <!-- The shared bloom's ±30% region would clip the glow of a 12px-tall
+         bar to ~4px; this one gives the strip real vertical headroom. -->
+    <filter id="bloomBar" x="-3%" y="-300%" width="106%" height="700%">
+      <feGaussianBlur stdDeviation="3.5" result="b" />
+      <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
   <rect width="100%" height="100%" fill="url(#skyFade)" />
-  <line x1="46" y1="30" x2="954" y2="30" stroke="#1d6fb8" stroke-width="0.75" opacity="0.3"/>
-  <text x="159.5" y="86" class="t-num" font-size="40" text-anchor="middle">1092</text>
-  <text x="159.5" y="108" class="t-sub" font-size="9.5" text-anchor="middle">CONTRIBUTIONS</text>
-  <text x="386.5" y="86" class="t-num" font-size="40" text-anchor="middle">70</text>
-  <text x="386.5" y="108" class="t-sub" font-size="9.5" text-anchor="middle">STARS</text>
-  <text x="613.5" y="86" class="t-num" font-size="40" text-anchor="middle">11</text>
-  <text x="613.5" y="108" class="t-sub" font-size="9.5" text-anchor="middle">FOLLOWERS</text>
-  <text x="840.5" y="86" class="t-num" font-size="40" text-anchor="middle">21</text>
-  <text x="840.5" y="108" class="t-sub" font-size="9.5" text-anchor="middle">PUBLIC REPOS</text>
-  <line x1="46" y1="126" x2="954" y2="126" stroke="#1d6fb8" stroke-width="0.75" opacity="0.3"/>
+  <text x="46" y="30" class="t-sub" font-size="9.5">CODE COMPOSITION // PUBLIC SOURCE</text>
+  <g filter="url(#bloomBar)"><rect x="46" y="48" width="522.72" height="12" fill="#cfeeff"/><rect x="570.72" y="48" width="131.26" height="12" fill="#aecee3"/><rect x="703.98" y="48" width="54.64" height="12" fill="#8dadc6"/><rect x="760.63" y="48" width="48.57" height="12" fill="#6d8daa"/><rect x="811.19" y="48" width="28.48" height="12" fill="#4c6d8e"/><rect x="841.67" y="48" width="25.95" height="12" fill="#2b4c71"/><rect x="869.63" y="48" width="82.37" height="12" fill="#0a1d38"/></g>
+  <text x="500" y="88" class="t-sub" font-size="9.5" text-anchor="middle" style="letter-spacing:1px">PYTHON 57.8%  ·  RUST 14.7%  ·  LUA 6.2%  ·  TYPESCRIPT 5.6%  ·  GO 3.4%  ·  C++ 3.1%  ·  OTHER 9.3%</text>
 </svg>

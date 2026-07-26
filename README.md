@@ -11,7 +11,13 @@
 <br/>
 
 <div align="center">
-  <img src="assets/stats.svg" alt="Contributions, stars, public repos, peak commits per day" width="100%" />
+  <img src="assets/stats.svg" alt="Contributions, stars, followers, public repos" width="100%" />
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="assets/langs.svg" alt="Language composition across public repos" width="100%" />
 </div>
 
 <br/>

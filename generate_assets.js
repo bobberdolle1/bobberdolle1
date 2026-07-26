@@ -4,6 +4,11 @@ import path from 'path';
 const USERNAME = 'bobberdolle1';
 const API_URL = `https://api.github.com/users/${USERNAME}/repos?sort=stargazers&per_page=100`;
 
+const REST_HEADERS = {
+    'User-Agent': 'bobberdolle1-readme-generator',
+    ...(process.env.GITHUB_TOKEN ? { Authorization: `token ${process.env.GITHUB_TOKEN}` } : {})
+};
+
 // PS2 boot-screen grade: cold blue-white light in a black void.
 // No magenta — synthwave pink was fighting the console look.
 const COLORS = {
@@ -22,23 +27,57 @@ const COLORS = {
  * data
  * ------------------------------------------------------------------ */
 
+// Returns every public non-fork repo plus the top slice for the cards.
+// Stats must be computed over ALL repos — an earlier version sliced to 6
+// first and then reported "PUBLIC REPOS: 6" for a 21-repo profile.
 async function fetchRepos() {
-    try {
-        const headers = {
-            'User-Agent': 'bobberdolle1-readme-generator',
-            ...(process.env.GITHUB_TOKEN ? { Authorization: `token ${process.env.GITHUB_TOKEN}` } : {})
-        };
-        const res = await fetch(API_URL, { headers });
-        if (!res.ok) throw new Error(`Failed to fetch repos: ${res.status} ${res.statusText}`);
-        const data = await res.json();
-        return data
-            .filter(repo => !repo.fork && repo.name !== USERNAME)
-            .sort((a, b) => b.stargazers_count - a.stargazers_count)
-            .slice(0, 6);
-    } catch (e) {
-        console.error('[repos]', e.message);
-        return [];
-    }
+    const res = await fetch(API_URL, { headers: REST_HEADERS });
+    if (!res.ok) throw new Error(`repo list: ${res.status} ${res.statusText}`);
+    const data = await res.json();
+    const own = data.filter(repo => !repo.fork && repo.name !== USERNAME);
+    return {
+        all: own,
+        top: [...own].sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 6)
+    };
+}
+
+async function fetchUser() {
+    const res = await fetch(`https://api.github.com/users/${USERNAME}`, { headers: REST_HEADERS });
+    if (!res.ok) throw new Error(`user: ${res.status} ${res.statusText}`);
+    return res.json();
+}
+
+// Aggregate language bytes across public sources only (privacy: PUBLIC), so
+// local runs with a broad token and Actions runs with the repo-scoped
+// GITHUB_TOKEN produce identical art.
+async function fetchLanguages() {
+    const token = process.env.GITHUB_TOKEN;
+    if (!token) throw new Error('GITHUB_TOKEN is required for the languages GraphQL API');
+    const query = `query($login:String!){
+        user(login:$login){
+            repositories(first:100, ownerAffiliations:OWNER, isFork:false, privacy:PUBLIC){
+                nodes{ languages(first:10, orderBy:{field:SIZE, direction:DESC}){
+                    edges{ size node{ name } }
+                } }
+            }
+        }
+    }`;
+    const res = await fetch('https://api.github.com/graphql', {
+        method: 'POST',
+        headers: { Authorization: `bearer ${token}`, 'Content-Type': 'application/json', 'User-Agent': REST_HEADERS['User-Agent'] },
+        body: JSON.stringify({ query, variables: { login: USERNAME } })
+    });
+    const json = await res.json();
+    const nodes = json?.data?.user?.repositories?.nodes;
+    if (!nodes) throw new Error(`GraphQL returned no repositories: ${JSON.stringify(json).slice(0, 300)}`);
+    const totals = new Map();
+    for (const n of nodes)
+        for (const e of n.languages.edges)
+            totals.set(e.node.name, (totals.get(e.node.name) || 0) + e.size);
+    const sum = [...totals.values()].reduce((a, b) => a + b, 0) || 1;
+    return [...totals.entries()]
+        .map(([name, size]) => ({ name, share: size / sum }))
+        .sort((a, b) => b.share - a.share);
 }
 
 // Exact per-day counts via GraphQL. The old version scraped the contributions
@@ -240,7 +279,7 @@ function generateTowersSvg(cal) {
     svg += `  <text x="46" y="52" class="t-title" font-size="17">CONTRIBUTION FIELD</text>
   <text x="46" y="74" class="t-sub" font-size="10.5">LAST 365 DAYS // ${USERNAME}</text>
   <text x="${WIDTH - 46}" y="52" class="t-num" font-size="30" text-anchor="end">${year}</text>
-  <text x="${WIDTH - 46}" y="72" class="t-sub" font-size="9.5" text-anchor="end">COMMITS · ${activeDays} ACTIVE DAYS · PEAK ${max}/DAY</text>
+  <text x="${WIDTH - 46}" y="72" class="t-sub" font-size="9.5" text-anchor="end">CONTRIBUTIONS · ${activeDays} ACTIVE DAYS · PEAK ${max}/DAY</text>
   <line x1="46" y1="88" x2="${WIDTH - 46}" y2="88" stroke="${COLORS.blue}" stroke-width="0.75" opacity="0.35"/>
 </svg>`;
 
@@ -250,6 +289,22 @@ function generateTowersSvg(cal) {
 /* ------------------------------------------------------------------ *
  * header / projects / stats
  * ------------------------------------------------------------------ */
+
+// A closed band following a sine curve. The path spans one wavelength past
+// the canvas so a translateX(-lambda) loop is perfectly seamless.
+function ribbonPath(W, yMid, amp, thick, lambda, phase) {
+    const span = W + lambda;
+    const N = Math.ceil(span / 8);
+    const pts = [];
+    for (let i = 0; i <= N; i++) {
+        const x = (i * span) / N;
+        pts.push([r2(x), r2(yMid + amp * Math.sin((2 * Math.PI * x) / lambda + phase))]);
+    }
+    let d = `M${pts[0][0]},${pts[0][1]}`;
+    for (let i = 1; i < pts.length; i++) d += `L${pts[i][0]},${pts[i][1]}`;
+    for (let i = pts.length - 1; i >= 0; i--) d += `L${pts[i][0]},${r2(pts[i][1] + thick)}`;
+    return d + 'Z';
+}
 
 function generateHeaderSvg(cal) {
     const W = 1000, H = 190;
@@ -266,10 +321,33 @@ function generateHeaderSvg(cal) {
         skyline += `<rect x="${r2(i * bw)}" y="${r2(H - h)}" width="${r2(bw - 1.6)}" height="${r2(h)}" fill="${COLORS.blue}"/>`;
     });
 
+    // XMB-style ribbons: uniform horizontal color (any x-gradient would jump
+    // at the loop seam), vertical fade so the top edge glows. CSS transform
+    // only — the resting state is fully visible if the timeline never runs.
+    const L1 = 500, L2 = 340;
+    const rb1 = ribbonPath(W, 126, 13, 32, L1, 0.6);
+    const rb2 = ribbonPath(W, 147, 9, 22, L2, 2.4);
+
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="vibecoder37">
   ${createDefs()}
+  <defs>
+    <linearGradient id="ribbonGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="${COLORS.ice}" stop-opacity="0.55" />
+      <stop offset="45%" stop-color="${COLORS.cyan}" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="${COLORS.blue}" stop-opacity="0" />
+    </linearGradient>
+    <style>
+      @keyframes drift1 { to { transform: translateX(-${L1}px); } }
+      @keyframes drift2 { to { transform: translateX(-${L2}px); } }
+      .rb1 { animation: drift1 26s linear infinite; }
+      .rb2 { animation: drift2 18s linear infinite; }
+      @media (prefers-reduced-motion: reduce) { .rb1, .rb2 { animation: none; } }
+    </style>
+  </defs>
   <rect width="100%" height="100%" fill="url(#skyFade)" />
   <ellipse cx="${W / 2}" cy="${H}" rx="460" ry="120" fill="url(#horizonGlow)" />
+  <path class="rb1" d="${rb1}" fill="url(#ribbonGrad)" opacity="0.35" />
+  <path class="rb2" d="${rb2}" fill="url(#ribbonGrad)" opacity="0.22" />
   <g opacity="0.34">${skyline}</g>
   <g filter="url(#bloom)">
     <text x="${W / 2}" y="80" class="t-title" font-size="46" text-anchor="middle">vibecoder37</text>
@@ -278,7 +356,7 @@ function generateHeaderSvg(cal) {
   <line x1="${W / 2 - 150}" y1="125" x2="${W / 2 + 150}" y2="125" stroke="${COLORS.blue}" stroke-width="0.75" opacity="0.5">
     <animate attributeName="opacity" values="0.15;0.6;0.15" dur="4s" repeatCount="indefinite"/>
   </line>
-  <text x="${W / 2}" y="143" class="t-sub" font-size="9.5" text-anchor="middle">IVANOVO, RU</text>
+  <text x="${W / 2}" y="143" class="t-sub" font-size="9.5" text-anchor="middle" style="fill:#a3bedd">IVANOVO, RU</text>
 </svg>`;
 }
 
@@ -314,8 +392,8 @@ function generateProjectsSvg(repos) {
         svg += `  <g transform="translate(${x}, ${y})">
     <rect width="${cardW}" height="${CARD_H}" fill="#050b16" stroke="${COLORS.deep}" stroke-width="1"/>
     <rect width="2.5" height="${CARD_H}" fill="${COLORS.cyan}" opacity="0.75"/>
-    <text x="20" y="32" class="t-title" font-size="16" letter-spacing="1">${escapeHtml(repo.name)}</text>
-${shown.map((l, k) => `    <text x="20" y="${56 + k * 17}" class="t-sub" font-size="11.5" letter-spacing="0">${escapeHtml(l)}</text>`).join('\n')}
+    <text x="20" y="32" class="t-title" font-size="16" style="letter-spacing:2px">${escapeHtml(repo.name)}</text>
+${shown.map((l, k) => `    <text x="20" y="${56 + k * 17}" class="t-sub" font-size="11.5" style="letter-spacing:0.5px">${escapeHtml(l)}</text>`).join('\n')}
     <text x="20" y="${CARD_H - 16}" class="t-mono" font-size="11">★ ${repo.stargazers_count}</text>
     <text x="70" y="${CARD_H - 16}" class="t-mono" font-size="11" fill="${COLORS.gray}">${escapeHtml(repo.language || '—')}</text>
   </g>
@@ -325,14 +403,16 @@ ${shown.map((l, k) => `    <text x="20" y="${56 + k * 17}" class="t-sub" font-si
     return svg + '</svg>';
 }
 
-function generateStatsSvg(cal, repos) {
+function generateStatsSvg(cal, repos, user) {
     const W = 1000, H = 150;
-    const stars = repos.reduce((s, r) => s + r.stargazers_count, 0);
+    // Stars over every public non-fork repo, repo count from the profile
+    // itself. Peak/day is not repeated here — the tower field already says it.
+    const stars = repos.all.reduce((s, r) => s + r.stargazers_count, 0);
     const cells = [
         ['CONTRIBUTIONS', cal.totalContributions],
         ['STARS', stars],
-        ['PUBLIC REPOS', repos.length],
-        ['PEAK / DAY', Math.max(...cal.weeks.flatMap(w => w.contributionDays.map(d => d.contributionCount)))]
+        ['FOLLOWERS', user.followers],
+        ['PUBLIC REPOS', user.public_repos]
     ];
 
     let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="stats">
@@ -349,6 +429,47 @@ function generateStatsSvg(cal, repos) {
     return svg + `  <line x1="46" y1="126" x2="${W - 46}" y2="126" stroke="${COLORS.blue}" stroke-width="0.75" opacity="0.3"/>\n</svg>`;
 }
 
+// The language field: one glowing strip, brightness by rank — the same
+// cold-blue world as the towers, not a parrot of per-language brand colors.
+function generateLangsSvg(langs) {
+    const W = 1000, H = 112;
+    const X = 46, BW = W - 92, Y = 48, BH = 12;
+    const top = langs.slice(0, 6);
+    const rest = 1 - top.reduce((s, l) => s + l.share, 0);
+    const segs = [
+        ...top.map(l => ({ label: l.name.toUpperCase(), share: l.share })),
+        ...(rest > 0.005 ? [{ label: 'OTHER', share: rest }] : [])
+    ];
+
+    let x = X, bars = '';
+    segs.forEach((s, i) => {
+        const w = Math.max(0, s.share * BW - 2);
+        const fill = s.label === 'OTHER'
+            ? '#0a1d38'
+            : lerpHex(COLORS.ice, COLORS.deep, segs.length <= 1 ? 0 : i / (segs.length - 1));
+        bars += `<rect x="${r2(x)}" y="${Y}" width="${r2(w)}" height="${BH}" fill="${fill}"/>`;
+        x += s.share * BW;
+    });
+
+    const legend = segs.map(s => `${escapeHtml(s.label)} ${(s.share * 100).toFixed(1)}%`).join('  ·  ');
+
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Language composition across public repos: ${legend}">
+  ${createDefs()}
+  <defs>
+    <!-- The shared bloom's ±30% region would clip the glow of a 12px-tall
+         bar to ~4px; this one gives the strip real vertical headroom. -->
+    <filter id="bloomBar" x="-3%" y="-300%" width="106%" height="700%">
+      <feGaussianBlur stdDeviation="3.5" result="b" />
+      <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#skyFade)" />
+  <text x="${X}" y="30" class="t-sub" font-size="9.5">CODE COMPOSITION // PUBLIC SOURCE</text>
+  <g filter="url(#bloomBar)">${bars}</g>
+  <text x="${W / 2}" y="${Y + BH + 28}" class="t-sub" font-size="9.5" text-anchor="middle" style="letter-spacing:1px">${legend}</text>
+</svg>`;
+}
+
 /* ------------------------------------------------------------------ *
  * main
  * ------------------------------------------------------------------ */
@@ -357,14 +478,17 @@ async function main() {
     const outDir = path.join(process.cwd(), 'assets');
     await fs.mkdir(outDir, { recursive: true });
 
-    const [repos, cal] = await Promise.all([fetchRepos(), fetchContributions()]);
-    console.log(`repos: ${repos.length}, contributions: ${cal.totalContributions}`);
+    const [repos, cal, user, langs] = await Promise.all([
+        fetchRepos(), fetchContributions(), fetchUser(), fetchLanguages()
+    ]);
+    console.log(`repos: ${repos.all.length} public, contributions: ${cal.totalContributions}, languages: ${langs.length}`);
 
     const files = {
         'header.svg': generateHeaderSvg(cal),
-        'projects.svg': generateProjectsSvg(repos),
         'towers.svg': generateTowersSvg(cal),
-        'stats.svg': generateStatsSvg(cal, repos)
+        'stats.svg': generateStatsSvg(cal, repos, user),
+        'langs.svg': generateLangsSvg(langs),
+        'projects.svg': generateProjectsSvg(repos.top)
     };
 
     for (const [name, content] of Object.entries(files)) {
