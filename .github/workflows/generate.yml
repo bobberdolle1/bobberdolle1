@@ -7,9 +7,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "generate_assets.js"
-      - ".github/workflows/generate.yml"
 
 permissions:
   contents: write
