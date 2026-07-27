@@ -54,9 +54,17 @@ async function fetchRepos() {
     if (!res.ok) throw new Error(`repo list: ${res.status} ${res.statusText}`);
     const data = await res.json();
     const own = data.filter(repo => !repo.fork && repo.name !== USERNAME);
+    let top = [...own].sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 6);
+    const terraForge = own.find(o => o.name === 'TerraForge-Studio');
+    if (terraForge) {
+        top = top.map(r => r.name === 'Pico-Nand-Flasher' ? terraForge : r);
+        if (!top.some(r => r.name === 'TerraForge-Studio') && top.length >= 5) {
+            top[4] = terraForge;
+        }
+    }
     return {
         all: own,
-        top: [...own].sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 6)
+        top
     };
 }
 
