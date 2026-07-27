@@ -33,7 +33,7 @@
   <a href="https://github.com/bobberdolle1/openflash"><img src="assets/card-1.svg" width="49%" alt="openflash" /></a>
   <a href="https://github.com/bobberdolle1/unbound"><img src="assets/card-2.svg" width="49%" alt="unbound" /></a>
   <a href="https://github.com/bobberdolle1/BeamNG.WorldForge"><img src="assets/card-3.svg" width="49%" alt="BeamNG.WorldForge" /></a>
-  <a href="https://github.com/bobberdolle1/Pico-Nand-Flasher"><img src="assets/card-4.svg" width="49%" alt="Pico-Nand-Flasher" /></a>
+  <a href="https://github.com/bobberdolle1/TerraForge-Studio"><img src="assets/card-4.svg" width="49%" alt="TerraForge-Studio" /></a>
   <a href="https://github.com/bobberdolle1/Project-OLEG"><img src="assets/card-5.svg" width="49%" alt="Project-OLEG" /></a>
 </div>
 <!-- projects:end -->
