@@ -1,0 +1,7 @@
+[Unit]
+Description=Refresh bobberdolle1 profile assets
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/.local/share/bobberdolle1-profile
+ExecStart=%h/.local/share/bobberdolle1-profile/scripts/refresh-profile

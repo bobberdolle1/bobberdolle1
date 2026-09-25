@@ -1,0 +1,21 @@
+#!/bin/sh
+set -eu
+
+repo_dir=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+cd "$repo_dir"
+
+git fetch --quiet origin main
+git reset --hard --quiet origin/main
+export GITHUB_TOKEN="$(gh auth token --hostname github.com)"
+node generate_assets.js
+
+if git diff --quiet -- assets/ README.md; then
+    exit 0
+fi
+
+git config user.name "bobberdolle1"
+git config user.email "kirillkrovyakov@yandex.com"
+git add assets/ README.md
+git commit -m "chore: rebuild profile assets"
+git pull --rebase origin main
+git push origin HEAD:main

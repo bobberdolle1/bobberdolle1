@@ -4,16 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository purpose
 
-This repo is named `bobberdolle1`, matching the GitHub username — GitHub renders its `README.md` directly on the user's profile page (github.com/bobberdolle1). The profile is a generated art piece: a PS2-boot / PS3-XMB inspired scene (cold blue-white light in a black void, no console-UI literalism) built entirely from SVGs that `generate_assets.js` renders from live GitHub data. Edits to the profile's look belong in `generate_assets.js`, not in the SVGs (they are overwritten every 6 hours by CI) and mostly not in `README.md` (its card grid section is also generated).
+This repo is named `bobberdolle1`, matching the GitHub username — GitHub renders its `README.md` directly on the user's profile page (github.com/bobberdolle1). The profile is a generated art piece: a PS2-boot / PS3-XMB inspired scene (cold blue-white light in a black void, no console-UI literalism) built entirely from SVGs that `generate_assets.js` renders from live GitHub data. Edits to the profile's look belong in `generate_assets.js`, not in the SVGs (they are overwritten on every refresh) and mostly not in `README.md` (its card grid section is also generated).
 
-There is no test suite; `node generate_assets.js` (with `GITHUB_TOKEN` set) is the whole build.
+There is no test suite; `node generate_assets.js` (with `GITHUB_TOKEN` set) is the whole build. `/home/bobpc/.local/share/bobberdolle1-profile` is the production clone. Its `systemd --user` timer invokes `scripts/refresh-profile` every six hours, obtains the token from `gh auth token`, and pushes generated `assets/` and `README.md` only when they changed.
 
 ## Structure
 
 - `generate_assets.js` — the single source of truth for the profile's look. Fetches repos/user/contribution-calendar/language bytes (REST + GraphQL) and commit timestamps (GraphQL history walk), then writes every SVG in `assets/` and rewrites the clickable project-card grid in `README.md` between the `<!-- projects:start -->` / `<!-- projects:end -->` markers. Decorative randomness (dust, beam flicker) is seeded via `mulberry32` so identical data produces byte-identical files. Every animation must keep a fully visible resting state (GitHub may render frame 0 only) and be listed in the shared `prefers-reduced-motion` block.
 - `README.md` — mostly a stack of `<img>` blocks pointing at `assets/*.svg`; only the footer tagline and block order are hand-edited. The card grid between the projects markers is machine-written — never edit it by hand.
 - `assets/` — generated output only (header, towers, signal, telemetry, label-work, card-0..5, link chips). Never hand-edit.
-- `.github/workflows/generate.yml` — cron (every 6h) + push-triggered Action that runs the generator and commits `assets/` and `README.md` when the data changed.
+- `scripts/refresh-profile` — resets the production clone to `origin/main`, supplies `GITHUB_TOKEN` from GitHub CLI, renders the assets, and commits and pushes changed generated files.
+- `systemd/bobberdolle1-profile-refresh.service` and `.timer` — installable `systemd --user` units for the six-hour server-side schedule.
 - `termvibes/vibes.py` — standalone, dependency-free Python 3 script: a terminal ANSI/ASCII animation toy (matrix rain, fire, plasma, starfield, DVD-bounce logo). Single file, no package structure; not imported by anything else in the repo.
 
 ## Design rules for the profile SVGs
