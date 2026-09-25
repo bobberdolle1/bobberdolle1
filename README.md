@@ -32,9 +32,9 @@
   <a href="https://github.com/bobberdolle1/SkySweep32"><img src="assets/card-0.svg" width="49%" alt="SkySweep32" /></a>
   <a href="https://github.com/bobberdolle1/openflash"><img src="assets/card-1.svg" width="49%" alt="openflash" /></a>
   <a href="https://github.com/bobberdolle1/unbound"><img src="assets/card-2.svg" width="49%" alt="unbound" /></a>
-  <a href="https://github.com/bobberdolle1/BeamNG.WorldForge"><img src="assets/card-3.svg" width="49%" alt="BeamNG.WorldForge" /></a>
-  <a href="https://github.com/bobberdolle1/TerraForge-Studio"><img src="assets/card-4.svg" width="49%" alt="TerraForge-Studio" /></a>
-  <a href="https://github.com/bobberdolle1/Project-OLEG"><img src="assets/card-5.svg" width="49%" alt="Project-OLEG" /></a>
+  <a href="https://github.com/bobberdolle1/Puppeteer"><img src="assets/card-3.svg" width="49%" alt="Puppeteer" /></a>
+  <a href="https://github.com/bobberdolle1/BeamNG.WorldForge"><img src="assets/card-4.svg" width="49%" alt="BeamNG.WorldForge" /></a>
+  <a href="https://github.com/bobberdolle1/TerraForge-Studio"><img src="assets/card-5.svg" width="49%" alt="TerraForge-Studio" /></a>
 </div>
 <!-- projects:end -->
 
